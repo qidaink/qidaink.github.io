@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;qidaink.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="本文主要是介绍在python学习过程中所用到的input和print函数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Python】Python基础2-input与print">
+<meta property="og:url" content="https://qidaink.github.io/posts/79a6b4ff/index.html">
+<meta property="og:site_name" content="云与海">
+<meta property="og:description" content="本文主要是介绍在python学习过程中所用到的input和print函数。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/007input1.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/008input2.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/009print1.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/010print2.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/011print3.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/012print4.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/013print5.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/014print6.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/015print7.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/016print8.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/017print9.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/018print10.png">
+<meta property="article:published_time" content="2021-04-11T08:54:57.000Z">
+<meta property="article:modified_time" content="2021-05-12T10:28:52.129Z">
+<meta property="article:author" content="qidaink">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Python/007input1.png">
+
+
+<link rel="canonical" href="https://qidaink.github.io/posts/79a6b4ff/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;qidaink.github.io&#x2F;posts&#x2F;79a6b4ff&#x2F;&quot;,&quot;path&quot;:&quot;posts&#x2F;79a6b4ff&#x2F;&quot;,&quot;title&quot;:&quot;【Python】Python基础2-input与print&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>【Python】Python基础2-input与print | 云与海</title><script src="/js/config.js"></script><link rel="dns-prefetch" href="https://qidaink-blog-comment.vercel.app/">
+
+
+
+
+
+    <script async type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/funnytitle/funnytitle.js"></script>
+
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">云与海</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>云与海</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签页<span class="badge">27</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类页<span class="badge">7</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档页<span class="badge">24</span></a></li>
+        <li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="fas fa-edit fa-fw"></i>留言板</a></li>
+        <li class="menu-item menu-item-friendslink"><a href="/friendslink/" rel="section"><i class="fa fa-link fa-fw"></i>友人帐</a></li>
+        <li class="menu-item menu-item-friendscircle"><a href="/friendscircle/" rel="section"><i class="fas fa-user-friends fa-fw"></i>朋友圈</a></li>
+        <li class="menu-item menu-item-comment"><a href="https://qidaink-blog-comment.vercel.app/ui/login" rel="noopener" target="_blank"><i class="fa fa-comment fa-fw"></i>评论管理</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-input-%E5%87%BD%E6%95%B0"><span class="nav-text"> 一.input()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-text">1.函数说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8"><span class="nav-text">2.函数使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5"><span class="nav-text">2.1 数据输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%B8%A6%E6%8F%90%E7%A4%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5"><span class="nav-text">2.2 带提示的数据输入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%87%BD%E6%95%B0%E8%AF%B4%E6%98%8E-1"><span class="nav-text">1.函数说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8-1"><span class="nav-text">2.函数使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%A4%9A%E7%A7%8D%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E8%BE%93%E5%87%BA"><span class="nav-text">2.1 多种变量类型输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="nav-text">2.2 格式化输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-format%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="nav-text">2.3 format格式化输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E4%B8%8D%E6%8D%A2%E8%A1%8C%E8%BE%93%E5%87%BA"><span class="nav-text">2.4 不换行输出</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="nav-text"> 三.转义字符</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qidaink"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">qidaink</p>
+  <div class="site-description" itemprop="description">但愿人长久，千里共婵娟</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_38231279" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_38231279" rel="noopener" target="_blank"><i class="iconfont icon-csdn1 fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/qidaink" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="iconfont icon-gitee-fill-round fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/qidaink" title="Github → https:&#x2F;&#x2F;github.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://fontawesome.com/" title="Awesome → https:&#x2F;&#x2F;fontawesome.com&#x2F;" rel="noopener" target="_blank"><i class="fab fa-font-awesome-flag fa-fw"></i>Awesome</a>
+      </span>
+  </div>
+
+
+
+
+
+
+
+
+  <div style="">
+    <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+  </div>
+  <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/canvas/canvas-clock.js"></script>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://qidaink.github.io/posts/79a6b4ff/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="qidaink">
+      <meta itemprop="description" content="但愿人长久，千里共婵娟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云与海">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【Python】Python基础2-input与print
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-11 16:54:57" itemprop="dateCreated datePublished" datetime="2021-04-11T16:54:57+08:00">2021-04-11</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-12 18:28:52" itemprop="dateModified" datetime="2021-05-12T18:28:52+08:00">2021-05-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/79a6b4ff/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/79a6b4ff/" data-xid="/posts/79a6b4ff/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>17 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">本文主要是介绍在python学习过程中所用到的input和print函数。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+
+
+    <div class="poem-wrap">
+        <div class="poem-border poem-left"></div>
+        <div class="poem-border poem-right"></div>
+        <h1>一句诗词</h1>
+        <p id="poem">挑选中...</p>
+        <p id="info" style="text-align: right;"></p>
+        <script data-pjax defer src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/todayPoem.js"></script>
+    </div>
+
+        <p>摘要：<br>&emsp;&emsp;本文主要是记录自己在学习<code>python</code>过程中使用到的<code>input</code>与<code>ptrint</code>函数。</p>
+<span id="more"></span>
+
+<h1 id="一-input-函数"><a href="#一-input-函数" class="headerlink" title=" 一.input()函数"></a><font size=3> 一.input()函数</font></h1><h2 id="1-函数说明"><a href="#1-函数说明" class="headerlink" title="1.函数说明"></a><font size=3>1.函数说明</font></h2><ul>
+<li>函数在库中的原型及解释说明如下</li>
+</ul>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">input</span>(<span class="params">prompt: <span class="type">Any</span>=...</span>)</span></span><br><span class="line"><span class="function">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="function"><span class="title">Read</span> <span class="title">a</span> <span class="title">string</span> <span class="title">from</span> <span class="title">standard</span> <span class="title">input</span>. <span class="title">The</span> <span class="title">trailing</span> <span class="title">newline</span> <span class="title">is</span> <span class="title">stripped</span>.</span></span><br><span class="line">The prompt string, if given, is printed to standard output without a trailing newline before reading input.</span><br><span class="line">If the user hits EOF (*nix: Ctrl-D, Windows: Ctrl-Z+Return), <span class="keyword">raise</span> EOFError. On *nix systems, readline <span class="keyword">is</span> used <span class="keyword">if</span> available.</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>函数接受一个标准输入数据，返回为 string 类型。</li>
+<li>函数的参数可选，如果填写，则在接收字符串的时候会打印提示。</li>
+<li>回车标志着输入结束，但是回车不会被输入到接收数据的变量中</li>
+<li>函数使用格式</li>
+</ul>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = <span class="built_in">input</span>()  <span class="comment"># 从键盘获取字符，以回车结束</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-函数使用"><a href="#2-函数使用" class="headerlink" title="2.函数使用"></a><font size=3>2.函数使用</font></h2><h3 id="2-1-数据输入"><a href="#2-1-数据输入" class="headerlink" title="2.1 数据输入"></a><font size=3>2.1 数据输入</font></h3><figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data = <span class="built_in">input</span>()  <span class="comment"># 输入数据</span></span><br><span class="line"><span class="built_in">print</span>(data)     <span class="comment"># 打印输入的数据</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(data))  <span class="comment"># 打印输入的数据类型</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(data))   <span class="comment"># 打印输入字符串的长度</span></span><br></pre></td></tr></table></figure>
+
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/007input1.png"  height="100%" width="100%">
+</div>
+
+<h3 id="2-2-带提示的数据输入"><a href="#2-2-带提示的数据输入" class="headerlink" title="2.2 带提示的数据输入"></a><font size=3>2.2 带提示的数据输入</font></h3><figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data = <span class="built_in">input</span>(<span class="string">&quot;Please enter your data:&quot;</span>)  <span class="comment"># 输入数据</span></span><br><span class="line"><span class="built_in">print</span>(data)     <span class="comment"># 打印输入的数据</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(data))  <span class="comment"># 打印输入的数据类型</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(data))   <span class="comment"># 打印输入字符串的长度</span></span><br></pre></td></tr></table></figure>
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/008input2.png"  height="100%" width="100%">
+</div>
+# <font size=3> 二.print()函数</font>
+
+<h2 id="1-函数说明-1"><a href="#1-函数说明-1" class="headerlink" title="1.函数说明"></a><font size=3>1.函数说明</font></h2><ul>
+<li>函数在库中的原型及解释说明如下</li>
+</ul>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print</span>(<span class="params">*values: <span class="built_in">object</span>, sep: <span class="type">Optional</span>[Text]=..., end: <span class="type">Optional</span>[Text]=..., file: <span class="type">Optional</span>[_Writer]=..., flush: <span class="built_in">bool</span>=...</span>)</span></span><br><span class="line"><span class="function">&#x27;&#x27;&#x27;</span></span><br><span class="line">Prints the values to a stream, or to sys.stdout by default. Optional keyword arguments: </span><br><span class="line">file: a file-like <span class="built_in">object</span> (stream); defaults to the current sys.stdout. </span><br><span class="line">sep: string inserted between values, default a space. </span><br><span class="line">end: string appended after the last value, default a newline. </span><br><span class="line">flush: whether to forcibly flush the stream.</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-函数使用-1"><a href="#2-函数使用-1" class="headerlink" title="2.函数使用"></a><font size=3>2.函数使用</font></h2><h3 id="2-1-多种变量类型输出"><a href="#2-1-多种变量类型输出" class="headerlink" title="2.1 多种变量类型输出"></a><font size=3>2.1 多种变量类型输出</font></h3><figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data1 = <span class="string">&quot;hello word!&quot;</span>    <span class="comment"># 字符串类型数据</span></span><br><span class="line"><span class="built_in">print</span>(data1)</span><br><span class="line">data2 = <span class="number">999</span>              <span class="comment"># 整型数据</span></span><br><span class="line"><span class="built_in">print</span>(data2)</span><br><span class="line">data3 = <span class="number">3.14</span>             <span class="comment"># 浮点型数据</span></span><br><span class="line"><span class="built_in">print</span>(data3)</span><br><span class="line">data4 = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)        <span class="comment"># 元组数据</span></span><br><span class="line"><span class="built_in">print</span>(data4)</span><br><span class="line">data5 = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>]  <span class="comment"># 列表类型数据</span></span><br><span class="line"><span class="built_in">print</span>(data5)</span><br><span class="line">data6 = &#123;<span class="string">&quot;key1&quot;</span>: <span class="number">123</span>, <span class="string">&quot;key2&quot;</span>: <span class="string">&quot;abc&quot;</span>&#125;  <span class="comment"># 字典类型数据</span></span><br><span class="line"><span class="built_in">print</span>(data6)</span><br></pre></td></tr></table></figure>
+
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/009print1.png" height="100%" width="100%">
+</div>
+
+<h3 id="2-2-格式化输出"><a href="#2-2-格式化输出" class="headerlink" title="2.2 格式化输出"></a><font size=3>2.2 格式化输出</font></h3><ul>
+<li>格式化输出格式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>格式符号</th>
+<th>转换</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>%c</td>
+<td>格式化字符及其ASCII码</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>通过str() 字符串转换来格式化</td>
+</tr>
+<tr>
+<td>%i</td>
+<td>有符号十进制整数</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>有符号十进制整数</td>
+</tr>
+<tr>
+<td>%u</td>
+<td>无符号十进制整数</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>无符号八进制整数</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>无符号十六进制整数（小写字母）</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>无符号十六进制整数（大写字母）</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>用科学计数法格式化浮点数</td>
+</tr>
+<tr>
+<td>%E</td>
+<td>作用同%e，用科学计数法格式化浮点数</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>浮点数字，可指定小数点后的精度</td>
+</tr>
+<tr>
+<td>%g</td>
+<td>％f和％e 的简写</td>
+</tr>
+<tr>
+<td>%G</td>
+<td>％f和％E的简写</td>
+</tr>
+<tr>
+<td>%p</td>
+<td>用十六进制数格式化变量的地址</td>
+</tr>
+</tbody></table>
+<ul>
+<li>辅助功能</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>格式符号</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td align="left">宽度或者小数点精度</td>
+</tr>
+<tr>
+<td>-</td>
+<td align="left">左对齐</td>
+</tr>
+<tr>
+<td>+</td>
+<td align="left">在正数前面显示加号( + )</td>
+</tr>
+<tr>
+<td>#</td>
+<td align="left">在八进制数前面显示零(‘0’)，在十六进制前面显示’0x’或者’0X’(取决于用的是’x’还是’X’)</td>
+</tr>
+<tr>
+<td>0</td>
+<td align="left">显示的数字前面填充’0’而不是默认的空格</td>
+</tr>
+</tbody></table>
+<ul>
+<li>输出实例1</li>
+</ul>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打印字符串长度</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The length of [%s] is %d bytes&quot;</span> % (<span class="string">&quot;hello world!&quot;</span>, <span class="built_in">len</span>(<span class="string">&quot;hello world!&quot;</span>)))</span><br></pre></td></tr></table></figure>
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/010print2.png" height="100%" width="100%">
+</div>
+
+<ul>
+<li>输出实例2</li>
+</ul>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pi = <span class="number">3.141592653</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pi = %-10.4f&quot;</span> % (pi))  <span class="comment"># 宽10字节，精度3位小数，左对齐</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pi = %+10.4f&quot;</span> % (pi))  <span class="comment"># 宽10字节，精度3位小数，默认右对齐，显示&quot;±&quot;号</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pi = %08.4f&quot;</span> % (pi))   <span class="comment"># 宽10字节，精度3位小数</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;pi = %.*f&quot;</span> % (<span class="number">3</span>, pi))  <span class="comment"># 用*从后面的元组中读取字段宽度或精度</span></span><br></pre></td></tr></table></figure>
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/011print3.png" height="100%" width="100%">
+</div>
+
+<h3 id="2-3-format格式化输出"><a href="#2-3-format格式化输出" class="headerlink" title="2.3 format格式化输出"></a><font size=3>2.3 format格式化输出</font></h3><p>&emsp;&emsp;format把字符串当成一个模板，通过传入的参数进行格式化，并且使用大括号”{}”作为特殊字符代替”%”，功能相对于%格式化输出更为强大。</p>
+<ul>
+<li>函数原型如下</li>
+</ul>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">format</span>(<span class="params">*args: <span class="built_in">object</span>, **kwargs: <span class="built_in">object</span></span>)</span></span><br><span class="line"><span class="function">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="function"><span class="title">Return</span> <span class="title">value</span>.<span class="title">format</span>(<span class="params">format_spec</span>)</span></span><br><span class="line"><span class="function"><span class="title">format_spec</span> <span class="title">defaults</span> <span class="title">to</span> <span class="title">the</span> <span class="title">empty</span> <span class="title">string</span>. </span></span><br><span class="line"><span class="function"><span class="title">See</span> <span class="title">the</span> <span class="title">Format</span> <span class="title">Specification</span> <span class="title">Mini</span>-<span class="title">Language</span> <span class="title">section</span> <span class="title">of</span> <span class="title">help</span>(<span class="params"><span class="string">&#x27;FORMATTING&#x27;</span></span>) <span class="title">for</span> <span class="title">details</span>.</span></span><br><span class="line"><span class="function">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2.3.1 基本输出方式</li>
+</ul>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;&#125; &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>))    <span class="comment"># 不带任何参数</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;0&#125; &#123;1&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>))  <span class="comment"># 带数字编号，数字编号指定顺序</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;0&#125; &#123;1&#125; &#123;0&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>))  <span class="comment"># 打乱顺序</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;2&#125; &#123;1&#125; &#123;0&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>, <span class="string">&quot;hk&quot;</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;a&#125; &#123;b&#125; &#123;a&#125;&quot;</span>.<span class="built_in">format</span>(b=<span class="string">&quot;hello&quot;</span>, a=<span class="string">&quot;world&quot;</span>))  <span class="comment"># 带关键字指定相应的字符串</span></span><br></pre></td></tr></table></figure>
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/012print4.png" height="100%" width="100%">
+</div>
+
+<ul>
+<li>2.3.1 对齐与小数取位数操作</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;</td>
+<td>（默认）左对齐</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>右对齐</td>
+</tr>
+<tr>
+<td>^</td>
+<td>中间对齐</td>
+</tr>
+<tr>
+<td>{:4s}</td>
+<td>输出占4个字节</td>
+</tr>
+<tr>
+<td>{:.2f}</td>
+<td>输出两位小数</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;&#125; &amp;&amp; &#123;&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>))  <span class="comment"># 默认左对齐</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;:15s&#125; &amp;&amp; &#123;:&gt;15s&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>))  <span class="comment"># 15字节输出，第一个默认左对齐，第二个右对齐</span></span><br><span class="line"><span class="comment"># 注意这里要想在前边加补齐符号，不能省略默认的左对齐符号</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;:=&lt;15s&#125; &amp;&amp; &#123;:=&gt;15s&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>))  <span class="comment"># 15字节输出，第一个默认左对齐，第二个右对齐，不足的用=补齐</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;:=^10s&#125; &amp;&amp; &#123;:=^10s&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>))  <span class="comment"># 10字节中间对齐输出，不足的字节补=</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;&#125; is &#123;:.3f&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">3.1415926</span>, <span class="number">3.1415926</span>))  <span class="comment"># 保留2位小数</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;&#123;0&#125; is &#123;0:&gt;10.3f&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">3.1415926</span>))  <span class="comment"># 保留3位小数，10字节右对齐输出</span></span><br></pre></td></tr></table></figure>
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/013print5.png" height="100%" width="100%">
+</div>
+
+<ul>
+<li>2.3.2 格式化输出</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>格式符号</th>
+<th align="left">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>d</td>
+<td align="left">十进制整数输出</td>
+</tr>
+<tr>
+<td>b</td>
+<td align="left">二进制输出</td>
+</tr>
+<tr>
+<td>x</td>
+<td align="left">十六进制输出，9-15以用小写字母a-f</td>
+</tr>
+<tr>
+<td>o</td>
+<td align="left">八进制输出</td>
+</tr>
+<tr>
+<td>c</td>
+<td align="left">字符，整数的话会转化为ASCII码</td>
+</tr>
+<tr>
+<td>s</td>
+<td align="left">字符串输出</td>
+</tr>
+<tr>
+<td>e</td>
+<td align="left">幂符号，用科学计数法打印数字</td>
+</tr>
+<tr>
+<td>g</td>
+<td align="left">一般格式，将数值以fixed-point number输出，数值很大的时候，用幂形式打印</td>
+</tr>
+<tr>
+<td>n</td>
+<td align="left">数字，当值为整数时和’d’相同，值为浮点数时和’g’相同,不同的是它会根据区域设置插入数字分隔符</td>
+</tr>
+<tr>
+<td>%</td>
+<td align="left">百分数，将数值乘以100然后以fixed-point number(‘f’)格式打印，会在后边加上%</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;d:&#123;:d&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">33</span>))  <span class="comment"># 十进制整数输出</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;b:&#123;:b&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">33</span>))  <span class="comment"># 二进制输出</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;x:&#123;:x&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">33</span>))  <span class="comment"># 十六进制输出，9-15以用小写字母a-f</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;o:&#123;:o&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">33</span>))  <span class="comment"># 八进制输出</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;c:&#123;:c&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">33</span>))  <span class="comment"># 字符，整数的话会转化为ASCII码</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;s:&#123;:s&#125;&quot;</span>.<span class="built_in">format</span>(<span class="string">&quot;hello&quot;</span>))  <span class="comment"># 字符串输出</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;e:&#123;:.13e&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">33</span>))  <span class="comment"># 幂符号，用科学计数法打印数字</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;g:&#123;:g&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">33</span>))  <span class="comment"># 一般格式，将数值以fixed-point number输出，数值很大的时候，用幂形式打印</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;n:&#123;:n&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">33</span>))  <span class="comment"># 数字，当值为整数时和&#x27;d&#x27;相同，值为浮点数时和&#x27;g&#x27;相同,不同的是它会根据区域设置插入数字分隔符</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;%:&#123;:.3%&#125;&quot;</span>.<span class="built_in">format</span>(<span class="number">33</span>))  <span class="comment"># 百分数输出，保留三位小数</span></span><br></pre></td></tr></table></figure>
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/014print6.png" height="100%" width="100%">
+</div>
+
+<ul>
+<li>2.3.3 汉字与字母输出对齐以及format参数嵌套</li>
+</ul>
+<p>&emsp;&emsp;在汉字与字母输出的过程中，汉字在utf8编码中被视为3个字节，在GBK编码中是2个字节，在uicode编码中是1个字节。</p>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(<span class="string">&quot;字节数&quot;</span>))                 <span class="comment"># 默认编码格式下汉字长度</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(<span class="string">&quot;字节数&quot;</span>.encode(<span class="string">&quot;utf8&quot;</span>)))  <span class="comment"># utf8下汉字长度</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(<span class="string">&quot;字节数&quot;</span>.encode(<span class="string">&quot;GBK&quot;</span>)))   <span class="comment"># GBK下汉字长度</span></span><br></pre></td></tr></table></figure>
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/015print7.png" height="100%" width="100%">
+</div>
+
+<p>&emsp;&emsp;在控制台进行汉字显示的时候，程序将其当作一个字节处理，但是显示的时候却是占用了两个字节的位置，这就导致了汉字与字母不能对齐的问题。如下例，打印表头及一些信息的时候，字母与汉字夹杂在一起，以同样的字节数打印，但是所占长度却不同。</p>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Infos = [</span><br><span class="line">        &#123;<span class="string">&quot;ID&quot;</span>: <span class="string">&quot;101&quot;</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;唐昊&quot;</span>, <span class="string">&quot;sex&quot;</span>: <span class="string">&quot;男&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="string">&quot;55&quot;</span>, <span class="string">&quot;phonenum&quot;</span>: <span class="string">&quot;11111111111&quot;</span>&#125;,  <span class="comment"># 0</span></span><br><span class="line">        &#123;<span class="string">&quot;ID&quot;</span>: <span class="string">&quot;102&quot;</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Ayin&quot;</span>, <span class="string">&quot;sex&quot;</span>: <span class="string">&quot;女&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="string">&quot;50&quot;</span>, <span class="string">&quot;phonenum&quot;</span>: <span class="string">&quot;22222222222&quot;</span>&#125;,  <span class="comment"># 1</span></span><br><span class="line">        &#123;<span class="string">&quot;ID&quot;</span>: <span class="string">&quot;103&quot;</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;唐三&quot;</span>, <span class="string">&quot;sex&quot;</span>: <span class="string">&quot;男&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="string">&quot;20&quot;</span>, <span class="string">&quot;phonenum&quot;</span>: <span class="string">&quot;33333333333&quot;</span>&#125;,  <span class="comment"># 2</span></span><br><span class="line">        &#123;<span class="string">&quot;ID&quot;</span>: <span class="string">&quot;104&quot;</span>, <span class="string">&quot;name&quot;</span>: <span class="string">&quot;XiaoWu&quot;</span>, <span class="string">&quot;sex&quot;</span>: <span class="string">&quot;女&quot;</span>, <span class="string">&quot;age&quot;</span>: <span class="string">&quot;16&quot;</span>, <span class="string">&quot;phonenum&quot;</span>: <span class="string">&quot;55555555555&quot;</span>&#125;,  <span class="comment"># 3</span></span><br><span class="line">        ]</span><br><span class="line">TableHeader = [<span class="string">&quot;序号&quot;</span>, <span class="string">&quot;姓名&quot;</span>, <span class="string">&quot;性别&quot;</span>, <span class="string">&quot;年龄&quot;</span>, <span class="string">&quot;手机号&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;|&#123;0:^&#123;len0&#125;s&#125;|&#123;1:^&#123;len1&#125;s&#125;|&#123;2:^&#123;len2&#125;s&#125;|&#123;3:^&#123;len3&#125;s&#125;|&#123;4:^&#123;len4&#125;s&#125;|&quot;</span>.<span class="built_in">format</span>(</span><br><span class="line">      TableHeader[<span class="number">0</span>], TableHeader[<span class="number">1</span>], TableHeader[<span class="number">2</span>], TableHeader[<span class="number">3</span>], TableHeader[<span class="number">4</span>],</span><br><span class="line">      len0=<span class="number">15</span>, len1=<span class="number">15</span>, len2=<span class="number">15</span>, len3=<span class="number">15</span>, len4=<span class="number">15</span>))</span><br><span class="line"><span class="keyword">for</span> temp <span class="keyword">in</span> Infos:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;|&#123;0:^&#123;len0&#125;s&#125;|&#123;1:^&#123;len1&#125;s&#125;|&#123;2:^&#123;len2&#125;s&#125;|&#123;3:^&#123;len3&#125;s&#125;|&#123;4:^&#123;len4&#125;s&#125;|&quot;</span>.<span class="built_in">format</span>(</span><br><span class="line">            temp[<span class="string">&quot;ID&quot;</span>], temp[<span class="string">&quot;name&quot;</span>], temp[<span class="string">&quot;sex&quot;</span>], temp[<span class="string">&quot;age&quot;</span>], temp[<span class="string">&quot;phonenum&quot;</span>],</span><br><span class="line">            len0=<span class="number">15</span>, len1=<span class="number">15</span>, len2=<span class="number">15</span>, len3=<span class="number">15</span>, len4=<span class="number">15</span>))</span><br></pre></td></tr></table></figure>
+
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/016print8.png" height="100%" width="100%">
+</div>
+
+<p>&emsp;&emsp;解决方法：len = 固定长度 - len(“中文内容”.encode(“GBK”)) + len(“中文内容”)<br><br>&emsp;&emsp;比如“字节数”三个字，默认的字节长度为3，但是却要占用6个字节的位置，所以总的输出长度要减去这三个位置，才可以与其他的同长度的字符串对齐，所以就得到了上述的式子。<br><br>&emsp;&emsp;所以修改程序如下</p>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;|&#123;0:^&#123;len0&#125;s&#125;|&#123;1:^&#123;len1&#125;s&#125;|&#123;2:^&#123;len2&#125;s&#125;|&#123;3:^&#123;len3&#125;s&#125;|&#123;4:^&#123;len4&#125;s&#125;|&quot;</span>.<span class="built_in">format</span>(</span><br><span class="line">      TableHeader[<span class="number">0</span>], TableHeader[<span class="number">1</span>], TableHeader[<span class="number">2</span>], TableHeader[<span class="number">3</span>], TableHeader[<span class="number">4</span>],</span><br><span class="line">      len0=<span class="number">15</span> - <span class="built_in">len</span>(TableHeader[<span class="number">0</span>].encode(<span class="string">&quot;GBK&quot;</span>)) + <span class="built_in">len</span>(TableHeader[<span class="number">0</span>]),</span><br><span class="line">      len1=<span class="number">15</span> - <span class="built_in">len</span>(TableHeader[<span class="number">1</span>].encode(<span class="string">&quot;GBK&quot;</span>)) + <span class="built_in">len</span>(TableHeader[<span class="number">1</span>]),</span><br><span class="line">      len2=<span class="number">15</span> - <span class="built_in">len</span>(TableHeader[<span class="number">2</span>].encode(<span class="string">&quot;GBK&quot;</span>)) + <span class="built_in">len</span>(TableHeader[<span class="number">2</span>]),</span><br><span class="line">      len3=<span class="number">15</span> - <span class="built_in">len</span>(TableHeader[<span class="number">3</span>].encode(<span class="string">&quot;GBK&quot;</span>)) + <span class="built_in">len</span>(TableHeader[<span class="number">3</span>]),</span><br><span class="line">      len4=<span class="number">15</span> - <span class="built_in">len</span>(TableHeader[<span class="number">4</span>].encode(<span class="string">&quot;GBK&quot;</span>)) + <span class="built_in">len</span>(TableHeader[<span class="number">4</span>])))</span><br><span class="line"><span class="keyword">for</span> temp <span class="keyword">in</span> Infos:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;|&#123;0:^&#123;len0&#125;s&#125;|&#123;1:^&#123;len1&#125;s&#125;|&#123;2:^&#123;len2&#125;s&#125;|&#123;3:^&#123;len3&#125;s&#125;|&#123;4:^&#123;len4&#125;s&#125;|&quot;</span>.<span class="built_in">format</span>(</span><br><span class="line">            temp[<span class="string">&quot;ID&quot;</span>], temp[<span class="string">&quot;name&quot;</span>], temp[<span class="string">&quot;sex&quot;</span>], temp[<span class="string">&quot;age&quot;</span>], temp[<span class="string">&quot;phonenum&quot;</span>],</span><br><span class="line">            len0=<span class="number">15</span> - <span class="built_in">len</span>(temp[<span class="string">&quot;ID&quot;</span>].encode(<span class="string">&quot;GBK&quot;</span>)) + <span class="built_in">len</span>(temp[<span class="string">&quot;ID&quot;</span>]),</span><br><span class="line">            len1=<span class="number">15</span> - <span class="built_in">len</span>(temp[<span class="string">&quot;name&quot;</span>].encode(<span class="string">&quot;GBK&quot;</span>)) + <span class="built_in">len</span>(temp[<span class="string">&quot;name&quot;</span>]),</span><br><span class="line">            len2=<span class="number">15</span> - <span class="built_in">len</span>(temp[<span class="string">&quot;sex&quot;</span>].encode(<span class="string">&quot;GBK&quot;</span>)) + <span class="built_in">len</span>(temp[<span class="string">&quot;sex&quot;</span>]),</span><br><span class="line">            len3=<span class="number">15</span> - <span class="built_in">len</span>(temp[<span class="string">&quot;age&quot;</span>].encode(<span class="string">&quot;GBK&quot;</span>)) + <span class="built_in">len</span>(temp[<span class="string">&quot;age&quot;</span>]),</span><br><span class="line">            len4=<span class="number">15</span> - <span class="built_in">len</span>(temp[<span class="string">&quot;phonenum&quot;</span>].encode(<span class="string">&quot;GBK&quot;</span>)) + <span class="built_in">len</span>(temp[<span class="string">&quot;phonenum&quot;</span>])))</span><br></pre></td></tr></table></figure>
+
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/017print9.png" height="100%" width="100%">
+</div>
+
+<h3 id="2-4-不换行输出"><a href="#2-4-不换行输出" class="headerlink" title="2.4 不换行输出"></a><font size=3>2.4 不换行输出</font></h3><p>&emsp;&emsp;在python中的print函数在打印内容的时候会自动增加换行符号，但是print函数中有一个可选参数，就是end，使用end可以指定print结尾字符</p>
+<ul>
+<li>使用格式如下</li>
+</ul>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world!&quot;</span>, end=<span class="string">&quot;char&quot;</span>)  <span class="comment"># char为指定的结尾字符</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实例</li>
+</ul>
+<figure class="highlight python"><figcaption><span>python</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world! 1&quot;</span>)  <span class="comment"># 不指定结尾字符，默认换行输出</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world! 2&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world! 3&quot;</span>, end=<span class="string">&quot;&quot;</span>)  <span class="comment"># 指定结尾字符为空格</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world! 4&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world! 5&quot;</span>, end=<span class="string">&quot;\t&quot;</span>)  <span class="comment"># 指定结尾字符为一个制表符</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world! 6&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world! 7&quot;</span>, end=<span class="string">&quot;|&quot;</span>)  <span class="comment"># 指定结尾字符为  |</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hello world! 8&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Python/018print10.png" height="100%" width="100%">
+</div>
+
+<h1 id="三-转义字符"><a href="#三-转义字符" class="headerlink" title=" 三.转义字符"></a><font size=3> 三.转义字符</font></h1><table>
+<thead>
+<tr>
+<th>转义</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\</td>
+<td>在行尾的续行符，即一行未完，转到下一行继续写</td>
+</tr>
+<tr>
+<td>\\</td>
+<td>反斜杠（保留   \）</td>
+</tr>
+<tr>
+<td>\&#39;</td>
+<td>反斜杠（保留   ‘）</td>
+</tr>
+<tr>
+<td>\&quot;</td>
+<td>反斜杠（保留   “）</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格（Backspace）</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>水平制表符</td>
+</tr>
+<tr>
+<td>\xhh</td>
+<td>十六进制数，hh 代表字符，如 \x0a 代表换行</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">来看看我的其他文章吧😄(ฅ>ω<*ฅ)</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/7089b57f/" rel="bookmark">【Python】Python基础1-os模块函数</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/a28891a0/" rel="bookmark">【Python】Python基础3-文件读写</a></div>
+    </li>
+  </ul>
+
+
+    <footer class="post-footer">
+
+
+
+
+  <div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>一言</h1>
+    <p id="hitokoto_text">挑选中...</p>
+    <p id="hitokoto_information" style="text-align: right;"></p>
+    <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/hitokoto.js"></script>
+  </div>
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'">
+  <script data-pjax defer src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script>
+  <div class="social-share"
+      style = "text-align: center; margin-bottom: 10px;"
+      data-sites = "qq,wechat,weibo,facebook,twitter,google"
+      data-description = "欢迎分享这篇文章呀(ฅ>ω<*ฅ)"
+      data-wechat-qrcode-title = "微信扫一扫：分享文章"
+      data-wechat-qrcode-helper = '' >
+  </div>
+
+
+
+
+
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+            --------------------本文结束
+            <i class="fas fa-fan fa-spin" style="color: #FF1493; font-size: 1rem"></i>
+            感谢您的阅读--------------------
+            </div>
+        
+    </div>
+
+
+
+
+
+
+  
+  <div class="my_post_copyright"> 
+
+    
+    <script data-pjax defer src="https://unpkg.com/sweetalert@2/dist/sweetalert.min.js"></script>
+    <script data-pjax defer src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+    
+    <script data-pjax async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/popup-box/cpoyright-popup.js"></script>
+
+    <p><span>文章标题:</span><a href="/posts/79a6b4ff/">【Python】Python基础2-input与print</a></p>
+    <p><span>文章作者:</span><a href="/" title="欢迎访问 《云与海》 的个人博客">qidaink</a></p>
+    <p><span>发布时间:</span>2021年04月11日 - 16:54</p>
+    <p><span>最后更新:</span>2021年05月12日 - 18:28</p>
+    <p><span>原始链接:</span><a href="/posts/79a6b4ff/" title="【Python】Python基础2-input与print">https://qidaink.github.io/posts/79a6b4ff/</a>
+       <span class="copy-path"  title="点击可以复制文章链接哦"><i class="far fa-copy" data-clipboard-text="https://qidaink.github.io/posts/79a6b4ff/"  aria-label="复制成功！"></i></span>
+    </p>
+    <p><span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href= "https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+  </div>
+  
+
+
+          <div class="reward-container">
+  <div>(ฅ>ω<*ฅ)既然看到这里，何不交个朋友😏？(ฅ>ω<*ฅ)</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/myqq.jpg" alt="qidaink My QQ">
+        <span>My QQ</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://blog.csdn.net/qq_38231279">
+          <span class="icon">
+            <i class="fab fa-cuttlefish"></i>
+          </span>
+
+          <span class="label">CSDN</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.gitee.io">
+          <span class="icon">
+            <i class="fab fa-gofore"></i>
+          </span>
+
+          <span class="label">Gitee</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.github.io">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">Github</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/a28891a0/" rel="prev" title="【Python】Python基础3-文件读写">
+                  <i class="fa fa-chevron-left"></i> 【Python】Python基础3-文件读写
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/7089b57f/" rel="next" title="【Python】Python基础1-os模块函数">
+                  【Python】Python基础1-os模块函数 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-waline">waline</a></li>
+            <li class="tab"><a href="#comment-twikoo">twikoo</a></li>
+            <li class="tab"><a href="#comment-livere">livere</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane waline" id="comment-waline">
+              <div class="comments" id="waline-comments"></div>
+            </div>
+            <div class="tab-pane twikoo" id="comment-twikoo">
+              <div class="comments"><div id="twikoo-comments"></div></div>
+            </div>
+            <div class="tab-pane livere" id="comment-livere">
+              <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81MjgxMC8yOTI4OA=="></div>
+            </div>
+        </div>
+      </div><script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qidaink</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">160k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:52</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+    <span id="sitetime"></span>
+    <script defer language=javascript>
+        function siteTime()
+        {
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*==================================================
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year        - 作为date对象的年份，为4位年份值
+            month       - 0-11之间的整数，做为date对象的月份
+            day         - 1-31之间的整数，做为date对象的天数
+            hours       - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes     - 0-59之间的整数，做为date对象的分钟数
+            seconds     - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+            ==================================================*/
+            var t1 = Date.UTC(2017, 
+                              5, 
+                              19, 
+                              0, 
+                              0, 
+                              0); //北京时间
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="我在此处等了你 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+    </script>
+
+
+
+
+
+
+    <div class="languages">
+        <i class="fa fa-language"></i>
+        <span>繁体中文/简体中文：</span>
+        <a id="translateLink" href="javascript:translatePage();">繁体中文</a>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/tw_cn/tw_cn.js"></script>
+    <script type="text/javascript">
+        var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+        var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+        var cookieDomain = "https://qidaink.github.io/"; //Cookie地址, 一定要设定, 通常为自己的网址
+        var msgToTraditionalChinese = "繁体中文"; //此处可以更改为你想要显示的文字
+        var msgToSimplifiedChinese = "簡體中文"; //同上，但两处均不建议更改
+        var translateButtonId = "translateLink"; //默认互换id
+        translateInitilization();
+    </script>
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{&quot;enable&quot;:true,&quot;spinner&quot;:true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{&quot;lang&quot;:&quot;zh-CN&quot;,&quot;enable&quot;:true,&quot;serverURL&quot;:&quot;https:&#x2F;&#x2F;qidaink-blog-comment.vercel.app&#x2F;&quot;,&quot;placeholder&quot;:&quot;(ฅ&gt;ω&lt;*ฅ)欢迎大家评论呀！&quot;,&quot;avatar&quot;:&quot;identicon&quot;,&quot;meta&quot;:[&quot;nick&quot;,&quot;mail&quot;,&quot;link&quot;],&quot;pageSize&quot;:5,&quot;visitor&quot;:false,&quot;comment_count&quot;:true,&quot;requiredFields&quot;:[&quot;nick&quot;,&quot;mail&quot;],&quot;langMode&quot;:{&quot;admin&quot;:&quot;可爱的博主&quot;,&quot;nick&quot;:&quot;昵称（必填）&quot;,&quot;mail&quot;:&quot;邮箱（必填）&quot;,&quot;link&quot;:&quot;网址（选填）&quot;,&quot;sofa&quot;:&quot;这里冷冷清清的，快来留下脚印吧(ฅ&gt;ω&lt;*ฅ)！&quot;},&quot;el&quot;:&quot;#waline-comments&quot;,&quot;libUrl&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;@waline&#x2F;client&#x2F;dist&#x2F;Waline.min.js&quot;,&quot;path&quot;:&quot;&#x2F;posts&#x2F;79a6b4ff&#x2F;&quot;}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() => 
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => {
+    new Waline(CONFIG.waline);
+  });
+});
+</script><script>
+NexT.utils.loadComments('#twikoo-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js', () => {
+    twikoo.init(Object.assign({"enable":true,"visitor":false,"envId":"qidaink-twikoo-0g5tijvr7bf0f59e"}, {
+      el: '#twikoo-comments'
+    }));
+  }, window.twikoo);
+});
+</script>
+<script defer src= https://unpkg.com/hexo-qidaink-live2d@1.1.1/live2d-widget/autoload.js></script><script src="/js/third-party/comments/livere.js"></script>
+
+
+
+
+<link defer rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@1.2.0/dist/Meting.min.js"></script>
+<!-- APlayer本体 -->
+<div class="aplayer"
+    data-id="7274703654"
+    data-server="tencent"
+    data-type="playlist"
+    data-fixed="true"
+    data-autoplay="false"
+    data-order="random"
+    data-volume="0.55"
+    data-theme="#cc543a"
+    data-preload="auto" >
+</div>
+
+
+
+<script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/fancybox/fancybox_param.js"></script>
+
+
+
+
+    
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-move/fairyDustCursor.js"></script>
+
+
+
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-click/fireWorks.js"></script>
+
+
+
+
+
+
+    
+        <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/falling/sakura.js"></script>
+    
+
+
+
+
+    <script src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/type-input/activate-power-mode.min.js"></script>
+    <script>
+        POWERMODE.colorful = true;
+        POWERMODE.shake = false;
+        POWERMODE.mobile = true;
+        document.body.addEventListener('input', POWERMODE);
+    </script>
+
+
+</body>
+</html>

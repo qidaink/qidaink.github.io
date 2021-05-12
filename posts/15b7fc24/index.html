@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;qidaink.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="本文主要是介绍在Hexo中的两种插件：脚本（Scripts）和插件（Packages）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Hexo】Hexo的两种插件">
+<meta property="og:url" content="https://qidaink.github.io/posts/15b7fc24/index.html">
+<meta property="og:site_name" content="云与海">
+<meta property="og:description" content="本文主要是介绍在Hexo中的两种插件：脚本（Scripts）和插件（Packages）。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-20T22:45:23.000Z">
+<meta property="article:modified_time" content="2021-05-12T10:28:52.125Z">
+<meta property="article:author" content="qidaink">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="hexo-plugins">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://qidaink.github.io/posts/15b7fc24/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;qidaink.github.io&#x2F;posts&#x2F;15b7fc24&#x2F;&quot;,&quot;path&quot;:&quot;posts&#x2F;15b7fc24&#x2F;&quot;,&quot;title&quot;:&quot;【Hexo】Hexo的两种插件&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>【Hexo】Hexo的两种插件 | 云与海</title><script src="/js/config.js"></script><link rel="dns-prefetch" href="https://qidaink-blog-comment.vercel.app/">
+
+
+
+
+
+    <script async type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/funnytitle/funnytitle.js"></script>
+
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">云与海</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>云与海</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签页<span class="badge">27</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类页<span class="badge">7</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档页<span class="badge">24</span></a></li>
+        <li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="fas fa-edit fa-fw"></i>留言板</a></li>
+        <li class="menu-item menu-item-friendslink"><a href="/friendslink/" rel="section"><i class="fa fa-link fa-fw"></i>友人帐</a></li>
+        <li class="menu-item menu-item-friendscircle"><a href="/friendscircle/" rel="section"><i class="fas fa-user-friends fa-fw"></i>朋友圈</a></li>
+        <li class="menu-item menu-item-comment"><a href="https://qidaink-blog-comment.vercel.app/ui/login" rel="noopener" target="_blank"><i class="fa fa-comment fa-fw"></i>评论管理</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Hexo%E7%9A%84%E6%8F%92%E4%BB%B6"><span class="nav-text">1.Hexo的插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Hexo%E6%8F%92%E4%BB%B6%E7%9A%84%E5%8A%A0%E8%BD%BD%E6%B5%81%E7%A8%8B"><span class="nav-text">2.Hexo插件的加载流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1%E8%84%9A%E6%9C%AC%EF%BC%88Scripts%EF%BC%89%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="nav-text">2.1脚本（Scripts）的加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1%E6%8F%92%E4%BB%B6%EF%BC%88Packages%EF%BC%89%E7%9A%84%E5%8A%A0%E8%BD%BD"><span class="nav-text">2.1插件（Packages）的加载</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Hexo%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="nav-text">3.Hexo相关函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%88Filter%EF%BC%89"><span class="nav-text">3.1过滤器（Filter）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2%E6%B3%A8%E5%85%A5%E5%99%A8%EF%BC%88Injector%EF%BC%89"><span class="nav-text">3.2注入器（Injector）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0%EF%BC%88Helper%EF%BC%89"><span class="nav-text">3.3辅助函数（Helper）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E5%B0%9D%E8%AF%95Hexo%E4%B8%AD%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%8F%92%E4%BB%B6"><span class="nav-text">4.尝试Hexo中最基本的插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1%E8%84%9A%E6%9C%AC%EF%BC%88Scripts%EF%BC%89%E6%B5%8B%E8%AF%95"><span class="nav-text">4.1脚本（Scripts）测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2%E6%8F%92%E4%BB%B6%EF%BC%88Packages%EF%BC%89%E6%B5%8B%E8%AF%95"><span class="nav-text">4.2插件（Packages）测试</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qidaink"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">qidaink</p>
+  <div class="site-description" itemprop="description">但愿人长久，千里共婵娟</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_38231279" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_38231279" rel="noopener" target="_blank"><i class="iconfont icon-csdn1 fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/qidaink" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="iconfont icon-gitee-fill-round fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/qidaink" title="Github → https:&#x2F;&#x2F;github.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://fontawesome.com/" title="Awesome → https:&#x2F;&#x2F;fontawesome.com&#x2F;" rel="noopener" target="_blank"><i class="fab fa-font-awesome-flag fa-fw"></i>Awesome</a>
+      </span>
+  </div>
+
+
+
+
+
+
+
+
+  <div style="">
+    <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+  </div>
+  <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/canvas/canvas-clock.js"></script>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://qidaink.github.io/posts/15b7fc24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="qidaink">
+      <meta itemprop="description" content="但愿人长久，千里共婵娟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云与海">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【Hexo】Hexo的两种插件
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-21 06:45:23" itemprop="dateCreated datePublished" datetime="2021-04-21T06:45:23+08:00">2021-04-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-12 18:28:52" itemprop="dateModified" datetime="2021-05-12T18:28:52+08:00">2021-05-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/15b7fc24/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/15b7fc24/" data-xid="/posts/15b7fc24/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>18k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>32 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">本文主要是介绍在Hexo中的两种插件：脚本（Scripts）和插件（Packages）。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+
+
+    <div class="poem-wrap">
+        <div class="poem-border poem-left"></div>
+        <div class="poem-border poem-right"></div>
+        <h1>一句诗词</h1>
+        <p id="poem">挑选中...</p>
+        <p id="info" style="text-align: right;"></p>
+        <script data-pjax defer src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/todayPoem.js"></script>
+    </div>
+
+        <p>摘要：<br>&emsp;&emsp;在看<code>Hexo</code>文档的时候发现了关于<code>Hexo</code>中的插件的相关知识，于是就去找了一些插件的源码，了解了一下大概的插件编写的格式，本文是记录一下自己开始尝试<code>Hexo</code>插件的第一步。</p>
+<span id="more"></span>
+
+<h1 id="1-Hexo的插件"><a href="#1-Hexo的插件" class="headerlink" title="1.Hexo的插件"></a><font size=3>1.<code>Hexo</code>的插件</font></h1><p>&emsp;&emsp;在<code>Hexo</code>中，有强大的插件系统，使开发者能偶轻松扩展功能而不用修改核心模块的源码。它的插件分为两种：脚本（<code>Scripts</code>）和插件（<code>Packages</code>）。<br><br>&emsp;&emsp;如果自己的代码很简单，可以编写脚本，这个时候只需要把自己编写的<code>JavaScript</code>文件放到<code>[blogRoot]/scripts</code>文件夹，整个文件夹一般默认是没有的，所以需要自己在站点根目录下创建，整个文件夹中的脚本文件在启动时就会自动载入。<br><br>&emsp;&emsp;另一种则适合自己的代码较为复杂的情况，或是自己想要发布到<code>npm</code>上，首先，在<code>node_modules</code>文件夹中建立文件夹，文件夹名称开头必须为<code>hexo-</code>，如此一来<code>Hexo</code>才会在启动时载入，否则<code>Hexo</code>将会忽略它。文件夹内至少要包含<code>2</code>个文件：一个是主程序，另一个是 <code>package.json</code>，描述插件的用途和所依赖的插件。</p>
+<details blue><summary> 点击查看相关文档 </summary>
+              <div class='content'>
+              <table>    <tr>        <td align="left">        Hexo说明文档        </td>        <td align="left">        <a href="https://hexo.io/zh-cn/docs/" target="_blank">https://hexo.io/zh-cn/docs/</a>        </td>    </tr>    <tr>        <td align="left">        Hexo API文档        </td>        <td align="left">        <a href="https://hexo.io/zh-cn/api/" target="_blank">https://hexo.io/zh-cn/api/</a>        </td>    </tr></table>
+              </div>
+            </details>
+
+<h1 id="2-Hexo插件的加载流程"><a href="#2-Hexo插件的加载流程" class="headerlink" title="2.Hexo插件的加载流程"></a><font size=3>2.<code>Hexo</code>插件的加载流程</font></h1><p>&emsp;&emsp;这里列出的相关内容，是在自己还未掌握<code>JavaScript</code>的情况下，后边对<code>JavaScript</code>有了更深入的了解后，会将此部分错误或者不合适的地方进行更新。</p>
+<h2 id="2-1脚本（Scripts）的加载"><a href="#2-1脚本（Scripts）的加载" class="headerlink" title="2.1脚本（Scripts）的加载"></a><font size=3>2.1脚本（<code>Scripts</code>）的加载</font></h2><p>&emsp;&emsp;在阅读源码的过程中，有这么一部分代码，大致理解一下，就是使用此函数完成了根目录下<code>scripts</code>文件夹和主题文件目录下的<code>scripts</code>文件夹中的各个脚本文件的加载。</p>
+<figure class="highlight javascript"><figcaption><span>JavaScript [blogRoot]/node_modules/hexo/lib/hexo/load_plugins.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScripts</span>(<span class="params">ctx</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> baseDirLength = ctx.base_dir.length;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">displayPath</span>(<span class="params">path</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> magenta(path.substring(baseDirLength));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.filter([</span><br><span class="line">    ctx.theme_script_dir,</span><br><span class="line">    ctx.script_dir</span><br><span class="line">  ], <span class="function"><span class="params">scriptDir</span> =&gt;</span> &#123; <span class="comment">// Ignore the directory if it does not exist</span></span><br><span class="line">    <span class="keyword">return</span> scriptDir ? exists(scriptDir) : <span class="literal">false</span>;</span><br><span class="line">  &#125;).map(<span class="function"><span class="params">scriptDir</span> =&gt;</span> listDir(scriptDir).map(<span class="function"><span class="params">name</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> path = join(scriptDir, name);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> ctx.loadPlugin(path).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      ctx.log.debug(<span class="string">&#x27;Script loaded: %s&#x27;</span>, displayPath(path));</span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      ctx.log.error(&#123;err&#125;, <span class="string">&#x27;Script load failed: %s&#x27;</span>, displayPath(path));</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-1插件（Packages）的加载"><a href="#2-1插件（Packages）的加载" class="headerlink" title="2.1插件（Packages）的加载"></a><font size=3>2.1插件（<code>Packages</code>）的加载</font></h2><p>&emsp;&emsp;<code>plugins</code>的加载是通过以下函数完成的。</p>
+<figure class="highlight javascript"><figcaption><span>JavaScript [blogRoot]/node_modules/hexo/lib/hexo/load_plugins.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadModules</span>(<span class="params">ctx</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> loadModuleList(ctx).map(<span class="function"><span class="params">name</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> path = ctx.resolvePlugin(name);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Load plugins</span></span><br><span class="line">    <span class="keyword">return</span> ctx.loadPlugin(path).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      ctx.log.debug(<span class="string">&#x27;Plugin loaded: %s&#x27;</span>, magenta(name));</span><br><span class="line">    &#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      ctx.log.error(&#123;err&#125;, <span class="string">&#x27;Plugin load failed: %s&#x27;</span>, magenta(name));</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-Hexo相关函数"><a href="#3-Hexo相关函数" class="headerlink" title="3.Hexo相关函数"></a><font size=3>3.<code>Hexo</code>相关函数</font></h1><p>&emsp;&emsp;在使用插件之前，肯定要先了解一下基本的函数啦，这一节的内容大部分来自于<code>Hexo</code>官方文档。</p>
+<h2 id="3-1过滤器（Filter）"><a href="#3-1过滤器（Filter）" class="headerlink" title="3.1过滤器（Filter）"></a><font size=3>3.1过滤器（<code>Filter</code>）</font></h2><ul>
+<li>函数原型</li>
+</ul>
+<p>&emsp;&emsp;过滤器用于修改特定文件，<code>Hexo</code>将这些文件依序传给过滤器，而过滤器可以针对文件进行修改。</p>
+<details blue><summary> 点击查看函数原型 </summary>
+              <div class='content'>
+              <figure class="highlight javascript"><figcaption><span>JavaScript [blogRoot]/node_modules/hexo/lib/extend/filter.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Filter</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.store = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">register</span>(<span class="params">type, fn, priority</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!priority) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> type === <span class="string">&#x27;function&#x27;</span>) &#123;</span><br><span class="line">        priority = fn;</span><br><span class="line">        fn = type;</span><br><span class="line">        type = <span class="string">&#x27;after_post_render&#x27;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> fn !== <span class="string">&#x27;function&#x27;</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">&#x27;fn must be a function&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    type = typeAlias[type] || type;</span><br><span class="line">    priority = priority == <span class="literal">null</span> ? <span class="number">10</span> : priority;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> store = <span class="built_in">this</span>.store[type] || [];</span><br><span class="line">    <span class="built_in">this</span>.store[type] = store;</span><br><span class="line"></span><br><span class="line">    fn.priority = priority;</span><br><span class="line">    store.push(fn);</span><br><span class="line"></span><br><span class="line">    store.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a.priority - b.priority);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+              </div>
+            </details>
+
+<ul>
+<li>函数使用及说明</li>
+</ul>
+<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hexo.extend.filter.register(type, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// User configuration</span></span><br><span class="line">  <span class="keyword">const</span> &#123; config &#125; = <span class="built_in">this</span>;</span><br><span class="line">  <span class="keyword">if</span> (config.external_link.enable) <span class="comment">// do something...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Theme configuration</span></span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">config</span>: themeCfg &#125; = <span class="built_in">this</span>.theme;</span><br><span class="line">  <span class="keyword">if</span> (themeCfg.fancybox) <span class="comment">// do something...</span></span><br><span class="line"></span><br><span class="line">&#125;, priority);</span><br></pre></td></tr></table></figure>
+
+<p><strong>type</strong>：为过滤器列表，它应该是一个字符串数据，使用的时候要加上<code>&#39;&#39;</code>，可以是以下值:</p>
+<table>
+  <tr>
+    <td align="center">
+    type的值
+    </td>
+    <td align="center">
+    说明
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    before_post_render
+    </td>
+    <td align="left">
+    在文章开始渲染前执行。
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    after_post_render
+    </td>
+    <td align="left">
+    在文章渲染完成后执行。
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    before_exit
+    </td>
+    <td align="left">
+    在 Hexo 即将结束时执行，也就是在 hexo.exit 被调用后执行。
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    before_generate
+    </td>
+    <td align="left">
+    在生成器解析前执行。
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    after_generate
+    </td>
+    <td align="left">
+    在生成器解析后执行。
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    template_locals
+    </td>
+    <td align="left">
+    修改模板的<a href="https://hexo.io/zh-cn/docs/variables" target="_blank">局部变量</a>。
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    after_init
+    </td>
+    <td align="left">
+    在 Hexo 初始化完成后执行，也就是在 hexo.init 执行完成后执行。
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    new_post_path
+    </td>
+    <td align="left">
+    用来决定新建文章的路径，在建立文章时执行。
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    post_permalink
+    </td>
+    <td align="left">
+    用来决定文章的永久链接。
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    after_render
+    </td>
+    <td align="left">
+    在<a href="https://hexo.io/zh-cn/api/rendering" target="_blank">渲染</a>后执行。
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    server_middleware
+    </td>
+    <td align="left">
+    新增服务器的 Middleware。app 是一个<a href="https://github.com/senchalabs/connect" target="_blank">Connect</a>实例。
+    </td>
+  </tr>
+</table>
+
+<p><strong>priority</strong>：是过滤器的优先级，<code>priority</code> 值越低，过滤器会越早执行，默认的 <code>priority</code> 是 10。建议提供配置选项如 <code>hexo.config.your_plugin.priority</code>，让用户自行决定过滤器的优先级。</p>
+<h2 id="3-2注入器（Injector）"><a href="#3-2注入器（Injector）" class="headerlink" title="3.2注入器（Injector）"></a><font size=3>3.2注入器（<code>Injector</code>）</font></h2><ul>
+<li>函数原型</li>
+</ul>
+<p>&emsp;&emsp;注入器被用于将静态代码片段注入生成的<code>HTML </code>的<code>&lt;head&gt;&lt;/head&gt;</code>或<code>&lt;body&gt;&lt;/body&gt;</code>中。<code>Hexo</code>将在 <code>after_render:html</code>过滤器 <strong>之前</strong> 完成注入。</p>
+<details blue><summary> 点击查看函数原型 </summary>
+              <div class='content'>
+              <figure class="highlight javascript"><figcaption><span>JavaScript [blogRoot]/node_modules/hexo/lib/extend/injector.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Injector</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.store = &#123;</span><br><span class="line">      head_begin: &#123;&#125;,</span><br><span class="line">      head_end: &#123;&#125;,</span><br><span class="line">      body_begin: &#123;&#125;,</span><br><span class="line">      body_end: &#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">register</span>(<span class="params">entry, value, to = <span class="string">&#x27;default&#x27;</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!entry) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">&#x27;entry is required&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> value === <span class="string">&#x27;function&#x27;</span>) value = value();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> entryMap = <span class="built_in">this</span>.store[entry] || <span class="built_in">this</span>.store.head_end;</span><br><span class="line">    <span class="keyword">const</span> valueSet = entryMap[to] || <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line">    valueSet.add(value);</span><br><span class="line">    entryMap[to] = valueSet;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+              </div>
+            </details>
+
+<ul>
+<li>函数使用及说明</li>
+</ul>
+<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo.extend.injector.register(entry, value, to)</span><br></pre></td></tr></table></figure>
+
+<p><strong>entry</strong>:字符串类型数据，表示代码片段注入的位置，接受以下值：<br><i class="iconfont icon-shoujizhuti_15bianqian"></i><code>head_begin</code>: 注入在 <code>&lt;head&gt;</code> 之后（默认）<br><i class="iconfont icon-shoujizhuti_15bianqian"></i><code>head_end</code>: 注入在 <code>&lt;/head&gt;</code> 之前<br><i class="iconfont icon-shoujizhuti_15bianqian"></i><code>body_begin</code>: 注入在 <code>&lt;body&gt;</code> 之后<br><i class="iconfont icon-shoujizhuti_15bianqian"></i><code>body_end</code>: 注入在 <code>&lt;/body&gt;</code> 之前</p>
+<p><strong>value</strong>:字符串，或者支持返回值为字符串的函数，表示需要注入的代码片段。<br><strong>to</strong>:字符串类型数据，需要注入代码片段的页面类型，接受以下值：<br><i class="iconfont icon-shoujizhuti_15bianqian"></i><code>default</code>: 注入到每个页面（默认值）<br><i class="iconfont icon-shoujizhuti_15bianqian"></i><code>home</code>: 只注入到主页（<code>is_home() </code>为 <code>true</code> 的页面）<br><i class="iconfont icon-shoujizhuti_15bianqian"></i><code>post</code>: 只注入到文章页面（<code>is_post()</code> 为 <code>true</code> 的页面）<br><i class="iconfont icon-shoujizhuti_15bianqian"></i><code>page</code>: 只注入到独立页面（<code>is_page()</code> 为 <code>true</code> 的页面）<br><i class="iconfont icon-shoujizhuti_15bianqian"></i><code>archive</code>: 只注入到归档页面（<code>is_archive()</code> 为 <code>true</code> 的页面）<br><i class="iconfont icon-shoujizhuti_15bianqian"></i><code>category</code>: 只注入到分类页面（<code>is_category()</code> 为 <code>true</code> 的页面）<br><i class="iconfont icon-shoujizhuti_15bianqian"></i><code>tag</code>: 只注入到标签页面（<code>is_tag()</code> 为 <code>true</code> 的页面）<br><i class="iconfont icon-shoujizhuti_15bianqian"></i>其他自定义 <code>layout</code> 名称，自定义 <code>layout</code> 参考<a href="https://hexo.io/zh-cn/docs/writing" target="_blank">写作 - 布局（<code>Layout</code>）</a>实例。 </p>
+<ul>
+<li>示例程序</li>
+</ul>
+<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> css = hexo.extend.helper.get(<span class="string">&#x27;css&#x27;</span>).bind(hexo);</span><br><span class="line"><span class="keyword">const</span> js = hexo.extend.helper.get(<span class="string">&#x27;js&#x27;</span>).bind(hexo);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;head_end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> css(<span class="string">&#x27;https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css&#x27;</span>);</span><br><span class="line">&#125;, <span class="string">&#x27;music&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, <span class="string">&#x27;&lt;script src=&quot;https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js&quot;&gt;&#x27;</span>, <span class="string">&#x27;music&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> js(<span class="string">&#x27;/js/jquery.js&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3辅助函数（Helper）"><a href="#3-3辅助函数（Helper）" class="headerlink" title="3.3辅助函数（Helper）"></a><font size=3>3.3辅助函数（<code>Helper</code>）</font></h2><ul>
+<li>函数原型</li>
+</ul>
+<p>&emsp;&emsp;辅助函数帮助我们在模板中快速插入内容，我们可以把复杂的代码放在辅助函数而非模板中。</p>
+<details blue><summary> 点击查看函数原型 </summary>
+              <div class='content'>
+              <figure class="highlight javascript"><figcaption><span>JavaScript [blogRoot]/node_modules/hexo/lib/extend/helper.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Helper</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.store = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Register a helper plugin</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;String&#125;</span> <span class="variable">name</span></span> - The name of the helper plugin</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param <span class="type">&#123;Function&#125;</span> <span class="variable">fn</span></span> - The helper plugin function</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="title">register</span>(<span class="params">name, fn</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!name) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">&#x27;name is required&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> fn !== <span class="string">&#x27;function&#x27;</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">&#x27;fn must be a function&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.store[name] = fn;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+              </div>
+            </details>
+
+<ul>
+<li>函数使用及说明</li>
+</ul>
+<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo.extend.helper.register(name, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;示例如下，此示例的作用是将<code>js</code>封装成一个函数，只需要自己填写要调用的脚本文件名称，就可以调用特定路径下的相应文件。</p>
+<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo.extend.helper.register(<span class="string">&#x27;js&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">path</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;&lt;script src=&quot;&#x27;</span> + path + <span class="string">&#x27;&quot;&gt;&lt;/script&gt;&#x27;</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;函数注册通过辅助函数注册后，可以通过以下格式调用。</p>
+<figure class="highlight plain"><figcaption><span>nunjuck</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;在nunjuck模板中使用格式</span><br><span class="line">&#123;&#123;- js(&#39;script.js&#39;) &#125;&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;渲染之后为以下语句</span><br><span class="line">&lt;script src&#x3D;&quot;script.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="4-尝试Hexo中最基本的插件"><a href="#4-尝试Hexo中最基本的插件" class="headerlink" title="4.尝试Hexo中最基本的插件"></a><font size=3>4.尝试<code>Hexo</code>中最基本的插件</font></h1><p>&emsp;&emsp;首先呢需要初始化一个新的站点目录，不做任何修改，以便于测试自己的写的基本插件是否生效。然后就可以开始编写插件啦😄。</p>
+<figure class="highlight shell"><figcaption><span>shell</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 初始化一个新文件夹作为站点</span></span><br><span class="line">hexo init npm-test</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入该站点文件夹，</span></span><br><span class="line">cd npm-test</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-1脚本（Scripts）测试"><a href="#4-1脚本（Scripts）测试" class="headerlink" title="4.1脚本（Scripts）测试"></a><font size=3>4.1脚本（<code>Scripts</code>）测试</font></h2><ul>
+<li>过滤器（<code>Filter</code>）测试</li>
+</ul>
+<p>&emsp;&emsp;在站点根目录下新建<code>scripts</code>文件夹，并新建一个<code>test.js</code>文件，添加以下内容，在编写环境控制台输出一段提示字符。</p>
+<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//before_exit表示在 Hexo 即将结束时执行，也就是在 hexo.exit 被调用后执行</span></span><br><span class="line">hexo.extend.filter.register(<span class="string">&#x27;before_exit&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`测试程序加载成功(ฅ&gt;ω&lt;*ฅ)`</span>)</span><br><span class="line">&#125;, priority);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注入器（<code>Injector</code>）测试</li>
+</ul>
+<p>&emsp;&emsp;在<code>scripts/test.js</code>文件中添加以下内容，由于要实现的效果程序较长，还请点击折叠部分查看。该测试程序实现的效果是在所有页面加载一个点击产生礼花炸开效果的脚本，并且在渲染后页面的控制台输出一段提示字符。该段程序可以也可以放在过滤器中。</p>
+<details blue><summary> 点击查看完整测试程序 </summary>
+              <div class='content'>
+              <figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> user_info_js = <span class="string">`</span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">  class Circle &#123;</span></span><br><span class="line"><span class="string">    constructor(&#123; origin, speed, color, angle, context &#125;) &#123;</span></span><br><span class="line"><span class="string">      this.origin = origin</span></span><br><span class="line"><span class="string">      this.position = &#123; ...this.origin &#125;</span></span><br><span class="line"><span class="string">      this.color = color</span></span><br><span class="line"><span class="string">      this.speed = speed</span></span><br><span class="line"><span class="string">      this.angle = angle</span></span><br><span class="line"><span class="string">      this.context = context</span></span><br><span class="line"><span class="string">      this.renderCount = 0</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    draw() &#123;</span></span><br><span class="line"><span class="string">      this.context.fillStyle = this.color</span></span><br><span class="line"><span class="string">      this.context.beginPath()</span></span><br><span class="line"><span class="string">      this.context.arc(this.position.x, this.position.y, 2, 0, Math.PI * 2)</span></span><br><span class="line"><span class="string">      this.context.fill()</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    move() &#123;</span></span><br><span class="line"><span class="string">      this.position.x = (Math.sin(this.angle) * this.speed) + this.position.x</span></span><br><span class="line"><span class="string">      this.position.y = (Math.cos(this.angle) * this.speed) + this.position.y + (this.renderCount * 0.3)</span></span><br><span class="line"><span class="string">      this.renderCount++</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">  class Boom &#123;</span></span><br><span class="line"><span class="string">    constructor (&#123; origin, context, circleCount = 16, area &#125;) &#123;</span></span><br><span class="line"><span class="string">      this.origin = origin</span></span><br><span class="line"><span class="string">      this.context = context</span></span><br><span class="line"><span class="string">      this.circleCount = circleCount</span></span><br><span class="line"><span class="string">      this.area = area</span></span><br><span class="line"><span class="string">      this.stop = false</span></span><br><span class="line"><span class="string">      this.circles = []</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    randomArray(range) &#123;</span></span><br><span class="line"><span class="string">      const length = range.length</span></span><br><span class="line"><span class="string">      const randomIndex = Math.floor(length * Math.random())</span></span><br><span class="line"><span class="string">      return range[randomIndex]</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    randomColor() &#123;</span></span><br><span class="line"><span class="string">      const range = [&#x27;8&#x27;, &#x27;9&#x27;, &#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;D&#x27;, &#x27;E&#x27;, &#x27;F&#x27;]</span></span><br><span class="line"><span class="string">      return &#x27;#&#x27; + this.randomArray(range) + this.randomArray(range) + this.randomArray(range) + this.randomArray(range) + this.randomArray(range) + this.randomArray(range)</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    randomRange(start, end) &#123;</span></span><br><span class="line"><span class="string">      return (end - start) * Math.random() + start</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    init() &#123;</span></span><br><span class="line"><span class="string">      for(let i = 0; i &lt; this.circleCount; i++) &#123;</span></span><br><span class="line"><span class="string">        const circle = new Circle(&#123;</span></span><br><span class="line"><span class="string">          context: this.context,</span></span><br><span class="line"><span class="string">          origin: this.origin,</span></span><br><span class="line"><span class="string">          color: this.randomColor(),</span></span><br><span class="line"><span class="string">          angle: this.randomRange(Math.PI - 1, Math.PI + 1),</span></span><br><span class="line"><span class="string">          speed: this.randomRange(1, 6)</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">        this.circles.push(circle)</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    move() &#123;</span></span><br><span class="line"><span class="string">      this.circles.forEach((circle, index) =&gt; &#123;</span></span><br><span class="line"><span class="string">        if (circle.position.x &gt; this.area.width || circle.position.y &gt; this.area.height) &#123;</span></span><br><span class="line"><span class="string">          return this.circles.splice(index, 1)</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        circle.move()</span></span><br><span class="line"><span class="string">      &#125;)</span></span><br><span class="line"><span class="string">      if (this.circles.length == 0) &#123;</span></span><br><span class="line"><span class="string">        this.stop = true</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    draw() &#123;</span></span><br><span class="line"><span class="string">      this.circles.forEach(circle =&gt; circle.draw())</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">  class CursorSpecialEffects &#123;</span></span><br><span class="line"><span class="string">    constructor() &#123;</span></span><br><span class="line"><span class="string">      this.computerCanvas = document.createElement(&#x27;canvas&#x27;)</span></span><br><span class="line"><span class="string">      this.renderCanvas = document.createElement(&#x27;canvas&#x27;)</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">      this.computerContext = this.computerCanvas.getContext(&#x27;2d&#x27;)</span></span><br><span class="line"><span class="string">      this.renderContext = this.renderCanvas.getContext(&#x27;2d&#x27;)</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">      this.globalWidth = window.innerWidth</span></span><br><span class="line"><span class="string">      this.globalHeight = window.innerHeight</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">      this.booms = []</span></span><br><span class="line"><span class="string">      this.running = false</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    handleMouseDown(e) &#123;</span></span><br><span class="line"><span class="string">      const boom = new Boom(&#123;</span></span><br><span class="line"><span class="string">        origin: &#123; x: e.clientX, y: e.clientY &#125;,</span></span><br><span class="line"><span class="string">        context: this.computerContext,</span></span><br><span class="line"><span class="string">        area: &#123;</span></span><br><span class="line"><span class="string">          width: this.globalWidth,</span></span><br><span class="line"><span class="string">          height: this.globalHeight</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">      &#125;)</span></span><br><span class="line"><span class="string">      boom.init()</span></span><br><span class="line"><span class="string">      this.booms.push(boom)</span></span><br><span class="line"><span class="string">      this.running || this.run()</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    handlePageHide() &#123;</span></span><br><span class="line"><span class="string">      this.booms = []</span></span><br><span class="line"><span class="string">      this.running = false</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    init() &#123;</span></span><br><span class="line"><span class="string">      const style = this.renderCanvas.style</span></span><br><span class="line"><span class="string">      style.position = &#x27;fixed&#x27;</span></span><br><span class="line"><span class="string">      style.top = style.left = 0</span></span><br><span class="line"><span class="string">      style.zIndex = &#x27;999999999999999999999999999999999999999999&#x27;</span></span><br><span class="line"><span class="string">      style.pointerEvents = &#x27;none&#x27;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">      style.width = this.renderCanvas.width = this.computerCanvas.width = this.globalWidth</span></span><br><span class="line"><span class="string">      style.height = this.renderCanvas.height = this.computerCanvas.height = this.globalHeight</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">      document.body.append(this.renderCanvas)</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">      window.addEventListener(&#x27;mousedown&#x27;, this.handleMouseDown.bind(this))</span></span><br><span class="line"><span class="string">      window.addEventListener(&#x27;pagehide&#x27;, this.handlePageHide.bind(this))</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">    run() &#123;</span></span><br><span class="line"><span class="string">      this.running = true</span></span><br><span class="line"><span class="string">      if (this.booms.length == 0) &#123;</span></span><br><span class="line"><span class="string">        return this.running = false</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">      requestAnimationFrame(this.run.bind(this))</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">      this.computerContext.clearRect(0, 0, this.globalWidth, this.globalHeight)</span></span><br><span class="line"><span class="string">      this.renderContext.clearRect(0, 0, this.globalWidth, this.globalHeight)</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">      this.booms.forEach((boom, index) =&gt; &#123;</span></span><br><span class="line"><span class="string">        if (boom.stop) &#123;</span></span><br><span class="line"><span class="string">          return this.booms.splice(index, 1)</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">        boom.move()</span></span><br><span class="line"><span class="string">        boom.draw()</span></span><br><span class="line"><span class="string">      &#125;)</span></span><br><span class="line"><span class="string">      this.renderContext.drawImage(this.computerCanvas, 0, 0, this.globalWidth, this.globalHeight)</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">  const cursorSpecialEffects = new CursorSpecialEffects()</span></span><br><span class="line"><span class="string">  cursorSpecialEffects.init()</span></span><br><span class="line"><span class="string">  console.log(&#x27;点击效果程序加载成功(ฅ&gt;ω&lt;*ฅ)&#x27;)</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line">hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, user_info_js, <span class="string">&quot;default&quot;</span>)</span><br></pre></td></tr></table></figure>
+              </div>
+            </details>
+
+<h2 id="4-2插件（Packages）测试"><a href="#4-2插件（Packages）测试" class="headerlink" title="4.2插件（Packages）测试"></a><font size=3>4.2插件（<code>Packages</code>）测试</font></h2><p>&emsp;&emsp;上边介绍了脚本（<code>Scripts</code>）的测试程序，准备写插件的测试程序的时候发现，插件的测试程序其实和上边的测试程序是一模一样的，只不过是一个直接建立脚本文件，一个是另外生成一个插件，那这里就梳理一下从编写测试插件到安装插件然后运运行的过程吧。</p>
+<ul>
+<li>创建插件文件夹并进行初始化</li>
+</ul>
+<figure class="highlight shell"><figcaption><span>shell</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 新建文件夹</span></span><br><span class="line">mkdir hexo-plugins-test</span><br><span class="line"><span class="meta">#</span><span class="bash"> 进入插件文件夹并初始化</span></span><br><span class="line">cd hexo-plugins-test/ &amp;&amp; npm init</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;创建并初始化相应文件夹后，会生成<code>package.json</code>文件，文件内容如下，基本都是默认的，这个<code>main</code>要注意，这里的<code>index.js</code>为<code>Hexo</code>使用该插件的时候入口脚本，所以插件中的主程序要写在该文件中。</p>
+<figure class="highlight json"><figcaption><span>json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;hexo-plugins-test&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;我的插件测试程序&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;qidaink&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建<code>index.js</code>主程序文件并添加测试程序</li>
+</ul>
+<p>&emsp;&emsp;由于是使用的<code>Vscode</code>软件作为编程环境，所以直接创建该文件，并添加以下程序。</p>
+<p>&emsp;&emsp;此测试程序是将鼠标点击效果脚本添加到了过滤器中，在生成器解析后执行该脚本文件，出现的效果应该为在生成器解析后在编程环境的控制台输出一段测试程序加载成功的提示，随后通过启动本地预览，在那个页面点击都会有礼花炸开的效果，并且页面的控制台也会输出一个效果加载成功的提示。</p>
+<details blue><summary> 点击查看完整测试程序 </summary>
+              <div class='content'>
+              <figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br></pre></td><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">&#x27;after_generate&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`测试程序加载成功(ฅ&gt;ω&lt;*ฅ)`</span>)</span><br><span class="line">  <span class="keyword">var</span> user_info_js = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;script&gt;</span></span><br><span class="line"><span class="string">    class Circle &#123;</span></span><br><span class="line"><span class="string">      constructor(&#123; origin, speed, color, angle, context &#125;) &#123;</span></span><br><span class="line"><span class="string">        this.origin = origin</span></span><br><span class="line"><span class="string">        this.position = &#123; ...this.origin &#125;</span></span><br><span class="line"><span class="string">        this.color = color</span></span><br><span class="line"><span class="string">        this.speed = speed</span></span><br><span class="line"><span class="string">        this.angle = angle</span></span><br><span class="line"><span class="string">        this.context = context</span></span><br><span class="line"><span class="string">        this.renderCount = 0</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      draw() &#123;</span></span><br><span class="line"><span class="string">        this.context.fillStyle = this.color</span></span><br><span class="line"><span class="string">        this.context.beginPath()</span></span><br><span class="line"><span class="string">        this.context.arc(this.position.x, this.position.y, 2, 0, Math.PI * 2)</span></span><br><span class="line"><span class="string">        this.context.fill()</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      move() &#123;</span></span><br><span class="line"><span class="string">        this.position.x = (Math.sin(this.angle) * this.speed) + this.position.x</span></span><br><span class="line"><span class="string">        this.position.y = (Math.cos(this.angle) * this.speed) + this.position.y + (this.renderCount * 0.3)</span></span><br><span class="line"><span class="string">        this.renderCount++</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    class Boom &#123;</span></span><br><span class="line"><span class="string">      constructor (&#123; origin, context, circleCount = 16, area &#125;) &#123;</span></span><br><span class="line"><span class="string">        this.origin = origin</span></span><br><span class="line"><span class="string">        this.context = context</span></span><br><span class="line"><span class="string">        this.circleCount = circleCount</span></span><br><span class="line"><span class="string">        this.area = area</span></span><br><span class="line"><span class="string">        this.stop = false</span></span><br><span class="line"><span class="string">        this.circles = []</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      randomArray(range) &#123;</span></span><br><span class="line"><span class="string">        const length = range.length</span></span><br><span class="line"><span class="string">        const randomIndex = Math.floor(length * Math.random())</span></span><br><span class="line"><span class="string">        return range[randomIndex]</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      randomColor() &#123;</span></span><br><span class="line"><span class="string">        const range = [&#x27;8&#x27;, &#x27;9&#x27;, &#x27;A&#x27;, &#x27;B&#x27;, &#x27;C&#x27;, &#x27;D&#x27;, &#x27;E&#x27;, &#x27;F&#x27;]</span></span><br><span class="line"><span class="string">        return &#x27;#&#x27; + this.randomArray(range) + this.randomArray(range) + this.randomArray(range) + this.randomArray(range) + this.randomArray(range) + this.randomArray(range)</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      randomRange(start, end) &#123;</span></span><br><span class="line"><span class="string">        return (end - start) * Math.random() + start</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      init() &#123;</span></span><br><span class="line"><span class="string">        for(let i = 0; i &lt; this.circleCount; i++) &#123;</span></span><br><span class="line"><span class="string">          const circle = new Circle(&#123;</span></span><br><span class="line"><span class="string">            context: this.context,</span></span><br><span class="line"><span class="string">            origin: this.origin,</span></span><br><span class="line"><span class="string">            color: this.randomColor(),</span></span><br><span class="line"><span class="string">            angle: this.randomRange(Math.PI - 1, Math.PI + 1),</span></span><br><span class="line"><span class="string">            speed: this.randomRange(1, 6)</span></span><br><span class="line"><span class="string">          &#125;)</span></span><br><span class="line"><span class="string">          this.circles.push(circle)</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      move() &#123;</span></span><br><span class="line"><span class="string">        this.circles.forEach((circle, index) =&gt; &#123;</span></span><br><span class="line"><span class="string">          if (circle.position.x &gt; this.area.width || circle.position.y &gt; this.area.height) &#123;</span></span><br><span class="line"><span class="string">            return this.circles.splice(index, 1)</span></span><br><span class="line"><span class="string">          &#125;</span></span><br><span class="line"><span class="string">          circle.move()</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">        if (this.circles.length == 0) &#123;</span></span><br><span class="line"><span class="string">          this.stop = true</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      draw() &#123;</span></span><br><span class="line"><span class="string">        this.circles.forEach(circle =&gt; circle.draw())</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    class CursorSpecialEffects &#123;</span></span><br><span class="line"><span class="string">      constructor() &#123;</span></span><br><span class="line"><span class="string">        this.computerCanvas = document.createElement(&#x27;canvas&#x27;)</span></span><br><span class="line"><span class="string">        this.renderCanvas = document.createElement(&#x27;canvas&#x27;)</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        this.computerContext = this.computerCanvas.getContext(&#x27;2d&#x27;)</span></span><br><span class="line"><span class="string">        this.renderContext = this.renderCanvas.getContext(&#x27;2d&#x27;)</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        this.globalWidth = window.innerWidth</span></span><br><span class="line"><span class="string">        this.globalHeight = window.innerHeight</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        this.booms = []</span></span><br><span class="line"><span class="string">        this.running = false</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      handleMouseDown(e) &#123;</span></span><br><span class="line"><span class="string">        const boom = new Boom(&#123;</span></span><br><span class="line"><span class="string">          origin: &#123; x: e.clientX, y: e.clientY &#125;,</span></span><br><span class="line"><span class="string">          context: this.computerContext,</span></span><br><span class="line"><span class="string">          area: &#123;</span></span><br><span class="line"><span class="string">            width: this.globalWidth,</span></span><br><span class="line"><span class="string">            height: this.globalHeight</span></span><br><span class="line"><span class="string">          &#125;</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">        boom.init()</span></span><br><span class="line"><span class="string">        this.booms.push(boom)</span></span><br><span class="line"><span class="string">        this.running || this.run()</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      handlePageHide() &#123;</span></span><br><span class="line"><span class="string">        this.booms = []</span></span><br><span class="line"><span class="string">        this.running = false</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      init() &#123;</span></span><br><span class="line"><span class="string">        const style = this.renderCanvas.style</span></span><br><span class="line"><span class="string">        style.position = &#x27;fixed&#x27;</span></span><br><span class="line"><span class="string">        style.top = style.left = 0</span></span><br><span class="line"><span class="string">        style.zIndex = &#x27;999999999999999999999999999999999999999999&#x27;</span></span><br><span class="line"><span class="string">        style.pointerEvents = &#x27;none&#x27;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        style.width = this.renderCanvas.width = this.computerCanvas.width = this.globalWidth</span></span><br><span class="line"><span class="string">        style.height = this.renderCanvas.height = this.computerCanvas.height = this.globalHeight</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        document.body.append(this.renderCanvas)</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        window.addEventListener(&#x27;mousedown&#x27;, this.handleMouseDown.bind(this))</span></span><br><span class="line"><span class="string">        window.addEventListener(&#x27;pagehide&#x27;, this.handlePageHide.bind(this))</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">      run() &#123;</span></span><br><span class="line"><span class="string">        this.running = true</span></span><br><span class="line"><span class="string">        if (this.booms.length == 0) &#123;</span></span><br><span class="line"><span class="string">          return this.running = false</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        requestAnimationFrame(this.run.bind(this))</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        this.computerContext.clearRect(0, 0, this.globalWidth, this.globalHeight)</span></span><br><span class="line"><span class="string">        this.renderContext.clearRect(0, 0, this.globalWidth, this.globalHeight)</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">        this.booms.forEach((boom, index) =&gt; &#123;</span></span><br><span class="line"><span class="string">          if (boom.stop) &#123;</span></span><br><span class="line"><span class="string">            return this.booms.splice(index, 1)</span></span><br><span class="line"><span class="string">          &#125;</span></span><br><span class="line"><span class="string">          boom.move()</span></span><br><span class="line"><span class="string">          boom.draw()</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">        this.renderContext.drawImage(this.computerCanvas, 0, 0, this.globalWidth, this.globalHeight)</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    const cursorSpecialEffects = new CursorSpecialEffects()</span></span><br><span class="line"><span class="string">    cursorSpecialEffects.init()</span></span><br><span class="line"><span class="string">    console.log(&#x27;点击效果程序加载成功(ฅ&gt;ω&lt;*ฅ)&#x27;)</span></span><br><span class="line"><span class="string">  &lt;/script&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">  hexo.extend.injector.register(<span class="string">&#x27;body_end&#x27;</span>, user_info_js, <span class="string">&quot;default&quot;</span>)</span><br><span class="line"></span><br><span class="line">&#125;, <span class="number">98</span>);</span><br></pre></td></tr></table></figure>
+              </div>
+            </details>
+
+<ul>
+<li>打包并发布程序到<code>npm</code></li>
+</ul>
+<p>&emsp;&emsp;由于之前已经登陆过，所以直接执行以下命令。</p>
+<figure class="highlight shell"><figcaption><span>shell</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 发布版本到npm</span></span><br><span class="line">npm publish</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;出现以下提示信息代表发布成功。</p>
+<figure class="highlight shell"><figcaption><span>shell</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">npm notice </span><br><span class="line">npm notice package: hexo-plugins-test@0.0.0</span><br><span class="line">npm notice === Tarball Contents ===</span><br><span class="line">npm notice 5.5kB index.js</span><br><span class="line">npm notice 244B  package.json</span><br><span class="line">npm notice === Tarball Details ===</span><br><span class="line">npm notice name:          hexo-plugins-test</span><br><span class="line">npm notice version:       0.0.0</span><br><span class="line">npm notice package size:  1.8 kB</span><br><span class="line">npm notice unpacked size: 5.8 kB</span><br><span class="line">npm notice shasum:        50ce71a91babf482f12b0f54a05a7ad48c3d8298</span><br><span class="line">npm notice integrity:     sha512-EZwg7y6/fCmv/[...]oUQJ/Y0pKTR9g==</span><br><span class="line">npm notice total files:   2</span><br><span class="line">npm notice</span><br><span class="line">+ hexo-plugins-test@0.0.0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>进入测试站点并安装插件</li>
+</ul>
+<figure class="highlight shell"><figcaption><span>shell</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入自己的站点根目录（blogRoot代表站点根目录）</span></span><br><span class="line">cd [blogRoot]/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装插件</span></span><br><span class="line">npm install hexo-plugins-test</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;若无报错，即可进行下一步，启动本地预览，查看效果。</p>
+<ul>
+<li>启动本地预览</li>
+</ul>
+<figure class="highlight shell"><figcaption><span>shell</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo cl &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">来看看我的其他文章吧😄(ฅ>ω<*ฅ)</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/6126b4dd/" rel="bookmark">【Hexo】NPM包的发布与管理</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/e5a58567/" rel="bookmark">【Butterfly】Butterflt自定义1-图片与滚动条</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/2ee2604b/" rel="bookmark">【Hexo】Github Actions自动部署</a></div>
+    </li>
+  </ul>
+
+
+    <footer class="post-footer">
+
+
+
+
+  <div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>一言</h1>
+    <p id="hitokoto_text">挑选中...</p>
+    <p id="hitokoto_information" style="text-align: right;"></p>
+    <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/hitokoto.js"></script>
+  </div>
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'">
+  <script data-pjax defer src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script>
+  <div class="social-share"
+      style = "text-align: center; margin-bottom: 10px;"
+      data-sites = "qq,wechat,weibo,facebook,twitter,google"
+      data-description = "欢迎分享这篇文章呀(ฅ>ω<*ฅ)"
+      data-wechat-qrcode-title = "微信扫一扫：分享文章"
+      data-wechat-qrcode-helper = '' >
+  </div>
+
+
+
+
+
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+            --------------------本文结束
+            <i class="fas fa-fan fa-spin" style="color: #FF1493; font-size: 1rem"></i>
+            感谢您的阅读--------------------
+            </div>
+        
+    </div>
+
+
+
+
+
+
+  
+  <div class="my_post_copyright"> 
+
+    
+    <script data-pjax defer src="https://unpkg.com/sweetalert@2/dist/sweetalert.min.js"></script>
+    <script data-pjax defer src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+    
+    <script data-pjax async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/popup-box/cpoyright-popup.js"></script>
+
+    <p><span>文章标题:</span><a href="/posts/15b7fc24/">【Hexo】Hexo的两种插件</a></p>
+    <p><span>文章作者:</span><a href="/" title="欢迎访问 《云与海》 的个人博客">qidaink</a></p>
+    <p><span>发布时间:</span>2021年04月21日 - 06:45</p>
+    <p><span>最后更新:</span>2021年05月12日 - 18:28</p>
+    <p><span>原始链接:</span><a href="/posts/15b7fc24/" title="【Hexo】Hexo的两种插件">https://qidaink.github.io/posts/15b7fc24/</a>
+       <span class="copy-path"  title="点击可以复制文章链接哦"><i class="far fa-copy" data-clipboard-text="https://qidaink.github.io/posts/15b7fc24/"  aria-label="复制成功！"></i></span>
+    </p>
+    <p><span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href= "https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+  </div>
+  
+
+
+          <div class="reward-container">
+  <div>(ฅ>ω<*ฅ)既然看到这里，何不交个朋友😏？(ฅ>ω<*ฅ)</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/myqq.jpg" alt="qidaink My QQ">
+        <span>My QQ</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://blog.csdn.net/qq_38231279">
+          <span class="icon">
+            <i class="fab fa-cuttlefish"></i>
+          </span>
+
+          <span class="label">CSDN</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.gitee.io">
+          <span class="icon">
+            <i class="fab fa-gofore"></i>
+          </span>
+
+          <span class="label">Gitee</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.github.io">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">Github</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+              <a href="/tags/hexo-plugins/" rel="tag"><i class="fa fa-tag"></i> hexo-plugins</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/61bb2d1d/" rel="prev" title="【Diode】二极管01-PN结的形成与特性">
+                  <i class="fa fa-chevron-left"></i> 【Diode】二极管01-PN结的形成与特性
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/6126b4dd/" rel="next" title="【Hexo】NPM包的发布与管理">
+                  【Hexo】NPM包的发布与管理 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-waline">waline</a></li>
+            <li class="tab"><a href="#comment-twikoo">twikoo</a></li>
+            <li class="tab"><a href="#comment-livere">livere</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane waline" id="comment-waline">
+              <div class="comments" id="waline-comments"></div>
+            </div>
+            <div class="tab-pane twikoo" id="comment-twikoo">
+              <div class="comments"><div id="twikoo-comments"></div></div>
+            </div>
+            <div class="tab-pane livere" id="comment-livere">
+              <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81MjgxMC8yOTI4OA=="></div>
+            </div>
+        </div>
+      </div><script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qidaink</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">160k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:52</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+    <span id="sitetime"></span>
+    <script defer language=javascript>
+        function siteTime()
+        {
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*==================================================
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year        - 作为date对象的年份，为4位年份值
+            month       - 0-11之间的整数，做为date对象的月份
+            day         - 1-31之间的整数，做为date对象的天数
+            hours       - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes     - 0-59之间的整数，做为date对象的分钟数
+            seconds     - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+            ==================================================*/
+            var t1 = Date.UTC(2017, 
+                              5, 
+                              19, 
+                              0, 
+                              0, 
+                              0); //北京时间
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="我在此处等了你 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+    </script>
+
+
+
+
+
+
+    <div class="languages">
+        <i class="fa fa-language"></i>
+        <span>繁体中文/简体中文：</span>
+        <a id="translateLink" href="javascript:translatePage();">繁体中文</a>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/tw_cn/tw_cn.js"></script>
+    <script type="text/javascript">
+        var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+        var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+        var cookieDomain = "https://qidaink.github.io/"; //Cookie地址, 一定要设定, 通常为自己的网址
+        var msgToTraditionalChinese = "繁体中文"; //此处可以更改为你想要显示的文字
+        var msgToSimplifiedChinese = "簡體中文"; //同上，但两处均不建议更改
+        var translateButtonId = "translateLink"; //默认互换id
+        translateInitilization();
+    </script>
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{&quot;enable&quot;:true,&quot;spinner&quot;:true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{&quot;lang&quot;:&quot;zh-CN&quot;,&quot;enable&quot;:true,&quot;serverURL&quot;:&quot;https:&#x2F;&#x2F;qidaink-blog-comment.vercel.app&#x2F;&quot;,&quot;placeholder&quot;:&quot;(ฅ&gt;ω&lt;*ฅ)欢迎大家评论呀！&quot;,&quot;avatar&quot;:&quot;identicon&quot;,&quot;meta&quot;:[&quot;nick&quot;,&quot;mail&quot;,&quot;link&quot;],&quot;pageSize&quot;:5,&quot;visitor&quot;:false,&quot;comment_count&quot;:true,&quot;requiredFields&quot;:[&quot;nick&quot;,&quot;mail&quot;],&quot;langMode&quot;:{&quot;admin&quot;:&quot;可爱的博主&quot;,&quot;nick&quot;:&quot;昵称（必填）&quot;,&quot;mail&quot;:&quot;邮箱（必填）&quot;,&quot;link&quot;:&quot;网址（选填）&quot;,&quot;sofa&quot;:&quot;这里冷冷清清的，快来留下脚印吧(ฅ&gt;ω&lt;*ฅ)！&quot;},&quot;el&quot;:&quot;#waline-comments&quot;,&quot;libUrl&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;@waline&#x2F;client&#x2F;dist&#x2F;Waline.min.js&quot;,&quot;path&quot;:&quot;&#x2F;posts&#x2F;15b7fc24&#x2F;&quot;}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() => 
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => {
+    new Waline(CONFIG.waline);
+  });
+});
+</script><script>
+NexT.utils.loadComments('#twikoo-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js', () => {
+    twikoo.init(Object.assign({"enable":true,"visitor":false,"envId":"qidaink-twikoo-0g5tijvr7bf0f59e"}, {
+      el: '#twikoo-comments'
+    }));
+  }, window.twikoo);
+});
+</script>
+<script defer src= https://unpkg.com/hexo-qidaink-live2d@1.1.1/live2d-widget/autoload.js></script><script src="/js/third-party/comments/livere.js"></script>
+
+
+
+
+<link defer rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@1.2.0/dist/Meting.min.js"></script>
+<!-- APlayer本体 -->
+<div class="aplayer"
+    data-id="7274703654"
+    data-server="tencent"
+    data-type="playlist"
+    data-fixed="true"
+    data-autoplay="false"
+    data-order="random"
+    data-volume="0.55"
+    data-theme="#cc543a"
+    data-preload="auto" >
+</div>
+
+
+
+<script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/fancybox/fancybox_param.js"></script>
+
+
+
+
+    
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-move/fairyDustCursor.js"></script>
+
+
+
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-click/fireWorks.js"></script>
+
+
+
+
+
+
+    
+        <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/falling/sakura.js"></script>
+    
+
+
+
+
+    <script src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/type-input/activate-power-mode.min.js"></script>
+    <script>
+        POWERMODE.colorful = true;
+        POWERMODE.shake = false;
+        POWERMODE.mobile = true;
+        document.body.addEventListener('input', POWERMODE);
+    </script>
+
+
+</body>
+</html>

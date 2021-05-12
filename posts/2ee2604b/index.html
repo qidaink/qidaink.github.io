@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;qidaink.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="本文主要介绍如何使用Github Actions自动部署Github Pages和Gitee Pages。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Hexo】Github Actions自动部署">
+<meta property="og:url" content="https://qidaink.github.io/posts/2ee2604b/index.html">
+<meta property="og:site_name" content="云与海">
+<meta property="og:description" content="本文主要介绍如何使用Github Actions自动部署Github Pages和Gitee Pages。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions01.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions02.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions03.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions04.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions05.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions06.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions07.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions08.png">
+<meta property="article:published_time" content="2021-04-15T23:20:06.000Z">
+<meta property="article:modified_time" content="2021-05-12T10:28:52.125Z">
+<meta property="article:author" content="qidaink">
+<meta property="article:tag" content="hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions01.png">
+
+
+<link rel="canonical" href="https://qidaink.github.io/posts/2ee2604b/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;qidaink.github.io&#x2F;posts&#x2F;2ee2604b&#x2F;&quot;,&quot;path&quot;:&quot;posts&#x2F;2ee2604b&#x2F;&quot;,&quot;title&quot;:&quot;【Hexo】Github Actions自动部署&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>【Hexo】Github Actions自动部署 | 云与海</title><script src="/js/config.js"></script><link rel="dns-prefetch" href="https://qidaink-blog-comment.vercel.app/">
+
+
+
+
+
+    <script async type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/funnytitle/funnytitle.js"></script>
+
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">云与海</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>云与海</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签页<span class="badge">27</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类页<span class="badge">7</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档页<span class="badge">24</span></a></li>
+        <li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="fas fa-edit fa-fw"></i>留言板</a></li>
+        <li class="menu-item menu-item-friendslink"><a href="/friendslink/" rel="section"><i class="fa fa-link fa-fw"></i>友人帐</a></li>
+        <li class="menu-item menu-item-friendscircle"><a href="/friendscircle/" rel="section"><i class="fas fa-user-friends fa-fw"></i>朋友圈</a></li>
+        <li class="menu-item menu-item-comment"><a href="https://qidaink-blog-comment.vercel.app/ui/login" rel="noopener" target="_blank"><i class="fa fa-comment fa-fw"></i>评论管理</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Github-Actions%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.Github Actions介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Github-Actions%E4%BD%BF%E7%94%A8"><span class="nav-text">2.Github Actions使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="nav-text">2.1创建仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2%E8%8E%B7%E5%8F%96Token"><span class="nav-text">2.2获取Token</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3%E5%9C%A8%E6%BA%90%E7%A0%81%E4%BB%93%E5%BA%93%E5%88%9B%E5%BB%BA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-text">2.3在源码仓库创建环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4%E5%88%9B%E5%BB%BAGithub-Actions%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">2.4创建Github Actions的配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5%E6%B7%BB%E5%8A%A0gulp%E5%8E%8B%E7%BC%A9%E5%8A%9F%E8%83%BD"><span class="nav-text">2.5添加gulp压缩功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6%E5%90%8C%E6%AD%A5%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2Gitee-Pages"><span class="nav-text">2.6同步自动部署Gitee Pages</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qidaink"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">qidaink</p>
+  <div class="site-description" itemprop="description">但愿人长久，千里共婵娟</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_38231279" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_38231279" rel="noopener" target="_blank"><i class="iconfont icon-csdn1 fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/qidaink" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="iconfont icon-gitee-fill-round fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/qidaink" title="Github → https:&#x2F;&#x2F;github.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://fontawesome.com/" title="Awesome → https:&#x2F;&#x2F;fontawesome.com&#x2F;" rel="noopener" target="_blank"><i class="fab fa-font-awesome-flag fa-fw"></i>Awesome</a>
+      </span>
+  </div>
+
+
+
+
+
+
+
+
+  <div style="">
+    <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+  </div>
+  <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/canvas/canvas-clock.js"></script>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://qidaink.github.io/posts/2ee2604b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="qidaink">
+      <meta itemprop="description" content="但愿人长久，千里共婵娟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云与海">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【Hexo】Github Actions自动部署
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-16 07:20:06" itemprop="dateCreated datePublished" datetime="2021-04-16T07:20:06+08:00">2021-04-16</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-12 18:28:52" itemprop="dateModified" datetime="2021-05-12T18:28:52+08:00">2021-05-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/2ee2604b/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/2ee2604b/" data-xid="/posts/2ee2604b/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">本文主要介绍如何使用Github Actions自动部署Github Pages和Gitee Pages。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+
+
+    <div class="poem-wrap">
+        <div class="poem-border poem-left"></div>
+        <div class="poem-border poem-right"></div>
+        <h1>一句诗词</h1>
+        <p id="poem">挑选中...</p>
+        <p id="info" style="text-align: right;"></p>
+        <script data-pjax defer src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/todayPoem.js"></script>
+    </div>
+
+        <p>摘要：<br>&emsp;&emsp;在刚开始使用<code>Hexo</code>的时候安装的脚本、插件、引用的样式和文章等都比较少，编译部署起来就还好，时间也不长，但是当哪些越来越多的时候，编译时间也越来越久，而且<code>Gitee Pages</code>在仓库部署完毕后，还需要手动点击更新，才能完成页面的部署，不免就有些麻烦了，本文将介绍<code>Github</code>自带的自动部署工具<code>Github Actions</code>来实现静态网站的自动部署。</p>
+<span id="more"></span>
+
+<h1 id="1-Github-Actions介绍"><a href="#1-Github-Actions介绍" class="headerlink" title="1.Github Actions介绍"></a><font size=3>1.<code>Github Actions</code>介绍</font></h1><p>&emsp;&emsp;<code>Github Actions</code>是<code>GitHub</code>于 2018 年 10 月推出的一个<code>CI/CD</code>服务。那什么是<code>CI/CD</code>呢？<code>CI/CD</code>其实说的是三件事情：</p>
+<ul>
+<li>持续集成（Continuous Integration）</li>
+<li>持续交付（Continuous Delivery）</li>
+<li>持续部署（Continuous Deployment）</li>
+</ul>
+<p>&emsp;&emsp;按照自己的理解，就是一个可以在<code>Github</code>仓库中自动执行一些命令的工具，它的配置文件为<code>yaml</code>格式。本文不是主要详细介绍它的语法，而是介绍如何使用这个工具来完成自动部署，所以这里就不写更多关于语法的啦（主要原因还是自己也不是特别了解😭），更多详细介绍可以查看官方介绍文档：<a href="https://docs.github.com/en/actions" target="_blank">Github Actions<i class="fa fa-external-link-alt"></i></a></p>
+<h1 id="2-Github-Actions使用"><a href="#2-Github-Actions使用" class="headerlink" title="2.Github Actions使用"></a><font size=3>2.<code>Github Actions</code>使用</font></h1><details blue><summary> 点击查看参考教程和相关Github项目 </summary>
+              <div class='content'>
+              <p>&emsp;&emsp;参考教程</p><table>  <tr>    <td align="center">博客名称</td>    <td align="center">教程原帖</td>  </tr>  <tr>    <td align="center">Akilar の糖果屋</td>    <td align="left"><a href="https://akilar.top/posts/f752c86d/" target="_blank">使用 Github Action 实现全自动部署</a> </td>  </tr>  <tr>    <td align="center">卓越科技的 Blog</td>    <td align="left"><a href="https://blog.zykjofficial.top/posts/ea8e8e59/" target="_blank">使用 Github Actions 自动部署博客</a> </td>  </tr></table><p>&emsp;&emsp;相关<code>Github</code>项目</p><table>  <tr>    <td align="center">项目说明</td>    <td align="center">项目地址</td>  </tr>  <tr>    <td align="center">镜像仓库</td>    <td align="left"><a href="https://github.com/wearerequired/git-mirror-action" target="_blank">Git Mirror Action</a> </td>  </tr>  <tr>    <td align="center">自动部署Gitee Pages</td>    <td align="left"><a href="https://github.com/yanglbme/gitee-pages-action" target="_blank">Gitee Pages Action</a> </td>  </tr></table>
+              </div>
+            </details>
+
+<div class="note warning"><p>注意：若是直接复制以下代码，还请替换<code>[UserName]</code>为自己的<code>Github</code>或者<code>Gitee</code>名字，另外就是那些环境变量一定要在自己站点源码的<code>Secrets</code>中配置好。</p>
+</div>
+
+<h2 id="2-1创建仓库"><a href="#2-1创建仓库" class="headerlink" title="2.1创建仓库"></a><font size=3>2.1创建仓库</font></h2><p>&emsp;&emsp;在一切的一切开始之前肯定是需要一个仓库啦😄，我这里存放源码的是创建的私人仓库，这里就不写如何创建仓库、建立远程连接和上传源码了。</p>
+<h2 id="2-2获取Token"><a href="#2-2获取Token" class="headerlink" title="2.2获取Token"></a><font size=3>2.2获取<code>Token</code></font></h2><p>&emsp;&emsp;<code>Token</code>就是<code>Personal access tokens</code>，即私人访问令牌，看自己的源码仓库是放在<code>Github</code>还是其他平台了，我的是在<code>Github</code>上，<code>Gitee</code>作为镜像站，所以我只需要在<code>Github</code>上进行操作，这里简单记录一下如何在这两个平台获取<code>Token</code>的方式。</p>
+<details blue><summary> 点击查看获取Token的步骤 </summary>
+              <div class='content'>
+              <div class="tabs" id="first-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#first-unique-name-1">Github</a></li><li class="tab"><a href="#first-unique-name-2">Gitee</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><p>&emsp;&emsp;点击这里<a href="https://github.com/settings/tokens" target="_blank">【Github官网】&rarr;【右上角头像】&rarr;【Settings】&rarr;【Developer Settings】&rarr;【Personal access tokens】<i class="fa fa-external-link-alt"></i></a>打开<code>Personal access tokens</code>设置项。</p><div align="center">  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions01.png"></div><p>&emsp;&emsp;选择<code>generate new token</code>创建自己的私人访问令牌。<code>Note</code>也就是私人令牌的名称，随意命名就可以，不过要符合<code>Github</code>的要求，<code>Select scopes</code>中是选择私人访问令牌的权限，至少要勾选<code>repo</code>选项。</p><div align="center">  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions02.png"></div><p>&emsp;&emsp;最后点击最下方的创建就可以生成自己的私人访问令牌啦，不过这个私人访问令牌只有创建的时候才会显示一次，后边是查看不了的，所以要注意记录下来。</p><div align="center">  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions03.png"></div></div><div class="tab-pane" id="first-unique-name-2"><p>&emsp;&emsp;点击这里<a href="https://gitee.com/profile/personal_access_tokens" target="_blank">【Gitee官网】&rarr;【右上角头像】&rarr;【设置】&rarr;【私人令牌】<i class="fa fa-external-link-alt"></i></a>，打开设置后下拉就可以找到【私人令牌】选项了，打开该设置项。</p><div align="center">  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions04.png"></div><p>&emsp;&emsp;点击生成新令牌即可转到私人令牌创建界面，接下来是填写描述、勾选权限，由于是自己用的，所以我全部都勾选了。</p><div align="center">  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions05.png"></div><p>&emsp;&emsp;最后点击提交，然后输入登录密码进行验证即可生成自己的私人令牌，<code>Gitee</code>的私人访问令牌也是只有创建的时候才会显示一次，后边是查看不了的，所以也要注意记录下来。</p><div align="center">  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions06.png" style="zoom: 50%;"/></div></div></div></div>
+              </div>
+            </details>
+
+<h2 id="2-3在源码仓库创建环境变量"><a href="#2-3在源码仓库创建环境变量" class="headerlink" title="2.3在源码仓库创建环境变量"></a><font size=3>2.3在源码仓库创建环境变量</font></h2><p>&emsp;&emsp;不想在文件中直接写私人令牌的话，可以在自己存放源码的仓库中添加环境变量：【Settings】&rarr;【Secrets】&rarr;【New repository secret】，在这里添加完之后，便可以在<code>Github Actions</code>的配置文件中通过<code>$&#123;&#123; secrets.[Environment secrets name] &#125;&#125;</code>来引用，更加的安全一些。</p>
+<div align="center">
+  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions07.png"/>
+</div>
+
+<h2 id="2-4创建Github-Actions的配置文件"><a href="#2-4创建Github-Actions的配置文件" class="headerlink" title="2.4创建Github Actions的配置文件"></a><font size=3>2.4创建<code>Github Actions</code>的配置文件</font></h2><p>&emsp;&emsp;在站点<code>[blogRoot]</code>文件夹下也就是根目录下创建<code>.github/workflows</code>工作流程文件夹，一共创建2个文件夹<code>workflows</code>为<code>.github</code>的子文件夹，然后再工作流程文件夹下创建自动部署配置文件<code>autodeploy.yml</code>，名字任取，是<code>yml</code>格式文件即可。</p>
+<details blue><summary> 点击查看自动部署配置文件内容 </summary>
+              <div class='content'>
+              <figure class="highlight yaml"><figcaption><span>yaml [blogRoot]/.github/workflows/autodeploy.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当有改动推送到master分支时，启动Action</span></span><br><span class="line"><span class="attr">name:</span> <span class="string">自动部署</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span>             <span class="comment"># 有推送时就触发</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line">  <span class="attr">release:</span></span><br><span class="line">    <span class="attr">types:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">published</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">检查分支</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">ref:</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">安装</span> <span class="string">Node</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">node-version:</span> <span class="string">&quot;12.x&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">安装</span> <span class="string">Hexo</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">export</span> <span class="string">TZ=&#x27;Asia/Shanghai&#x27;</span></span><br><span class="line">        <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-cli</span> <span class="string">-g</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">缓存</span> <span class="string">Hexo</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/cache@v1</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">cache</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">path:</span> <span class="string">node_modules</span></span><br><span class="line">        <span class="attr">key:</span> <span class="string">$&#123;&#123;runner.OS&#125;&#125;-$&#123;&#123;hashFiles(&#x27;**/package-lock.json&#x27;)&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">安装依赖</span></span><br><span class="line">      <span class="attr">if:</span> <span class="string">steps.cache.outputs.cache-hit</span> <span class="type">!=</span> <span class="string">&#x27;true&#x27;</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">npm</span> <span class="string">install</span> <span class="string">--save</span></span><br><span class="line">        </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">生成静态文件</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">hexo</span> <span class="string">clean</span></span><br><span class="line">        <span class="string">hexo</span> <span class="string">generate</span></span><br><span class="line">  </span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">部署Github</span></span><br><span class="line">      <span class="attr">env:</span></span><br><span class="line">        <span class="attr">TIME_ZONE:</span> <span class="string">Asia/Shanghai</span></span><br><span class="line">        <span class="comment"># 要部署的公共仓库</span></span><br><span class="line">        <span class="attr">DEPLOY_REPO:</span> [<span class="string">UserName</span>]<span class="string">/[UserName].github.io</span></span><br><span class="line">        <span class="comment"># 要部署的分支</span></span><br><span class="line">        <span class="attr">DEPLOY_BRANCH:</span> <span class="string">master</span></span><br><span class="line">        <span class="comment"># 在私人源码仓库的设置中设置私钥：[SourceRepo]--&gt;Settings--&gt;Setrets--&gt;Actions secrets</span></span><br><span class="line">        <span class="attr">GITHUB_PERSONAL_TOKEN:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUBPERSONALTOKEN</span> <span class="string">&#125;&#125;</span>  </span><br><span class="line">        <span class="attr">GITHUB_USER_NAME:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUBUSERNAME</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">GITHUB_USER_EMAIL:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUBUSEREMAIL</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">        <span class="string">cd</span> <span class="string">./public</span> <span class="string">&amp;&amp;</span> <span class="string">git</span> <span class="string">init</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">user.name</span> <span class="string">&quot;$GITHUB_USER_NAME&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">config</span> <span class="string">user.email</span> <span class="string">&quot;$GITHUB_USER_EMAIL&quot;</span></span><br><span class="line">        <span class="string">git</span> <span class="string">add</span> <span class="string">.</span></span><br><span class="line">        <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;Automated Deployment By GitHub Actions @ $(date &#x27;+%Y-%m-%d %H:%M:%S&#x27;) $&#123;TIME_ZONE&#125;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># --quiet: Suppress all output, including the listing of updated refs, unless an error occurs. Progress is not reported to the standard error stream.</span></span><br><span class="line">        <span class="string">git</span> <span class="string">push</span> <span class="string">--force</span> <span class="string">--quiet</span> <span class="string">&quot;https://$GITHUB_PERSONAL_TOKEN@github.com/$DEPLOY_REPO&quot;</span> <span class="string">master:$DEPLOY_BRANCH</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+              </div>
+            </details>
+
+<h2 id="2-5添加gulp压缩功能"><a href="#2-5添加gulp压缩功能" class="headerlink" title="2.5添加gulp压缩功能"></a><font size=3>2.5添加<code>gulp</code>压缩功能</font></h2><p>&emsp;&emsp;本地的时候有<code>gulp</code>压缩代码功能，自然也是可以实现<code>Github Actions</code>自动部署的时候进行静态压缩啦，在<code>autodeploy.yml</code>配置文件的<code>job</code>中<code>部署Github</code>之前添加以下内容，若是有报错之类的，可以将<code>安装gulp</code>相关内容移动到<code>安装依赖</code>之前。</p>
+<figure class="highlight yaml"><figcaption><span>yaml [blogRoot]/.github/workflows/autodeploy.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">安装gulp</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">npm</span> <span class="string">install</span> <span class="string">gulp</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">gulp压缩站点文件</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">gulp</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-6同步自动部署Gitee-Pages"><a href="#2-6同步自动部署Gitee-Pages" class="headerlink" title="2.6同步自动部署Gitee Pages"></a><font size=3>2.6同步自动部署<code>Gitee Pages</code></font></h2><p>&emsp;&emsp;有大神编写了插件以便于实现<code>Gitee Pages</code>的自动部署，相关文章和相关的<code>Github</code>项目在文章开头已经说过，可以参考，另外仓库的说明文档中也写了具体的使用方法。</p>
+<ul>
+<li>第一步：添加个人私钥和Gtiee的登陆密码到站点私有仓库的环境变量中</li>
+</ul>
+<p>&emsp;&emsp;个人私钥和公钥都在<code>.ssh</code>文件夹内，私钥为<code>~/.ssh/id_rsa</code> 文件内，使用时将文件内所内容，包括<code>-----BEGIN RSA PRIVATE KEY-----</code>和<code>-----END RSA PRIVATE KEY-----</code>在内的全部内容都存放到变量值里。<br><br>&emsp;&emsp;<code>Gitee</code>密码就是自己的登录密码。</p>
+<div align="center">
+  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/HexoBasic/003GithubActions08.png"/>
+</div>
+
+<ul>
+<li>第二步：修改自动部署配置文件</li>
+</ul>
+<p>&emsp;&emsp;在结尾添加以下内容：</p>
+<figure class="highlight yaml"><figcaption><span>yaml [blogRoot]/.github/workflows/autodeploy.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">同步到</span> <span class="string">Gitee</span></span><br><span class="line">  <span class="attr">uses:</span> <span class="string">wearerequired/git-mirror-action@master</span></span><br><span class="line">  <span class="attr">env:</span></span><br><span class="line">      <span class="comment"># 注意在私人源码仓库的设置中：[SourceRepo]--&gt;Settings--&gt;SetretsSettings-&gt;Secrets 配置 GITEE_RSA_PRIVATE_KEY</span></span><br><span class="line">      <span class="attr">SSH_PRIVATE_KEY:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITEE_RSA_PRIVATE_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">  <span class="attr">with:</span></span><br><span class="line">      <span class="comment"># 注意替换为自己的 GitHub 源仓库地址</span></span><br><span class="line">      <span class="attr">source-repo:</span> <span class="string">&quot;git@github.com:[UserName]/[UserName].github.io.git&quot;</span></span><br><span class="line">      <span class="comment"># 注意替换为自己的 Gitee 目标仓库地址</span></span><br><span class="line">      <span class="attr">destination-repo:</span> <span class="string">&quot;git@gitee.com:[UserName]/[UserName].git&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 第一次需要手动部署Gitee Pages,而且登录地点会变成美国，将有一条警告邮件</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">构建</span> <span class="string">Gitee</span> <span class="string">Pages</span></span><br><span class="line">  <span class="attr">uses:</span> <span class="string">yanglbme/gitee-pages-action@master</span></span><br><span class="line">  <span class="attr">with:</span></span><br><span class="line">      <span class="comment"># 注意替换为自己的 Gitee 用户名</span></span><br><span class="line">      <span class="attr">gitee-username:</span> [<span class="string">UserName</span>]</span><br><span class="line">      <span class="comment"># 注意在私人源码仓库的设置中：[SourceRepo]--&gt;Settings--&gt;SetretsSettings-&gt;Secrets 配置 GITEE_PASSWORD</span></span><br><span class="line">      <span class="attr">gitee-password:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITEE_PASSWORD</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="comment"># 注意替换为自己的 Gitee 仓库</span></span><br><span class="line">      <span class="attr">gitee-repo:</span> [<span class="string">UserName</span>]<span class="string">/[UserName]</span></span><br><span class="line">      <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<details blue><summary> 点击查看注意事项 </summary>
+              <div class='content'>
+              <ul><li><code>Gitee</code>部署失败</li></ul><p>&emsp;&emsp;脚本的原理是用程序代替人工去点击<code>Gitee Pages</code>的更新按钮。所以需要先手动做一次页面部署，确保有那个更新按钮在，脚本才有生效的前提。</p><ul><li><code>Gitee</code>用<code>Github Actions</code>自动部署更新收到短信，提示异地登录需要验证码。</li></ul><p>&emsp;&emsp;因为<code>Github Actions</code>使用的是美国的服务器，所以，使用 <code>Github Actions</code>来远程更新<code>Gitee</code>的站点部署时，会收到异地登陆的短信，提示需要验证码。这个在脚本作者的<code>issues</code> 里有相应的解决方案:<a href="https://github.com/yanglbme/gitee-pages-action/issues/6" target="_blank">登陆失败 #6<i class="fa fa-external-link-alt"></i></a><br>&emsp;&emsp;我是直接之前绑定过微信的，所以每次只有异地登陆提醒，还没有收过验证码，如果之前没有绑定过的话，在微信上搜索<code>Gitee</code>微信公众号，可以在微信公众号内绑定自己的<code>Gitee</code>账号，这样虽然还是会有异地登录提示，但是发过来的消息不再需要填写验证码。</p>
+              </div>
+            </details>
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">来看看我的其他文章吧😄(ฅ>ω<*ฅ)</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/e5a58567/" rel="bookmark">【Butterfly】Butterflt自定义1-图片与滚动条</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/3f33ae5b/" rel="bookmark">【Hexo】Hexo的安装使用</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/db25055a/" rel="bookmark">【NexT】NexT中的fancybox</a></div>
+    </li>
+  </ul>
+
+
+    <footer class="post-footer">
+
+
+
+
+  <div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>一言</h1>
+    <p id="hitokoto_text">挑选中...</p>
+    <p id="hitokoto_information" style="text-align: right;"></p>
+    <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/hitokoto.js"></script>
+  </div>
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'">
+  <script data-pjax defer src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script>
+  <div class="social-share"
+      style = "text-align: center; margin-bottom: 10px;"
+      data-sites = "qq,wechat,weibo,facebook,twitter,google"
+      data-description = "欢迎分享这篇文章呀(ฅ>ω<*ฅ)"
+      data-wechat-qrcode-title = "微信扫一扫：分享文章"
+      data-wechat-qrcode-helper = '' >
+  </div>
+
+
+
+
+
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+            --------------------本文结束
+            <i class="fas fa-fan fa-spin" style="color: #FF1493; font-size: 1rem"></i>
+            感谢您的阅读--------------------
+            </div>
+        
+    </div>
+
+
+
+
+
+
+  
+  <div class="my_post_copyright"> 
+
+    
+    <script data-pjax defer src="https://unpkg.com/sweetalert@2/dist/sweetalert.min.js"></script>
+    <script data-pjax defer src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+    
+    <script data-pjax async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/popup-box/cpoyright-popup.js"></script>
+
+    <p><span>文章标题:</span><a href="/posts/2ee2604b/">【Hexo】Github Actions自动部署</a></p>
+    <p><span>文章作者:</span><a href="/" title="欢迎访问 《云与海》 的个人博客">qidaink</a></p>
+    <p><span>发布时间:</span>2021年04月16日 - 07:20</p>
+    <p><span>最后更新:</span>2021年05月12日 - 18:28</p>
+    <p><span>原始链接:</span><a href="/posts/2ee2604b/" title="【Hexo】Github Actions自动部署">https://qidaink.github.io/posts/2ee2604b/</a>
+       <span class="copy-path"  title="点击可以复制文章链接哦"><i class="far fa-copy" data-clipboard-text="https://qidaink.github.io/posts/2ee2604b/"  aria-label="复制成功！"></i></span>
+    </p>
+    <p><span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href= "https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+  </div>
+  
+
+
+          <div class="reward-container">
+  <div>(ฅ>ω<*ฅ)既然看到这里，何不交个朋友😏？(ฅ>ω<*ฅ)</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/myqq.jpg" alt="qidaink My QQ">
+        <span>My QQ</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://blog.csdn.net/qq_38231279">
+          <span class="icon">
+            <i class="fab fa-cuttlefish"></i>
+          </span>
+
+          <span class="label">CSDN</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.gitee.io">
+          <span class="icon">
+            <i class="fab fa-gofore"></i>
+          </span>
+
+          <span class="label">Gitee</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.github.io">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">Github</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/6126b4dd/" rel="prev" title="【Hexo】NPM包的发布与管理">
+                  <i class="fa fa-chevron-left"></i> 【Hexo】NPM包的发布与管理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/94fa0725/" rel="next" title="【AD】AD基础01-PCB设计中的概念">
+                  【AD】AD基础01-PCB设计中的概念 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-waline">waline</a></li>
+            <li class="tab"><a href="#comment-twikoo">twikoo</a></li>
+            <li class="tab"><a href="#comment-livere">livere</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane waline" id="comment-waline">
+              <div class="comments" id="waline-comments"></div>
+            </div>
+            <div class="tab-pane twikoo" id="comment-twikoo">
+              <div class="comments"><div id="twikoo-comments"></div></div>
+            </div>
+            <div class="tab-pane livere" id="comment-livere">
+              <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81MjgxMC8yOTI4OA=="></div>
+            </div>
+        </div>
+      </div><script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qidaink</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">160k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:52</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+    <span id="sitetime"></span>
+    <script defer language=javascript>
+        function siteTime()
+        {
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*==================================================
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year        - 作为date对象的年份，为4位年份值
+            month       - 0-11之间的整数，做为date对象的月份
+            day         - 1-31之间的整数，做为date对象的天数
+            hours       - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes     - 0-59之间的整数，做为date对象的分钟数
+            seconds     - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+            ==================================================*/
+            var t1 = Date.UTC(2017, 
+                              5, 
+                              19, 
+                              0, 
+                              0, 
+                              0); //北京时间
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="我在此处等了你 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+    </script>
+
+
+
+
+
+
+    <div class="languages">
+        <i class="fa fa-language"></i>
+        <span>繁体中文/简体中文：</span>
+        <a id="translateLink" href="javascript:translatePage();">繁体中文</a>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/tw_cn/tw_cn.js"></script>
+    <script type="text/javascript">
+        var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+        var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+        var cookieDomain = "https://qidaink.github.io/"; //Cookie地址, 一定要设定, 通常为自己的网址
+        var msgToTraditionalChinese = "繁体中文"; //此处可以更改为你想要显示的文字
+        var msgToSimplifiedChinese = "簡體中文"; //同上，但两处均不建议更改
+        var translateButtonId = "translateLink"; //默认互换id
+        translateInitilization();
+    </script>
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{&quot;enable&quot;:true,&quot;spinner&quot;:true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{&quot;lang&quot;:&quot;zh-CN&quot;,&quot;enable&quot;:true,&quot;serverURL&quot;:&quot;https:&#x2F;&#x2F;qidaink-blog-comment.vercel.app&#x2F;&quot;,&quot;placeholder&quot;:&quot;(ฅ&gt;ω&lt;*ฅ)欢迎大家评论呀！&quot;,&quot;avatar&quot;:&quot;identicon&quot;,&quot;meta&quot;:[&quot;nick&quot;,&quot;mail&quot;,&quot;link&quot;],&quot;pageSize&quot;:5,&quot;visitor&quot;:false,&quot;comment_count&quot;:true,&quot;requiredFields&quot;:[&quot;nick&quot;,&quot;mail&quot;],&quot;langMode&quot;:{&quot;admin&quot;:&quot;可爱的博主&quot;,&quot;nick&quot;:&quot;昵称（必填）&quot;,&quot;mail&quot;:&quot;邮箱（必填）&quot;,&quot;link&quot;:&quot;网址（选填）&quot;,&quot;sofa&quot;:&quot;这里冷冷清清的，快来留下脚印吧(ฅ&gt;ω&lt;*ฅ)！&quot;},&quot;el&quot;:&quot;#waline-comments&quot;,&quot;libUrl&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;@waline&#x2F;client&#x2F;dist&#x2F;Waline.min.js&quot;,&quot;path&quot;:&quot;&#x2F;posts&#x2F;2ee2604b&#x2F;&quot;}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() => 
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => {
+    new Waline(CONFIG.waline);
+  });
+});
+</script><script>
+NexT.utils.loadComments('#twikoo-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js', () => {
+    twikoo.init(Object.assign({"enable":true,"visitor":false,"envId":"qidaink-twikoo-0g5tijvr7bf0f59e"}, {
+      el: '#twikoo-comments'
+    }));
+  }, window.twikoo);
+});
+</script>
+<script defer src= https://unpkg.com/hexo-qidaink-live2d@1.1.1/live2d-widget/autoload.js></script><script src="/js/third-party/comments/livere.js"></script>
+
+
+
+
+<link defer rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@1.2.0/dist/Meting.min.js"></script>
+<!-- APlayer本体 -->
+<div class="aplayer"
+    data-id="7274703654"
+    data-server="tencent"
+    data-type="playlist"
+    data-fixed="true"
+    data-autoplay="false"
+    data-order="random"
+    data-volume="0.55"
+    data-theme="#cc543a"
+    data-preload="auto" >
+</div>
+
+
+
+<script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/fancybox/fancybox_param.js"></script>
+
+
+
+
+    
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-move/fairyDustCursor.js"></script>
+
+
+
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-click/fireWorks.js"></script>
+
+
+
+
+
+
+    
+        <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/falling/sakura.js"></script>
+    
+
+
+
+
+    <script src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/type-input/activate-power-mode.min.js"></script>
+    <script>
+        POWERMODE.colorful = true;
+        POWERMODE.shake = false;
+        POWERMODE.mobile = true;
+        document.body.addEventListener('input', POWERMODE);
+    </script>
+
+
+</body>
+</html>

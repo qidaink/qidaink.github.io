@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;qidaink.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="本文主要介绍在Excel中的一些实用功能，后续会持续进行更新......">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Excel】Excel中的实用功能">
+<meta property="og:url" content="https://qidaink.github.io/posts/3bc2240b/index.html">
+<meta property="og:site_name" content="云与海">
+<meta property="og:description" content="本文主要介绍在Excel中的一些实用功能，后续会持续进行更新......">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/001Excle%20highlights%20the%20cell.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/002Create%20a%20name.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/003Creating%20Conditional%20Formatting.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/004Set%20the%20rule%20scope.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/005Implementation%20effect.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/006Implementation%20effect.png">
+<meta property="article:published_time" content="2021-02-23T12:30:00.000Z">
+<meta property="article:modified_time" content="2021-05-12T10:28:52.129Z">
+<meta property="article:author" content="qidaink">
+<meta property="article:tag" content="windows">
+<meta property="article:tag" content="office">
+<meta property="article:tag" content="Excel">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/001Excle%20highlights%20the%20cell.png">
+
+
+<link rel="canonical" href="https://qidaink.github.io/posts/3bc2240b/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;qidaink.github.io&#x2F;posts&#x2F;3bc2240b&#x2F;&quot;,&quot;path&quot;:&quot;posts&#x2F;3bc2240b&#x2F;&quot;,&quot;title&quot;:&quot;【Excel】Excel中的实用功能&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>【Excel】Excel中的实用功能 | 云与海</title><script src="/js/config.js"></script><link rel="dns-prefetch" href="https://qidaink-blog-comment.vercel.app/">
+
+
+
+
+
+    <script async type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/funnytitle/funnytitle.js"></script>
+
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">云与海</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>云与海</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签页<span class="badge">27</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类页<span class="badge">7</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档页<span class="badge">24</span></a></li>
+        <li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="fas fa-edit fa-fw"></i>留言板</a></li>
+        <li class="menu-item menu-item-friendslink"><a href="/friendslink/" rel="section"><i class="fa fa-link fa-fw"></i>友人帐</a></li>
+        <li class="menu-item menu-item-friendscircle"><a href="/friendscircle/" rel="section"><i class="fas fa-user-friends fa-fw"></i>朋友圈</a></li>
+        <li class="menu-item menu-item-comment"><a href="https://qidaink-blog-comment.vercel.app/ui/login" rel="noopener" target="_blank"><i class="fa fa-comment fa-fw"></i>评论管理</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E5%9C%A8%E7%8E%B0%E6%9C%89%E8%A1%8C%E9%AB%98%E5%9F%BA%E7%A1%80%E4%B8%8A%E5%A2%9E%E5%8A%A0%E6%89%B9%E9%87%8F%E5%A2%9E%E5%8A%A0%E8%A1%8C%E9%AB%98"><span class="nav-text">1.在现有行高基础上增加批量增加行高</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Excel%E8%87%AA%E5%8A%A8%E9%AB%98%E4%BA%AE%E8%A1%8C%E5%88%97"><span class="nav-text">2.Excel自动高亮行列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1VB%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0"><span class="nav-text">2.1VB程序实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2%E6%9D%A1%E4%BB%B6%E8%A7%84%E5%88%99%E5%92%8C%E5%85%AC%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%AE%9E%E7%8E%B0"><span class="nav-text">2.2条件规则和公式实现实现</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qidaink"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">qidaink</p>
+  <div class="site-description" itemprop="description">但愿人长久，千里共婵娟</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_38231279" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_38231279" rel="noopener" target="_blank"><i class="iconfont icon-csdn1 fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/qidaink" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="iconfont icon-gitee-fill-round fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/qidaink" title="Github → https:&#x2F;&#x2F;github.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://fontawesome.com/" title="Awesome → https:&#x2F;&#x2F;fontawesome.com&#x2F;" rel="noopener" target="_blank"><i class="fab fa-font-awesome-flag fa-fw"></i>Awesome</a>
+      </span>
+  </div>
+
+
+
+
+
+
+
+
+  <div style="">
+    <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+  </div>
+  <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/canvas/canvas-clock.js"></script>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://qidaink.github.io/posts/3bc2240b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="qidaink">
+      <meta itemprop="description" content="但愿人长久，千里共婵娟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云与海">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【Excel】Excel中的实用功能
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-23 20:30:00" itemprop="dateCreated datePublished" datetime="2021-02-23T20:30:00+08:00">2021-02-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-12 18:28:52" itemprop="dateModified" datetime="2021-05-12T18:28:52+08:00">2021-05-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Windows/" itemprop="url" rel="index"><span itemprop="name">Windows</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/3bc2240b/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/3bc2240b/" data-xid="/posts/3bc2240b/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">本文主要介绍在Excel中的一些实用功能，后续会持续进行更新......</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+
+
+    <div class="poem-wrap">
+        <div class="poem-border poem-left"></div>
+        <div class="poem-border poem-right"></div>
+        <h1>一句诗词</h1>
+        <p id="poem">挑选中...</p>
+        <p id="info" style="text-align: right;"></p>
+        <script data-pjax defer src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/todayPoem.js"></script>
+    </div>
+
+        <p>摘要：<br>&emsp;&emsp;本文主要介绍在Excel中的一些实用功能，后续会持续进行更新。</p>
+<span id="more"></span>
+
+<h1 id="1-在现有行高基础上增加批量增加行高"><a href="#1-在现有行高基础上增加批量增加行高" class="headerlink" title="1.在现有行高基础上增加批量增加行高"></a><font size=3>1.在现有行高基础上增加批量增加行高</font></h1><p>&emsp;&emsp;在自动适应行高中想要批量增加行高来调整Excel表格，不可能手动一个一个修改，此时可以使用VB来实现功能。打开Excel内置的VB编辑器，然后添加以下代码。</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Sub</span> margin()</span><br><span class="line">    <span class="comment">&#x27;从第7行到137行</span></span><br><span class="line">    <span class="keyword">For</span> r = <span class="number">7</span> <span class="keyword">To</span> <span class="number">137</span></span><br><span class="line">        <span class="comment">&#x27;为每行行高增加6</span></span><br><span class="line">        Rows(r &amp; <span class="string">&quot;:&quot;</span> &amp; r).RowHeight = Rows(r &amp; <span class="string">&quot;:&quot;</span> &amp; r).RowHeight + <span class="number">6</span></span><br><span class="line">    <span class="keyword">Next</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后点击运行，就可以发现所有的行高都发生了变化。</p>
+<h1 id="2-Excel自动高亮行列"><a href="#2-Excel自动高亮行列" class="headerlink" title="2.Excel自动高亮行列"></a><font size=3>2.Excel自动高亮行列</font></h1><p> &emsp;&emsp;在使用Excel的时候，有时候需要看某一单元格所在行或者列的其他数据，当数据特别多的时候，找同一行的数据就显的很难受，这个时候就可以使用</p>
+<h2 id="2-1VB程序实现"><a href="#2-1VB程序实现" class="headerlink" title="2.1VB程序实现"></a><font size=3>2.1VB程序实现</font></h2><p>&emsp;&emsp;每次单击即可激活高亮相应的行列，直接复制代码进去即可，使用方便，缺点是退出后最后一个高亮的行列会被填充颜色，原来的颜色会被清除，对于没有填充颜色，且不要求保留原来颜色的元格，可以采用如下方法：</p>
+<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&#x27;这样的行是VB注释，不会被编译</span></span><br><span class="line"><span class="keyword">Private</span> <span class="keyword">Sub</span> Worksheet_SelectionChange(<span class="keyword">ByVal</span> Target <span class="keyword">As</span> Range)</span><br><span class="line"><span class="keyword">With</span> Target</span><br><span class="line"><span class="comment">&#x27;清除工作表单元格的背景色</span></span><br><span class="line">.Parent.Cells.Interior.ColorIndex = xlNone</span><br><span class="line"><span class="comment">&#x27;设置选中区域所在行的背景色，这里是RGB颜色的十进制代码</span></span><br><span class="line">.EntireRow.Interior.Color = <span class="number">5296274</span></span><br><span class="line"><span class="comment">&#x27;设置选中区域所在列的背景色，这里是RGB颜色的十进制代码</span></span><br><span class="line">.EntireColumn.Interior.Color = <span class="number">5296274</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">With</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;效果如下图所示：</p>
+<img src="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/001Excle%20highlights%20the%20cell.png" style="zoom:67%;" />
+
+<h2 id="2-2条件规则和公式实现实现"><a href="#2-2条件规则和公式实现实现" class="headerlink" title="2.2条件规则和公式实现实现"></a><font size=3>2.2条件规则和公式实现实现</font></h2><ul>
+<li><p>创建名称<br>公式&rarr;定义名称&rarr;输入名称&rarr;输入起范围（定义的时候可选，之后不可修改）&rarr;在引用位置处输入函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;63 传回储存格的填满色彩</span><br><span class="line">&#x2F;&#x2F;单元格位置都可以，大门时需要注意不能加绝对引用符号</span><br><span class="line">&#x3D;GET.CELL(63,Sheet1!T8)&#x3D;0</span><br></pre></td></tr></table></figure>
+<img src="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/002Create%20a%20name.png" style="zoom:67%;" /></li>
+<li><p>创建条件格式<br>开始&rarr;条件格式&rarr;新建规则&rarr;如下图设置，选择使用公式要设置格式的单元格&rarr;输入规则公式&rarr;在格式中选择填充颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;注意最后一个参数要与上边的公式标签名称一致</span><br><span class="line">&#x3D;AND((CELL(&quot;col&quot;)&#x3D;COLUMN())+(CELL(&quot;row&quot;)&#x3D;ROW()),getcell)</span><br></pre></td></tr></table></figure>
+<img src="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/003Creating%20Conditional%20Formatting.png" style="zoom:67%;" /></li>
+<li><p>2.3设置规则生效的范围</p>
+</li>
+</ul>
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/004Set%20the%20rule%20scope.png" style="zoom:60%;" />
+</div>
+
+
+<p>&emsp;&emsp;在规则管理器中管理刚才添加的规则应用区域。</p>
+<ul>
+<li>2.4添加自动刷新VB程序<figure class="highlight vb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Private</span> <span class="keyword">Sub</span> Worksheet_SelectionChange(<span class="keyword">ByVal</span> Target <span class="keyword">As</span> Range)</span><br><span class="line">    Application.ScreenUpdating = <span class="literal">True</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Sub</span></span><br></pre></td></tr></table></figure>
+最终效果：</li>
+</ul>
+<div align="center">
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/005Implementation%20effect.png" style="zoom: 33%;" />
+    <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Windows/Office/006Implementation%20effect.png" style="zoom: 33%;" />
+</div>
+
+
+<p>&emsp;&emsp;可以发现原来的单元格颜色还在，但是当整行整列填充颜色的时候可能会出现问题，有得有舍吧，看需求，总之两种方案都不是很完美。</p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">来看看我的其他文章吧😄(ฅ>ω<*ฅ)</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/4d22aca6/" rel="bookmark">【Windows】Typora上传图片到Gitee</a></div>
+    </li>
+  </ul>
+
+
+    <footer class="post-footer">
+
+
+
+
+  <div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>一言</h1>
+    <p id="hitokoto_text">挑选中...</p>
+    <p id="hitokoto_information" style="text-align: right;"></p>
+    <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/hitokoto.js"></script>
+  </div>
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'">
+  <script data-pjax defer src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script>
+  <div class="social-share"
+      style = "text-align: center; margin-bottom: 10px;"
+      data-sites = "qq,wechat,weibo,facebook,twitter,google"
+      data-description = "欢迎分享这篇文章呀(ฅ>ω<*ฅ)"
+      data-wechat-qrcode-title = "微信扫一扫：分享文章"
+      data-wechat-qrcode-helper = '' >
+  </div>
+
+
+
+
+
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+            --------------------本文结束
+            <i class="fas fa-fan fa-spin" style="color: #FF1493; font-size: 1rem"></i>
+            感谢您的阅读--------------------
+            </div>
+        
+    </div>
+
+
+
+
+
+
+  
+  <div class="my_post_copyright"> 
+
+    
+    <script data-pjax defer src="https://unpkg.com/sweetalert@2/dist/sweetalert.min.js"></script>
+    <script data-pjax defer src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+    
+    <script data-pjax async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/popup-box/cpoyright-popup.js"></script>
+
+    <p><span>文章标题:</span><a href="/posts/3bc2240b/">【Excel】Excel中的实用功能</a></p>
+    <p><span>文章作者:</span><a href="/" title="欢迎访问 《云与海》 的个人博客">qidaink</a></p>
+    <p><span>发布时间:</span>2021年02月23日 - 20:30</p>
+    <p><span>最后更新:</span>2021年05月12日 - 18:28</p>
+    <p><span>原始链接:</span><a href="/posts/3bc2240b/" title="【Excel】Excel中的实用功能">https://qidaink.github.io/posts/3bc2240b/</a>
+       <span class="copy-path"  title="点击可以复制文章链接哦"><i class="far fa-copy" data-clipboard-text="https://qidaink.github.io/posts/3bc2240b/"  aria-label="复制成功！"></i></span>
+    </p>
+    <p><span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href= "https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+  </div>
+  
+
+
+          <div class="reward-container">
+  <div>(ฅ>ω<*ฅ)既然看到这里，何不交个朋友😏？(ฅ>ω<*ฅ)</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/myqq.jpg" alt="qidaink My QQ">
+        <span>My QQ</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://blog.csdn.net/qq_38231279">
+          <span class="icon">
+            <i class="fab fa-cuttlefish"></i>
+          </span>
+
+          <span class="label">CSDN</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.gitee.io">
+          <span class="icon">
+            <i class="fab fa-gofore"></i>
+          </span>
+
+          <span class="label">Gitee</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.github.io">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">Github</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/windows/" rel="tag"><i class="fa fa-tag"></i> windows</a>
+              <a href="/tags/office/" rel="tag"><i class="fa fa-tag"></i> office</a>
+              <a href="/tags/Excel/" rel="tag"><i class="fa fa-tag"></i> Excel</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/4d22aca6/" rel="prev" title="【Windows】Typora上传图片到Gitee">
+                  <i class="fa fa-chevron-left"></i> 【Windows】Typora上传图片到Gitee
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/3f33ae5b/" rel="next" title="【Hexo】Hexo的安装使用">
+                  【Hexo】Hexo的安装使用 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-waline">waline</a></li>
+            <li class="tab"><a href="#comment-twikoo">twikoo</a></li>
+            <li class="tab"><a href="#comment-livere">livere</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane waline" id="comment-waline">
+              <div class="comments" id="waline-comments"></div>
+            </div>
+            <div class="tab-pane twikoo" id="comment-twikoo">
+              <div class="comments"><div id="twikoo-comments"></div></div>
+            </div>
+            <div class="tab-pane livere" id="comment-livere">
+              <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81MjgxMC8yOTI4OA=="></div>
+            </div>
+        </div>
+      </div><script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qidaink</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">160k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:52</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+    <span id="sitetime"></span>
+    <script defer language=javascript>
+        function siteTime()
+        {
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*==================================================
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year        - 作为date对象的年份，为4位年份值
+            month       - 0-11之间的整数，做为date对象的月份
+            day         - 1-31之间的整数，做为date对象的天数
+            hours       - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes     - 0-59之间的整数，做为date对象的分钟数
+            seconds     - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+            ==================================================*/
+            var t1 = Date.UTC(2017, 
+                              5, 
+                              19, 
+                              0, 
+                              0, 
+                              0); //北京时间
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="我在此处等了你 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+    </script>
+
+
+
+
+
+
+    <div class="languages">
+        <i class="fa fa-language"></i>
+        <span>繁体中文/简体中文：</span>
+        <a id="translateLink" href="javascript:translatePage();">繁体中文</a>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/tw_cn/tw_cn.js"></script>
+    <script type="text/javascript">
+        var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+        var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+        var cookieDomain = "https://qidaink.github.io/"; //Cookie地址, 一定要设定, 通常为自己的网址
+        var msgToTraditionalChinese = "繁体中文"; //此处可以更改为你想要显示的文字
+        var msgToSimplifiedChinese = "簡體中文"; //同上，但两处均不建议更改
+        var translateButtonId = "translateLink"; //默认互换id
+        translateInitilization();
+    </script>
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{&quot;enable&quot;:true,&quot;spinner&quot;:true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{&quot;lang&quot;:&quot;zh-CN&quot;,&quot;enable&quot;:true,&quot;serverURL&quot;:&quot;https:&#x2F;&#x2F;qidaink-blog-comment.vercel.app&#x2F;&quot;,&quot;placeholder&quot;:&quot;(ฅ&gt;ω&lt;*ฅ)欢迎大家评论呀！&quot;,&quot;avatar&quot;:&quot;identicon&quot;,&quot;meta&quot;:[&quot;nick&quot;,&quot;mail&quot;,&quot;link&quot;],&quot;pageSize&quot;:5,&quot;visitor&quot;:false,&quot;comment_count&quot;:true,&quot;requiredFields&quot;:[&quot;nick&quot;,&quot;mail&quot;],&quot;langMode&quot;:{&quot;admin&quot;:&quot;可爱的博主&quot;,&quot;nick&quot;:&quot;昵称（必填）&quot;,&quot;mail&quot;:&quot;邮箱（必填）&quot;,&quot;link&quot;:&quot;网址（选填）&quot;,&quot;sofa&quot;:&quot;这里冷冷清清的，快来留下脚印吧(ฅ&gt;ω&lt;*ฅ)！&quot;},&quot;el&quot;:&quot;#waline-comments&quot;,&quot;libUrl&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;@waline&#x2F;client&#x2F;dist&#x2F;Waline.min.js&quot;,&quot;path&quot;:&quot;&#x2F;posts&#x2F;3bc2240b&#x2F;&quot;}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() => 
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => {
+    new Waline(CONFIG.waline);
+  });
+});
+</script><script>
+NexT.utils.loadComments('#twikoo-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js', () => {
+    twikoo.init(Object.assign({"enable":true,"visitor":false,"envId":"qidaink-twikoo-0g5tijvr7bf0f59e"}, {
+      el: '#twikoo-comments'
+    }));
+  }, window.twikoo);
+});
+</script>
+<script defer src= https://unpkg.com/hexo-qidaink-live2d@1.1.1/live2d-widget/autoload.js></script><script src="/js/third-party/comments/livere.js"></script>
+
+
+
+
+<link defer rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@1.2.0/dist/Meting.min.js"></script>
+<!-- APlayer本体 -->
+<div class="aplayer"
+    data-id="7274703654"
+    data-server="tencent"
+    data-type="playlist"
+    data-fixed="true"
+    data-autoplay="false"
+    data-order="random"
+    data-volume="0.55"
+    data-theme="#cc543a"
+    data-preload="auto" >
+</div>
+
+
+
+<script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/fancybox/fancybox_param.js"></script>
+
+
+
+
+    
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-move/fairyDustCursor.js"></script>
+
+
+
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-click/fireWorks.js"></script>
+
+
+
+
+
+
+    
+        <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/falling/sakura.js"></script>
+    
+
+
+
+
+    <script src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/type-input/activate-power-mode.min.js"></script>
+    <script>
+        POWERMODE.colorful = true;
+        POWERMODE.shake = false;
+        POWERMODE.mobile = true;
+        document.body.addEventListener('input', POWERMODE);
+    </script>
+
+
+</body>
+</html>

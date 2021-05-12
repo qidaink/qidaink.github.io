@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;qidaink.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="本文主要介绍对自己博客页面的优化，在NexT主题下进行修改，本文写的时候使用的是v7.8.0，后续更新可能有些地方不再适用，但是都大同小异。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【NexT】NexT自定义记录-1">
+<meta property="og:url" content="https://qidaink.github.io/posts/8e2d10a7/index.html">
+<meta property="og:site_name" content="云与海">
+<meta property="og:description" content="本文主要介绍对自己博客页面的优化，在NexT主题下进行修改，本文写的时候使用的是v7.8.0，后续更新可能有些地方不再适用，但是都大同小异。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/001Avatar.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/002Copyright.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/003Scrollpercent.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/004Favicon.png">
+<meta property="article:published_time" content="2021-02-23T04:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-12T10:28:52.129Z">
+<meta property="article:author" content="qidaink">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="主题修改">
+<meta property="article:tag" content="next">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/001Avatar.png">
+
+
+<link rel="canonical" href="https://qidaink.github.io/posts/8e2d10a7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;qidaink.github.io&#x2F;posts&#x2F;8e2d10a7&#x2F;&quot;,&quot;path&quot;:&quot;posts&#x2F;8e2d10a7&#x2F;&quot;,&quot;title&quot;:&quot;【NexT】NexT自定义记录-1&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>【NexT】NexT自定义记录-1 | 云与海</title><script src="/js/config.js"></script><link rel="dns-prefetch" href="https://qidaink-blog-comment.vercel.app/">
+
+
+
+
+
+    <script async type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/funnytitle/funnytitle.js"></script>
+
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">云与海</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>云与海</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签页<span class="badge">27</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类页<span class="badge">7</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档页<span class="badge">24</span></a></li>
+        <li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="fas fa-edit fa-fw"></i>留言板</a></li>
+        <li class="menu-item menu-item-friendslink"><a href="/friendslink/" rel="section"><i class="fa fa-link fa-fw"></i>友人帐</a></li>
+        <li class="menu-item menu-item-friendscircle"><a href="/friendscircle/" rel="section"><i class="fas fa-user-friends fa-fw"></i>朋友圈</a></li>
+        <li class="menu-item menu-item-comment"><a href="https://qidaink-blog-comment.vercel.app/ui/login" rel="noopener" target="_blank"><i class="fa fa-comment fa-fw"></i>评论管理</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-nexT%E4%B8%BB%E9%A2%98%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-text">1.nexT主题的安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-nexT%E4%B8%BB%E9%A2%98%E6%98%BE%E7%A4%BA%E4%BC%98%E5%8C%96"><span class="nav-text">2.nexT主题显示优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1%E4%BF%AE%E6%94%B9nexT%E4%B8%BB%E9%A2%98%E6%A0%B7%E5%BC%8F"><span class="nav-text">2.1修改nexT主题样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2%E6%B7%BB%E5%8A%A0%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E5%B0%8F%E7%BA%A2%E5%BF%83%E7%89%B9%E6%95%88"><span class="nav-text">2.2添加鼠标点击小红心特效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3%E8%AE%BE%E7%BD%AE%E8%8F%9C%E5%8D%95"><span class="nav-text">2.3设置菜单</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1%E8%AE%BE%E5%AE%9A%E8%8F%9C%E5%8D%95%E5%86%85%E5%AE%B9"><span class="nav-text">2.3.1设定菜单内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4%E8%AE%BE%E7%BD%AE%E5%A4%B4%E5%83%8F"><span class="nav-text">2.4设置头像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5Menu%E5%A2%9E%E5%8A%A0%E5%85%B3%E4%BA%8E%E3%80%81%E6%A0%87%E7%AD%BE%E3%80%81%E5%88%86%E7%B1%BB%E9%A1%B5%E9%9D%A2"><span class="nav-text">2.5Menu增加关于、标签、分类页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%E5%92%8C%E9%80%8F%E6%98%8E%E5%BA%A6"><span class="nav-text">2.6设置背景图片和透明度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6%E6%B7%BB%E5%8A%A0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD"><span class="nav-text">2.6添加搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"><span class="nav-text">2.7文章目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E4%B8%BB%E9%A2%98"><span class="nav-text">2.8代码高亮主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9%E4%BB%A3%E7%A0%81%E5%9D%97%E5%A4%8D%E5%88%B6"><span class="nav-text">2.9代码块复制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10%E5%8A%A8%E6%80%81%E4%B8%8B%E9%9B%AA%E7%89%B9%E6%95%88"><span class="nav-text">2.10动态下雪特效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11%E6%A8%B1%E8%8A%B1%E7%89%B9%E6%95%88%E5%AE%9E%E7%8E%B0"><span class="nav-text">2.11樱花特效实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-12%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E4%B8%8E%E9%98%85%E8%AF%BB%E6%97%B6%E9%95%BF"><span class="nav-text">2.12字数统计与阅读时长</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-13%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E8%AF%B4%E6%98%8E"><span class="nav-text">2.13添加版权说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-14%E6%B7%BB%E5%8A%A0%E7%BB%93%E6%9D%9F%E6%A0%87%E8%AE%B0"><span class="nav-text">2.14添加结束标记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-15%E4%BE%A7%E8%BE%B9%E6%A0%8F%E6%98%BE%E7%A4%BA%E9%98%85%E8%AF%BB%E8%BF%9B%E5%BA%A6"><span class="nav-text">2.15侧边栏显示阅读进度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-16%E4%BF%AE%E6%94%B9%E5%BA%95%E9%83%A8-%E6%A0%87%E7%AD%BE"><span class="nav-text">2.16修改底部#标签    </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-17%E5%8E%BB%E6%8E%89%E5%BA%95%E9%83%A8%E7%9A%84%E7%94%B1Hexo%E2%80%A6%E5%BC%BA%E5%8A%9B%E9%A9%B1%E5%8A%A8%E5%AD%97%E6%A0%B7"><span class="nav-text">2.17去掉底部的由Hexo…强力驱动字样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-18%E6%9B%B4%E6%8D%A2%E7%BD%91%E9%A1%B5%E9%A1%B6%E6%A0%8F%E9%BB%98%E8%AE%A4%E5%9B%BE%E6%A0%87"><span class="nav-text">2.18更换网页顶栏默认图标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-19%E8%AE%BE%E7%BD%AERSS%E8%AE%A2%E9%98%85"><span class="nav-text">2.19设置RSS订阅</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-20%E9%A1%B5%E8%84%9A%E5%A2%9E%E5%8A%A0%E7%BD%91%E7%AB%99%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4%E7%BB%9F%E8%AE%A1"><span class="nav-text">2.20页脚增加网站运行时间统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-21%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8"><span class="nav-text">2.21添加音乐播放器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E7%AB%99%E7%82%B9%E8%AE%BE%E7%BD%AE"><span class="nav-text">3.站点设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1%E8%AE%BE%E7%BD%AE%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA"><span class="nav-text">3.1设置中文显示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2%E6%8C%81%E4%B9%85%E5%8C%96%E9%93%BE%E6%8E%A5"><span class="nav-text">3.2持久化链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3%E5%BC%80%E5%90%AF%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE"><span class="nav-text">3.3开启代码高亮</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4%E5%9B%BE%E7%89%87%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD"><span class="nav-text">3.4图片延迟加载</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qidaink"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">qidaink</p>
+  <div class="site-description" itemprop="description">但愿人长久，千里共婵娟</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_38231279" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_38231279" rel="noopener" target="_blank"><i class="iconfont icon-csdn1 fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/qidaink" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="iconfont icon-gitee-fill-round fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/qidaink" title="Github → https:&#x2F;&#x2F;github.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://fontawesome.com/" title="Awesome → https:&#x2F;&#x2F;fontawesome.com&#x2F;" rel="noopener" target="_blank"><i class="fab fa-font-awesome-flag fa-fw"></i>Awesome</a>
+      </span>
+  </div>
+
+
+
+
+
+
+
+
+  <div style="">
+    <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+  </div>
+  <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/canvas/canvas-clock.js"></script>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://qidaink.github.io/posts/8e2d10a7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="qidaink">
+      <meta itemprop="description" content="但愿人长久，千里共婵娟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云与海">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【NexT】NexT自定义记录-1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-02-23 12:00:00" itemprop="dateCreated datePublished" datetime="2021-02-23T12:00:00+08:00">2021-02-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-12 18:28:52" itemprop="dateModified" datetime="2021-05-12T18:28:52+08:00">2021-05-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/8e2d10a7/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/8e2d10a7/" data-xid="/posts/8e2d10a7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>33k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1:01</span>
+    </span>
+</div>
+
+            <div class="post-description">本文主要介绍对自己博客页面的优化，在NexT主题下进行修改，本文写的时候使用的是v7.8.0，后续更新可能有些地方不再适用，但是都大同小异。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+
+
+    <div class="poem-wrap">
+        <div class="poem-border poem-left"></div>
+        <div class="poem-border poem-right"></div>
+        <h1>一句诗词</h1>
+        <p id="poem">挑选中...</p>
+        <p id="info" style="text-align: right;"></p>
+        <script data-pjax defer src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/todayPoem.js"></script>
+    </div>
+
+        <p>摘要：<br>&emsp;&emsp;本文主要介绍对自己博客页面的优化，在<code>NexT</code>主题下进行修改，本文写的时候使用的是<code>v7.8.0</code>，后续更新可能有些地方不再适用，但是都大同小异。</p>
+<span id="more"></span>
+
+<p>&emsp;&emsp;下边有两个配置文件，一个是位于站点根目录下的<code>_config.yml</code>文件，称为站点配置文件，另一个是位于站点目录中主题文件中的<code>_config.yml</code>文件，称之为主题配置文件，在我的ubuntu中分别位于以下位置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 站点配置文件位置</span></span><br><span class="line">~/02MyBlog/hexofiles/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 主题配置文件位置</span></span><br><span class="line">~/02MyBlog/hexofiles/themes/next</span><br></pre></td></tr></table></figure>
+
+<h1 id="1-nexT主题的安装"><a href="#1-nexT主题的安装" class="headerlink" title="1.nexT主题的安装"></a><font size=3>1.nexT主题的安装</font></h1><ul>
+<li><code>NexT</code>官网</li>
+</ul>
+<p>&emsp;&emsp;<code>NexT</code>文档地址：<a href="http://theme-next.iissnan.com/" target="_blank">NexT官方中文文档</a></p>
+<p>&emsp;&emsp;主题下载下载命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入初始化好的hexo文件夹</span></span><br><span class="line">cd ~/02MyBlog/hexofiles/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 下载主题源码文件</span></span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next.git themes/next</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;也可以按照官网进行安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入初始化的文件夹</span></span><br><span class="line">cd &lt;hexo folder&gt;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建主题文件夹</span></span><br><span class="line">mkdir themes/next</span><br><span class="line"><span class="meta">#</span><span class="bash"> 下载主题文件</span></span><br><span class="line">curl -s https://api.github.com/repos/theme-next/hexo-theme-next/releases/latest | grep tarball_url | cut -d &#x27;&quot;&#x27; -f 4 | wget -i - -O- | tar -zx -C themes/next --strip-components=1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改站点配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="comment"># theme: landscape</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="2-nexT主题显示优化"><a href="#2-nexT主题显示优化" class="headerlink" title="2.nexT主题显示优化"></a><font size=3>2.nexT主题显示优化</font></h1><h2 id="2-1修改nexT主题样式"><a href="#2-1修改nexT主题样式" class="headerlink" title="2.1修改nexT主题样式"></a><font size=3>2.1修改nexT主题样式</font></h2><p>&emsp;&emsp;<code>Scheme</code> 是 <code>NexT </code>提供的一种特性，借助于<code> Scheme</code>，<code>NexT </code>提供多种不同的外观。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">进入主题文件夹</span></span><br><span class="line">cd ~/02MyBlog/hexofiles/themes/next</span><br><span class="line"><span class="meta">#</span><span class="bash"> 选择自己想要的主题</span></span><br><span class="line">vim _config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;主题配置部分如下(具体怎样可以自己修改查看，我使用的是第三个)</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="comment">#scheme: Muse</span></span><br><span class="line"><span class="comment">#scheme: Mist</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2添加鼠标点击小红心特效"><a href="#2-2添加鼠标点击小红心特效" class="headerlink" title="2.2添加鼠标点击小红心特效"></a><font size=3>2.2添加鼠标点击小红心特效</font></h2><p>&emsp;&emsp;按如下命令进入相应的文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入js文件夹</span></span><br><span class="line">cd ~/02MyBlog/hexofiles/themes/next/source/js/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建特效实现文件</span></span><br><span class="line">vim myclicklove.js</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在<code>myclicklove.js</code>中添加如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params">e,t,a</span>)</span>&#123;<span class="function"><span class="keyword">function</span> <span class="title">n</span>(<span class="params"></span>)</span>&#123;c(<span class="string">&quot;.heart&#123;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);&#125;.heart:after,.heart:before&#123;content: &#x27;&#x27;;width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;&#125;.heart:after&#123;top: -5px;&#125;.heart:before&#123;left: -5px;&#125;&quot;</span>),o(),r()&#125;<span class="function"><span class="keyword">function</span> <span class="title">r</span>(<span class="params"></span>)</span>&#123;<span class="keyword">for</span>(<span class="keyword">var</span> e=<span class="number">0</span>;e&lt;d.length;e++)d[e].alpha&lt;=<span class="number">0</span>?(t.body.removeChild(d[e].el),d.splice(e,<span class="number">1</span>)):(d[e].y--,d[e].scale+=<span class="number">.004</span>,d[e].alpha-=<span class="number">.013</span>,d[e].el.style.cssText=<span class="string">&quot;left:&quot;</span>+d[e].x+<span class="string">&quot;px;top:&quot;</span>+d[e].y+<span class="string">&quot;px;opacity:&quot;</span>+d[e].alpha+<span class="string">&quot;;transform:scale(&quot;</span>+d[e].scale+<span class="string">&quot;,&quot;</span>+d[e].scale+<span class="string">&quot;) rotate(45deg);background:&quot;</span>+d[e].color+<span class="string">&quot;;z-index:99999&quot;</span>);requestAnimationFrame(r)&#125;<span class="function"><span class="keyword">function</span> <span class="title">o</span>(<span class="params"></span>)</span>&#123;<span class="keyword">var</span> t=<span class="string">&quot;function&quot;</span>==<span class="keyword">typeof</span> e.onclick&amp;&amp;e.onclick;e.onclick=<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;t&amp;&amp;t(),i(e)&#125;&#125;<span class="function"><span class="keyword">function</span> <span class="title">i</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">var</span> a=t.createElement(<span class="string">&quot;div&quot;</span>);a.className=<span class="string">&quot;heart&quot;</span>,d.push(&#123;<span class="attr">el</span>:a,<span class="attr">x</span>:e.clientX-<span class="number">5</span>,<span class="attr">y</span>:e.clientY-<span class="number">5</span>,<span class="attr">scale</span>:<span class="number">1</span>,<span class="attr">alpha</span>:<span class="number">1</span>,<span class="attr">color</span>:s()&#125;),t.body.appendChild(a)&#125;<span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">var</span> a=t.createElement(<span class="string">&quot;style&quot;</span>);a.type=<span class="string">&quot;text/css&quot;</span>;<span class="keyword">try</span>&#123;a.appendChild(t.createTextNode(e))&#125;<span class="keyword">catch</span>(t)&#123;a.styleSheet.cssText=e&#125;t.getElementsByTagName(<span class="string">&quot;head&quot;</span>)[<span class="number">0</span>].appendChild(a)&#125;<span class="function"><span class="keyword">function</span> <span class="title">s</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span><span class="string">&quot;rgb(&quot;</span>+~~(<span class="number">255</span>*<span class="built_in">Math</span>.random())+<span class="string">&quot;,&quot;</span>+~~(<span class="number">255</span>*<span class="built_in">Math</span>.random())+<span class="string">&quot;,&quot;</span>+~~(<span class="number">255</span>*<span class="built_in">Math</span>.random())+<span class="string">&quot;)&quot;</span>&#125;<span class="keyword">var</span> d=[];e.requestAnimationFrame=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="built_in">setTimeout</span>(e,<span class="number">1e3</span>/<span class="number">60</span>)&#125;&#125;(),n()&#125;(<span class="built_in">window</span>,<span class="built_in">document</span>);</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;进入调用该文件的文件夹并打开相应的引用文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入文件所在文件夹</span></span><br><span class="line">cd ~/02MyBlog/hexofiles/themes/next/layout/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 打开特效引用文件</span></span><br><span class="line">vim _layout.swig</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在文档末尾的<code>&lt;body&gt;&lt;/body&gt;</code>标签内(至少我目前还没有发现有问题，有问题再修改)添加如下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 页面点击小红心 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/js/myclicklove.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3设置菜单"><a href="#2-3设置菜单" class="headerlink" title="2.3设置菜单"></a><font size=3>2.3设置菜单</font></h2><p>&emsp;&emsp;菜单配置包括三个部分，第一是菜单项（名称和链接），第二是菜单项的显示文本，第三是菜单项对应的图标。<code>NexT </code>使用的是 <a target="_blank" rel="noopener" href="http://fontawesome.io/">Font Awesome</a> 提供的图标，<code>Font Awesome </code>提供了 <code>600+</code> 的图标，可以满足绝大的多数的场景，同时无须担心在<code> Retina</code> 屏幕下图标模糊的问题。</p>
+<h3 id="2-3-1设定菜单内容"><a href="#2-3-1设定菜单内容" class="headerlink" title="2.3.1设定菜单内容"></a><font size=3>2.3.1设定菜单内容</font></h3><p>&emsp;&emsp;对应的字段是 <code>menu</code>。菜单内容的设置格式是：<code>item name: link</code>。其中 <code>item name</code> 是一个名称，这个名称并不直接显示在页面上，它用于匹配图标以及翻译。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 编辑相应主题配置文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>文件如下</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Menu Settings</span></span><br><span class="line"><span class="comment"># ------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Usage: `Key: /link/ || icon`</span></span><br><span class="line"><span class="comment"># Key is the name of menu item. If the translation for t</span></span><br><span class="line"><span class="comment"># Value before `||` delimiter is the target link, value </span></span><br><span class="line"><span class="comment"># When running the site in a subdirectory (e.g. yoursite</span></span><br><span class="line"><span class="comment"># External url should start with http:// or https://</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="comment">#about: /about/ || fa fa-user</span></span><br><span class="line">  <span class="comment">#tags: /tags/ || fa fa-tags</span></span><br><span class="line">  <span class="comment">#categories: /categories/ || fa fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || fa fa-calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || fa fa-sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || fa fa-heartbeat</span></span><br></pre></td></tr></table></figure>
+<p>以下列出几项作为说明</p>
+<table>
+<thead>
+<tr>
+<th>键值</th>
+<th>设定值</th>
+<th>显示文本（简体中文）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>home</td>
+<td><code>home: /</code></td>
+<td>主页</td>
+</tr>
+<tr>
+<td>archives</td>
+<td><code>archives: /archives</code></td>
+<td>归档页</td>
+</tr>
+<tr>
+<td>categories</td>
+<td><code>categories: /categories</code></td>
+<td>分类页</td>
+</tr>
+<tr>
+<td>tags</td>
+<td><code>tags: /tags</code></td>
+<td>标签页</td>
+</tr>
+<tr>
+<td>about</td>
+<td><code>about: /about</code></td>
+<td>关于页面</td>
+</tr>
+<tr>
+<td>commonweal</td>
+<td><code>commonweal: /404.html</code></td>
+<td>公益 404</td>
+</tr>
+</tbody></table>
+<p>&emsp;&emsp;以简体中文为例，若需要添加一个菜单项，比如 <code>search</code>。那么就需要修改简体中文对应的翻译文件 <code>languages/zh-CN.yml</code>，在 <code>menu</code> 字段下添加一项      </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">   <span class="attr">home:</span> <span class="string">首页</span></span><br><span class="line">   <span class="attr">archives:</span> <span class="string">归档</span></span><br><span class="line">   <span class="attr">categories:</span> <span class="string">分类</span></span><br><span class="line">   <span class="attr">tags:</span> <span class="string">标签</span></span><br><span class="line">   <span class="attr">about:</span> <span class="string">关于</span>                                           </span><br><span class="line">   <span class="attr">search:</span> <span class="string">搜索</span></span><br><span class="line">   <span class="attr">schedule:</span> <span class="string">日程表</span></span><br><span class="line">   <span class="attr">sitemap:</span> <span class="string">站点地图</span></span><br><span class="line">   <span class="attr">commonweal:</span> <span class="string">公益</span> <span class="number">404</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-4设置头像"><a href="#2-4设置头像" class="headerlink" title="2.4设置头像"></a><font size=3>2.4设置头像</font></h2><p>&emsp;&emsp;<code>URI</code>就是头像的地址，地址可以是以下的两种：</p>
+<table>
+    <tr>
+        <td width=200px align="center">
+            地址
+        </td>
+        <td align="center">
+            值
+        </td>
+    </tr>
+    <tr>
+        <td width=150px>
+            完整的互联网 URI
+        </td>
+        <td align="left">
+            http://example.com/avatar.png
+        </td>
+    </tr>
+    <tr>
+        <td width=200px>
+            站点内的地址
+        </td>
+        <td align="left">
+            将头像放置主题目录下的 source/uploads/ （新建 uploads 目录若不存在）配置为：avatar: /uploads/avatar.png 或者 放置在 source/images/ 目录下配置为：avatar: /images/avatar.png
+        </td>
+    </tr>
+</table>
+
+<p>&emsp;&emsp;打开主题配置文件进行修改。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改为以下内容。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="comment"># Replace the default image and set the url here.</span></span><br><span class="line">  <span class="attr">url:</span> <span class="comment">#/images/avatar.gif</span></span><br><span class="line">  <span class="comment"># If true, the avatar will be dispalyed in circle.</span></span><br><span class="line">  <span class="attr">rounded:</span> <span class="literal">true</span>                                        </span><br><span class="line">  <span class="comment"># If true, the avatar will be rotated with the cursor.</span></span><br><span class="line">  <span class="attr">rotated:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;用该图片作为头像</p>
+<img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/001Avatar.png" style="zoom:50%;" />
+
+<h2 id="2-5Menu增加关于、标签、分类页面"><a href="#2-5Menu增加关于、标签、分类页面" class="headerlink" title="2.5Menu增加关于、标签、分类页面"></a><font size=3>2.5Menu增加关于、标签、分类页面</font></h2><ul>
+<li>新建相关的页面</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;about&quot;</span><br><span class="line">hexo new page &quot;tags&quot;</span><br><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;新建完成之后会发现<code> ~/02MyBlog/hexofiles/source/</code>文件夹中多了三个文件夹</p>
+<ul>
+<li>修改相应的文件</li>
+</ul>
+<p>&emsp;&emsp;分别进入刚才新建的三个文件夹，修改<code>index.md</code>文件如下：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--about中的index.md--&gt;</span><br><span class="line">---</span><br><span class="line">title: 关于</span><br><span class="line">type: &quot;about&quot;</span><br><span class="line">---</span><br><span class="line">&lt;!--tags中的index.md--&gt;</span><br><span class="line">---</span><br><span class="line">title: 标签</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br><span class="line">&lt;!--tags中的index.md--&gt;</span><br><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-6设置背景图片和透明度"><a href="#2-6设置背景图片和透明度" class="headerlink" title="2.6设置背景图片和透明度"></a><font size=3>2.6设置背景图片和透明度</font></h2><ul>
+<li>修改主题配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;去掉<code>styles.styl</code>一行前边的<code>#</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Define custom file paths.</span></span><br><span class="line"><span class="comment"># Create your custom files in site directory `source/_da    ta` and uncomment needed files below.</span></span><br><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.swig</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.swig</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.swig</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.swig</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.swig</span></span><br><span class="line">  <span class="comment">#footer: source/_data/footer.swig</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.swig</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>新建并修改<code>styles.styl</code>文件</li>
+</ul>
+<p>&emsp;&emsp;在站点根目录的<code>source</code>目录下新建<code>_data</code>文件夹，并新建<code>styles.styl</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入文件夹</span></span><br><span class="line">cd ~/02MyBlog/hexofiles/source/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建 _data 文件夹</span></span><br><span class="line">mkdir _data</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建并修改styles.styl文件</span></span><br><span class="line">vim styles.styl</span><br><span class="line"><span class="meta">#</span><span class="bash"> 后续用以下命令直接修改</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/source/_data/styles.styl</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在<code>styles.styl</code>文件添加如下内容</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Custom styles.</span></span><br><span class="line"><span class="comment">// 整体背景设置</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    background:url(/images/background.jpg);  // 设定背景图片,images同处于source文件夹下</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;  <span class="comment">// 设定背景图片非重复填充</span></span><br><span class="line">    <span class="attribute">background-attachment</span>:fixed;   <span class="comment">// 设置背景图片不随页面滚动</span></span><br><span class="line">    <span class="attribute">background-position</span>:<span class="number">50%</span> <span class="number">50%</span>;   <span class="comment">// 设置背景图片位置</span></span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.8</span>;</span><br><span class="line">	<span class="attribute">background-size</span>: cover// 设置保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在生成静态页面的时候并会有如下警告(有说是因为<code>node</code>和<code>npm</code>版本太高)，但是并不影响背景的正常显示，可以忽略。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(node:10806) Warning: Accessing non-existent property &#x27;lineno&#x27; of module exports inside circular dependency</span><br><span class="line">(Use `node --trace-warnings ...` to show where the warning was created)</span><br><span class="line">(node:10806) Warning: Accessing non-existent property &#x27;column&#x27; of module exports inside circular dependency</span><br><span class="line">(node:10806) Warning: Accessing non-existent property &#x27;filename&#x27; of module exports inside circular dependency</span><br><span class="line">(node:10806) Warning: Accessing non-existent property &#x27;lineno&#x27; of module exports inside circular dependency</span><br><span class="line">(node:10806) Warning: Accessing non-existent property &#x27;column&#x27; of module exports inside circular dependency</span><br><span class="line">(node:10806) Warning: Accessing non-existent property &#x27;filename&#x27; of module exports inside circular dependency</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-6添加搜索功能"><a href="#2-6添加搜索功能" class="headerlink" title="2.6添加搜索功能"></a><font size=3>2.6添加搜索功能</font></h2><ul>
+<li>安装两个插件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 在站点根目录下分别安装插件</span></span><br><span class="line">npm install hexo-generator-search  --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br><span class="line"><span class="meta">#</span><span class="bash"> 编辑相应文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/_config.yml</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置站点文件</li>
+</ul>
+<p>&emsp;&emsp;在站点配置文件中添加如下内容</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">search:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">search.xml</span></span><br><span class="line">  <span class="attr">field:</span> <span class="string">post</span></span><br><span class="line">  <span class="attr">format:</span> <span class="string">html</span></span><br><span class="line">  <span class="attr">limit:</span> <span class="number">10000</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改next主题配置文件<code>_config.yml</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;将<code> enable: false</code>改为<code>enable: true </code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Local Search</span></span><br><span class="line"><span class="comment"># Dependencies: https://github.com/theme-next/hexo-gener</span></span><br><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>                                          </span><br><span class="line">  <span class="comment"># If au true [ID]      ch by changing input.</span></span><br><span class="line">  <span class="comment"># If manual, trigger search by pressing enter key or s</span></span><br><span class="line">  <span class="attr">trigger:</span> <span class="string">auto</span></span><br><span class="line">  <span class="comment"># Show top n results per article, show all results by </span></span><br><span class="line">  <span class="attr">top_n_per_article:</span> <span class="number">1</span></span><br><span class="line">  <span class="comment"># Unescape html strings to the readable one.</span></span><br><span class="line">  <span class="attr">unescape:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># Preload the search data when the page loads.</span></span><br><span class="line">  <span class="attr">preload:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-7文章目录"><a href="#2-7文章目录" class="headerlink" title="2.7文章目录"></a><font size=3>2.7文章目录</font></h2><p>&emsp;&emsp;我这边自己写文章的时候已经写了编号，所以需要关闭显示的时候的自动编号。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改主题配置文件如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Table of Contents in the Sidebar</span></span><br><span class="line"><span class="comment"># Front-matter variable (unsupport wrap expand_all).</span></span><br><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Automatically add list number to toc.</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">false</span>                                         </span><br><span class="line">  <span class="comment"># If tr false [ID]     ll placed on next lines if head</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># If true, all level of TOC in a post will be displaye</span></span><br><span class="line">  <span class="attr">expand_all:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># Maximum heading depth of generated toc.</span></span><br><span class="line">  <span class="attr">max_depth:</span> <span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-8代码高亮主题"><a href="#2-8代码高亮主题" class="headerlink" title="2.8代码高亮主题"></a><font size=3>2.8代码高亮主题</font></h2><p>&emsp;&emsp;需要先将站点配置文件高亮代码设置打开（见3.3节），再编辑主题配置文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;选择相应的高亮的主题</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Code Highlight theme</span></span><br><span class="line"><span class="comment"># Available values: normal | night | night eighties | </span></span><br><span class="line"><span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line"><span class="attr">highlight_theme:</span> <span class="string">night</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-9代码块复制"><a href="#2-9代码块复制" class="headerlink" title="2.9代码块复制"></a><font size=3>2.9代码块复制</font></h2><p>&emsp;&emsp;在NexT7.x的版本中直接开启复制功能即可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;将以下设置为<code>true</code>，并选择代码块的风格。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">copy_button:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Show text copy result.</span></span><br><span class="line">  <span class="attr">show_result:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">mac</span> </span><br></pre></td></tr></table></figure>
+
+<h2 id="2-10动态下雪特效"><a href="#2-10动态下雪特效" class="headerlink" title="2.10动态下雪特效"></a><font size=3>2.10动态下雪特效</font></h2><ul>
+<li>准备工作</li>
+</ul>
+<p>&emsp;&emsp;首先进入特效配置的文件夹中去</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入特效配置文件夹</span></span><br><span class="line"><span class="built_in">cd</span> ~/02MyBlog/hexofiles/themes/next/<span class="built_in">source</span>/js/</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在调用以下特效代码实现文件之前需要先引入<code>jquery.min.js</code>(我没有深究这到底是什么，能用就好，能用就好，哈哈哈)，否则特效不会生效。</p>
+<p>&emsp;&emsp;编辑引用文件<code>_layout.swig</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 编辑_layout.swig</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_layout.swig</span><br></pre></td></tr></table></figure>
+
+<p>在<code>&lt;body&gt;&lt;/body&gt;</code>标签内添加以下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;//libs.baidu.com/jquery/1.8.3/jquery.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>六边形雪花样式</li>
+</ul>
+<p>&emsp;&emsp;说明：这个特效的代码可以实现雪花飘落，但是下拉的时速度大于雪花飘落速度的时候，雪花就消失了，等一会才会落下来。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 新建六边形雪花实现文件</span></span><br><span class="line">vim snow1.js</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;添加如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*六边形雪花雪花飘落*/</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>&#123;</span><br><span class="line">	$.fn.snow = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> $flake = $(<span class="string">&#x27;&lt;div id=&quot;snowbox&quot; /&gt;&#x27;</span>).css(&#123;<span class="string">&#x27;position&#x27;</span>: <span class="string">&#x27;absolute&#x27;</span>,<span class="string">&#x27;z-index&#x27;</span>:<span class="string">&#x27;9999&#x27;</span>, <span class="string">&#x27;top&#x27;</span>: <span class="string">&#x27;-50px&#x27;</span>&#125;).html(<span class="string">&#x27;&amp;#10052;&#x27;</span>),</span><br><span class="line">	documentHeight 	= $(<span class="built_in">document</span>).height(),</span><br><span class="line">	documentWidth	= $(<span class="built_in">document</span>).width(),</span><br><span class="line">	defaults = &#123;</span><br><span class="line">		minSize		: <span class="number">10</span>,</span><br><span class="line">		maxSize		: <span class="number">20</span>,</span><br><span class="line">		newOn		: <span class="number">1000</span>,</span><br><span class="line">		flakeColor	: <span class="string">&quot;#AFDAEF&quot;</span> <span class="comment">/* 此处可以定义雪花颜色，若要白色可以改为#FFFFFF */</span></span><br><span class="line">	&#125;,</span><br><span class="line">	options	= $.extend(&#123;&#125;, defaults, options);</span><br><span class="line">	<span class="keyword">var</span> interval= <span class="built_in">setInterval</span>( <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> startPositionLeft = <span class="built_in">Math</span>.random() * documentWidth - <span class="number">100</span>,</span><br><span class="line">	startOpacity = <span class="number">0.5</span> + <span class="built_in">Math</span>.random(),</span><br><span class="line">	sizeFlake = options.minSize + <span class="built_in">Math</span>.random() * options.maxSize,</span><br><span class="line">	endPositionTop = documentHeight - <span class="number">200</span>,</span><br><span class="line">	endPositionLeft = startPositionLeft - <span class="number">500</span> + <span class="built_in">Math</span>.random() * <span class="number">500</span>,</span><br><span class="line">	durationFall = documentHeight * <span class="number">10</span> + <span class="built_in">Math</span>.random() * <span class="number">5000</span>;</span><br><span class="line">	$flake.clone().appendTo(<span class="string">&#x27;body&#x27;</span>).css(&#123;</span><br><span class="line">		left: startPositionLeft,</span><br><span class="line">		opacity: startOpacity,</span><br><span class="line">		<span class="string">&#x27;font-size&#x27;</span>: sizeFlake,</span><br><span class="line">		color: options.flakeColor</span><br><span class="line">	&#125;).animate(&#123;</span><br><span class="line">		top: endPositionTop,</span><br><span class="line">		left: endPositionLeft,</span><br><span class="line">		opacity: <span class="number">0.2</span></span><br><span class="line">	&#125;,durationFall,<span class="string">&#x27;linear&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		$(<span class="built_in">this</span>).remove()</span><br><span class="line">	&#125;);</span><br><span class="line">	&#125;, options.newOn);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;)(jQuery);</span><br><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $.fn.snow(&#123; </span><br><span class="line">	    minSize: <span class="number">5</span>, <span class="comment">/* 定义雪花最小尺寸 */</span></span><br><span class="line">	    maxSize: <span class="number">50</span>,<span class="comment">/* 定义雪花最大尺寸 */</span></span><br><span class="line">	    newOn: <span class="number">300</span>  <span class="comment">/* 定义密集程度，数字越小越密集 */</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>圆形雪花样式</li>
+</ul>
+<p>&emsp;&emsp;说明：这个特效的代码好像是没有全屏显示，具体的可能是参数设置问题，我后边用的是樱花的一个特效，那个比较好用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 新建圆形雪花特效文件</span></span><br><span class="line">vim snow2.js</span><br></pre></td></tr></table></figure>
+
+<p>添加如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*圆形，就那种毛茸茸的感觉*/</span></span><br><span class="line"><span class="comment">/* 控制下雪 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">snowFall</span>(<span class="params">snow</span>) </span>&#123;</span><br><span class="line">    <span class="comment">/* 可配置属性 */</span></span><br><span class="line">    snow = snow || &#123;&#125;;</span><br><span class="line">    <span class="built_in">this</span>.maxFlake = snow.maxFlake || <span class="number">200</span>;   <span class="comment">/* 最多片数 */</span></span><br><span class="line">    <span class="built_in">this</span>.flakeSize = snow.flakeSize || <span class="number">10</span>;  <span class="comment">/* 雪花形状 */</span></span><br><span class="line">    <span class="built_in">this</span>.fallSpeed = snow.fallSpeed || <span class="number">1</span>;   <span class="comment">/* 坠落速度 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 兼容写法 */</span></span><br><span class="line">requestAnimationFrame = <span class="built_in">window</span>.requestAnimationFrame ||</span><br><span class="line">    <span class="built_in">window</span>.mozRequestAnimationFrame ||</span><br><span class="line">    <span class="built_in">window</span>.webkitRequestAnimationFrame ||</span><br><span class="line">    <span class="built_in">window</span>.msRequestAnimationFrame ||</span><br><span class="line">    <span class="built_in">window</span>.oRequestAnimationFrame ||</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123; <span class="built_in">setTimeout</span>(callback, <span class="number">1000</span> / <span class="number">60</span>); &#125;;</span><br><span class="line"></span><br><span class="line">cancelAnimationFrame = <span class="built_in">window</span>.cancelAnimationFrame ||</span><br><span class="line">    <span class="built_in">window</span>.mozCancelAnimationFrame ||</span><br><span class="line">    <span class="built_in">window</span>.webkitCancelAnimationFrame ||</span><br><span class="line">    <span class="built_in">window</span>.msCancelAnimationFrame ||</span><br><span class="line">	<span class="built_in">window</span>.oCancelAnimationFrame;</span><br><span class="line"><span class="comment">/* 开始下雪 */</span></span><br><span class="line">snowFall.prototype.start = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">/* 创建画布 */</span></span><br><span class="line">    snowCanvas.apply(<span class="built_in">this</span>);</span><br><span class="line">    <span class="comment">/* 创建雪花形状 */</span></span><br><span class="line">    createFlakes.apply(<span class="built_in">this</span>);</span><br><span class="line">    <span class="comment">/* 画雪 */</span></span><br><span class="line">    drawSnow.apply(<span class="built_in">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 创建画布 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">snowCanvas</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">/* 添加Dom结点 */</span></span><br><span class="line">    <span class="keyword">var</span> snowcanvas = <span class="built_in">document</span>.createElement(<span class="string">&quot;canvas&quot;</span>);</span><br><span class="line">    snowcanvas.id = <span class="string">&quot;snowfall&quot;</span>;</span><br><span class="line">    snowcanvas.width = <span class="built_in">window</span>.innerWidth;</span><br><span class="line">    snowcanvas.height = <span class="built_in">document</span>.body.clientHeight;</span><br><span class="line">    snowcanvas.setAttribute(<span class="string">&quot;style&quot;</span>, <span class="string">&quot;position:absolute; top: 0; left: 0; z-index: 1; pointer-events: none;&quot;</span>);</span><br><span class="line">    <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;body&quot;</span>)[<span class="number">0</span>].appendChild(snowcanvas);</span><br><span class="line">    <span class="built_in">this</span>.canvas = snowcanvas;</span><br><span class="line">    <span class="built_in">this</span>.ctx = snowcanvas.getContext(<span class="string">&quot;2d&quot;</span>);</span><br><span class="line">    <span class="comment">/* 窗口大小改变的处理 */</span></span><br><span class="line">    <span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        snowcanvas.width = <span class="built_in">window</span>.innerWidth;</span><br><span class="line">        <span class="comment">/* snowcanvas.height = window.innerHeight */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 雪运动对象 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flakeMove</span>(<span class="params">canvasWidth, canvasHeight, flakeSize, fallSpeed</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.x = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * canvasWidth);   <span class="comment">/* x坐标 */</span></span><br><span class="line">    <span class="built_in">this</span>.y = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * canvasHeight);  <span class="comment">/* y坐标 */</span></span><br><span class="line">    <span class="built_in">this</span>.size = <span class="built_in">Math</span>.random() * flakeSize + <span class="number">2</span>;          <span class="comment">/* 形状 */</span></span><br><span class="line">    <span class="built_in">this</span>.maxSize = flakeSize;                           <span class="comment">/* 最大形状 */</span></span><br><span class="line">    <span class="built_in">this</span>.speed = <span class="built_in">Math</span>.random() * <span class="number">1</span> + fallSpeed;         <span class="comment">/* 坠落速度 */</span></span><br><span class="line">    <span class="built_in">this</span>.fallSpeed = fallSpeed;                         <span class="comment">/* 坠落速度 */</span></span><br><span class="line">    <span class="built_in">this</span>.velY = <span class="built_in">this</span>.speed;                             <span class="comment">/* Y方向速度 */</span></span><br><span class="line">    <span class="built_in">this</span>.velX = <span class="number">0</span>;                                      <span class="comment">/* X方向速度 */</span></span><br><span class="line">    <span class="built_in">this</span>.stepSize = <span class="built_in">Math</span>.random() / <span class="number">30</span>;                 <span class="comment">/* 步长 */</span></span><br><span class="line">    <span class="built_in">this</span>.step = <span class="number">0</span>                                       <span class="comment">/* 步数 */</span></span><br><span class="line">&#125;</span><br><span class="line">flakeMove.prototype.update = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="built_in">this</span>.x,</span><br><span class="line">        y = <span class="built_in">this</span>.y;</span><br><span class="line">    <span class="comment">/* 左右摆动(余弦) */</span></span><br><span class="line">    <span class="built_in">this</span>.velX *= <span class="number">0.98</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.velY &lt;= <span class="built_in">this</span>.speed) &#123;</span><br><span class="line">        <span class="built_in">this</span>.velY = <span class="built_in">this</span>.speed</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">this</span>.velX += <span class="built_in">Math</span>.cos(<span class="built_in">this</span>.step += <span class="number">.05</span>) * <span class="built_in">this</span>.stepSize;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.y += <span class="built_in">this</span>.velY;</span><br><span class="line">    <span class="built_in">this</span>.x += <span class="built_in">this</span>.velX;</span><br><span class="line">    <span class="comment">/* 飞出边界的处理 */</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">this</span>.x &gt;= canvas.width || <span class="built_in">this</span>.x &lt;= <span class="number">0</span> || <span class="built_in">this</span>.y &gt;= canvas.height || <span class="built_in">this</span>.y &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">this</span>.reset(canvas.width, canvas.height)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/* 飞出边界-放置最顶端继续坠落 */</span></span><br><span class="line">flakeMove.prototype.reset = <span class="function"><span class="keyword">function</span>(<span class="params">width, height</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.x = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * width);</span><br><span class="line">    <span class="built_in">this</span>.y = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">this</span>.size = <span class="built_in">Math</span>.random() * <span class="built_in">this</span>.maxSize + <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">this</span>.speed = <span class="built_in">Math</span>.random() * <span class="number">1</span> + <span class="built_in">this</span>.fallSpeed;</span><br><span class="line">    <span class="built_in">this</span>.velY = <span class="built_in">this</span>.speed;</span><br><span class="line">    <span class="built_in">this</span>.velX = <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 渲染雪花-随机形状（此处可修改雪花颜色！！！）</span></span><br><span class="line">flakeMove.prototype.render = <span class="function"><span class="keyword">function</span>(<span class="params">ctx</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> snowFlake = ctx.createRadialGradient(<span class="built_in">this</span>.x, <span class="built_in">this</span>.y, <span class="number">0</span>, <span class="built_in">this</span>.x, <span class="built_in">this</span>.y, <span class="built_in">this</span>.size);</span><br><span class="line">    snowFlake.addColorStop(<span class="number">0</span>, <span class="string">&quot;rgba(255, 255, 255, 0.9)&quot;</span>);  <span class="comment">/* 此处是雪花颜色，默认是白色 */</span></span><br><span class="line">    snowFlake.addColorStop(<span class="number">.5</span>, <span class="string">&quot;rgba(255, 255, 255, 0.5)&quot;</span>); <span class="comment">/* 若要改为其他颜色，请自行查 */</span></span><br><span class="line">    snowFlake.addColorStop(<span class="number">1</span>, <span class="string">&quot;rgba(255, 255, 255, 0)&quot;</span>);    <span class="comment">/* 找16进制的RGB 颜色代码。 */</span></span><br><span class="line">    ctx.save();</span><br><span class="line">    ctx.fillStyle = snowFlake;</span><br><span class="line">    ctx.beginPath();</span><br><span class="line">    ctx.arc(<span class="built_in">this</span>.x, <span class="built_in">this</span>.y, <span class="built_in">this</span>.size, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>);</span><br><span class="line">    ctx.fill();</span><br><span class="line">    ctx.restore();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/* 创建雪花-定义形状 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFlakes</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> maxFlake = <span class="built_in">this</span>.maxFlake,</span><br><span class="line">        flakes = <span class="built_in">this</span>.flakes = [],</span><br><span class="line">        canvas = <span class="built_in">this</span>.canvas;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; maxFlake; i++) &#123;</span><br><span class="line">        flakes.push(<span class="keyword">new</span> flakeMove(canvas.width, canvas.height, <span class="built_in">this</span>.flakeSize, <span class="built_in">this</span>.fallSpeed))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 画雪 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawSnow</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> maxFlake = <span class="built_in">this</span>.maxFlake,</span><br><span class="line">        flakes = <span class="built_in">this</span>.flakes;</span><br><span class="line">    ctx = <span class="built_in">this</span>.ctx, canvas = <span class="built_in">this</span>.canvas, that = <span class="built_in">this</span>;</span><br><span class="line">    <span class="comment">/* 清空雪花 */</span></span><br><span class="line">    ctx.clearRect(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> e = <span class="number">0</span>; e &lt; maxFlake; e++) &#123;</span><br><span class="line">        flakes[e].update();</span><br><span class="line">        flakes[e].render(ctx);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*  一帧一帧的画 */</span></span><br><span class="line">    <span class="built_in">this</span>.loop = requestAnimationFrame(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        drawSnow.apply(that);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 调用及控制方法 */</span></span><br><span class="line"><span class="keyword">var</span> snow = <span class="keyword">new</span> snowFall(&#123;<span class="attr">maxFlake</span>:<span class="number">60</span>&#125;);</span><br><span class="line">snow.start();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引用</li>
+</ul>
+<p>&emsp;&emsp;以上两种样式，选一种用就可以了，然后修改调用特效代码引用文件<code>_layout.swig</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_layout.swig</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在上边引入的调用<code>jquery.min.js</code>文件的下方添加如下代码，<code>src=&quot;/js/snow1.js</code>表示要调用的特效实现文件的位置，我这里用了六边形雪花的特效，这里添加了一个屏幕宽度判断。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 雪花特效实现 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> windowWidth = $(<span class="built_in">window</span>).width();</span></span><br><span class="line">  if (windowWidth &gt; 480) </span><br><span class="line">  &#123;</span><br><span class="line"><span class="handlebars"><span class="xml">    document.write(&#x27;<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/js/snow1.js&quot;</span>&gt;</span>&lt;\/script&gt;&#x27;);</span></span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-11樱花特效实现"><a href="#2-11樱花特效实现" class="headerlink" title="2.11樱花特效实现"></a><font size=3>2.11樱花特效实现</font></h2><p>&emsp;&emsp;该特效的实现过程与上边的雪花特效类似，我比较喜欢这一个，所以后来换成了这个。</p>
+<ul>
+<li>新建特效实现文件</li>
+</ul>
+<p>&emsp;&emsp;由于所用的代码源码名称为<code>sakura</code>所以所有的特效文件名称也按这个名字来。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入相应的文件夹</span></span><br><span class="line">cd ~/02MyBlog/hexofiles/themes/next/source/js/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建js文件</span></span><br><span class="line">vim sakura.js</span><br><span class="line"><span class="meta">#</span><span class="bash"> 后续修改可以使用以下命令</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/source/js/sakura.js</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;添加链接中的代码到<code>sakura.js</code>文件中。</p>
+<p><code>sakura</code>特效代码：<a href="https://cdn.jsdelivr.net/gh/1999cyx/cdn@2.0.2/js/sakura.js" target="_blank">sakura.js</a></p>
+<ul>
+<li>引用</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开引用文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_layout.swig</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;这里注意，我把之前的两种效果都给屏蔽掉了，采用的方式是直接删除，但是通过这一个特效的添加发现其实可以通过变量来配置是否开启相应的特效效果。</p>
+<p>&emsp;&emsp;在刚才的<code>_layout.swig</code>文件中<code>&lt;body&gt;&lt;/body&gt;</code>内部引用以下代码。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 樱花特效 --&gt;</span></span><br><span class="line">&#123;% if theme.sakura.enable %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;/js/sakura.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>主题配置文件修改</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开主题配置文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;添加以下代码：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 樱花飘落动特效</span></span><br><span class="line"><span class="attr">sakura:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-12字数统计与阅读时长"><a href="#2-12字数统计与阅读时长" class="headerlink" title="2.12字数统计与阅读时长"></a><font size=3>2.12字数统计与阅读时长</font></h2><ul>
+<li>安装<code>hexo-symbols-count-time</code>插件</li>
+</ul>
+<p>&emsp;&emsp;插件地址：<a href="https://github.com/theme-next/hexo-symbols-count-time" target="_blank">hexo-symbols-count-time</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/theme-next/hexo-symbols-count-time</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在站点根目录中执行以下命令安装该插件.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-symbols-count-time --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改主题配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开主题配置文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改主题配置文件部分如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Post wordcount display settings</span></span><br><span class="line"> <span class="comment"># Dependencies: https://github.com/theme-next/hexo-symbols-count-time</span></span><br><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">separated_meta:</span> <span class="literal">true</span>  </span><br><span class="line">  <span class="attr">item_text_post:</span> <span class="literal">true</span> </span><br><span class="line">  <span class="attr">item_text_total:</span> <span class="literal">false</span> </span><br><span class="line">  <span class="attr">awl:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">wpm:</span> <span class="number">275</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;参数说明:</p>
+<table><!--表格开始-->
+    <tr><!--第1行-->
+        <td align="center"><!--第1列-->
+            参数 
+        </td>
+        <td align="center"><!--第2列-->
+            说明
+        </td>
+    </tr>
+    <tr><!--第2行-->
+        <td align="center"><!--第1列-->
+            separated_meta 
+        </td>
+        <td align="left"><!--第2列-->
+            是否换行显示字数统计和阅读时长 
+        </td>
+    </tr>
+    <tr><!--第3行-->
+        <td align="center"><!--第1列-->
+          item_text_post 
+        </td>
+        <td align="left"><!--第2列-->
+            文章的字数统计、阅读时长用图标还是文本表示 
+        </td>
+    </tr>
+    <tr><!--第4行-->
+        <td align="center"><!--第1列-->
+           item_text_total 
+        </td>
+        <td align="left"><!--第2列-->
+            博客底部统计字数统计、阅读时长使用图标还是 文本表示 
+        </td>
+    </tr>
+    <tr><!--第5行-->
+        <td align="center"><!--第1列-->
+           awl(Average Word Length) 
+        </td>
+        <td align="left"><!--第2列-->
+            设定多少字符统计为一个字（word），中文博客需要设置为 2 
+        </td>
+    </tr>
+    <tr><!--第6行-->
+        <td align="center"><!--第1列-->
+           wpm(Words Per Minute) 
+        </td>
+        <td align="left"><!--第2列-->
+            阅读时长1分钟需要统计多少字（word），官方阅读参考为:Slow ≈ 200;Normal ≈ 275;Fast ≈ 350 
+        </td>
+    </tr>
+</table>
+
+
+<h2 id="2-13添加版权说明"><a href="#2-13添加版权说明" class="headerlink" title="2.13添加版权说明"></a><font size=3>2.13添加版权说明</font></h2><p>&emsp;&emsp;该段的优化，可以实现版权的正常显示，但是复制文章链接的功能只能在刷新后才可以使用，原因是后边添加音乐播放器的时候开启了<code>pjax</code>这就导致了后面鼠标点击后的复制操作不会被加载，目前还没有解决，只能刷新后恢复正常。</p>
+<ul>
+<li>(1)创建一个<code>my-copyright.swig</code>文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目标文件夹</span></span><br><span class="line">cd ~/02MyBlog/hexofiles/themes/next/layout/_macro/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建mycopyright.swig，名字随意，下边对应就好</span></span><br><span class="line">vim my-copyright.swig</span><br><span class="line"><span class="meta">#</span><span class="bash"> 后续可以用以下命令直接修改该文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_macro/my-copyright.swig</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;文件内容如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.copyright %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;my_post_copyright&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">&lt;!-- JS库 sweetalert 可修改路径 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/sweetalert/dist/sweetalert.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>文章标题:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(page.path) &#125;&#125;&quot;</span>&gt;</span>&#123;&#123; page.title &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>文章作者:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span> <span class="attr">title</span>=<span class="string">&quot;访问 &#123;&#123; theme.author &#125;&#125; 的个人博客&quot;</span>&gt;</span>&#123;&#123; theme.author &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>发布时间:<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#123;&#123; page.date.format(&quot;YYYY年MM月DD日 - HH:mm&quot;) &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>最后更新:<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#123;&#123; page.updated.format(&quot;YYYY年MM月DD日 - HH:mm&quot;) &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>原始链接:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(page.path) &#125;&#125;&quot;</span> <span class="attr">title</span>=<span class="string">&quot;&#123;&#123; page.title &#125;&#125;&quot;</span>&gt;</span>&#123;&#123; page.permalink &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;copy-path&quot;</span>  <span class="attr">title</span>=<span class="string">&quot;点击复制文章链接&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-clipboard&quot;</span> <span class="attr">data-clipboard-text</span>=<span class="string">&quot;&#123;&#123; page.permalink &#125;&#125;&quot;</span>  <span class="attr">aria-label</span>=<span class="string">&quot;复制成功！&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>许可协议:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-creative-commons&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">rel</span>=<span class="string">&quot;license&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://creativecommons.org/licenses/by-nc-nd/4.0/&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span> <span class="attr">title</span>=<span class="string">&quot;Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)&quot;</span>&gt;</span>署名-非商业性使用-禁止演绎 4.0 国际<span class="tag">&lt;/<span class="name">a</span>&gt;</span> 转载请保留原文链接及作者。<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span> </span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> clipboard = <span class="keyword">new</span> Clipboard(<span class="string">&#x27;.fa-clipboard&#x27;</span>);</span></span><br><span class="line"><span class="javascript">    $(<span class="string">&quot;.fa-clipboard&quot;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">      clipboard.on(<span class="string">&#x27;success&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line">        swal(&#123;   </span><br><span class="line"><span class="javascript">          title: <span class="string">&quot;&quot;</span>,   </span></span><br><span class="line"><span class="javascript">          text: <span class="string">&#x27;复制成功&#x27;</span>,</span></span><br><span class="line"><span class="javascript">          icon: <span class="string">&quot;success&quot;</span>, </span></span><br><span class="line"><span class="javascript">          showConfirmButton: <span class="literal">true</span></span></span><br><span class="line">          &#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">    &#125;);  </span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;<code>&lt;i class=&quot;far fa-copyright&quot;&gt;&lt;/i&gt;</code>这句话是在许可协议这行的，这是一个<code>Font Awesome </code>的版权的图标。</p>
+<ul>
+<li>(2)新建一个<code>my-post-copyright.styl</code>文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目标文件夹</span></span><br><span class="line">cd ~/02MyBlog/hexofiles/themes/next/source/css/_common/components/post/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建my-post-copyright.styl，名字随意，下边对应就好</span></span><br><span class="line">vim my-post-copyright.styl</span><br><span class="line"><span class="meta">#</span><span class="bash"> 后续可以用以下命令直接修改该文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/source/css/_common/components/post/my-post-copyright.styl</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;内容如下所示</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.my_post_copyright</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">85%</span>;</span><br><span class="line">  <span class="attribute">max-width</span>: <span class="number">45em</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">2.8em</span> auto <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0.5em</span> <span class="number">1.0em</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#d3d3d3</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0.93rem</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.6em</span>;</span><br><span class="line">  <span class="attribute">word-break</span>: break-all;</span><br><span class="line">  <span class="attribute">background</span>: rgba(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0.4</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.my_post_copyright</span> p&#123;<span class="attribute">margin</span>:<span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-class">.my_post_copyright</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">5.2em</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#b5b5b5</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: bold;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.my_post_copyright</span> <span class="selector-class">.raw</span> &#123;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">5em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.my_post_copyright</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#808080</span>;</span><br><span class="line">  <span class="attribute">border-bottom</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.my_post_copyright</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#a3d2a3</span>;</span><br><span class="line">  <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.my_post_copyright</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.fa-clipboard</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.my_post_copyright</span> <span class="selector-class">.post-url</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">font-weight</span>: normal;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.my_post_copyright</span> <span class="selector-class">.copy-path</span> &#123;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1em</span>;</span><br><span class="line">  +mobile()&#123;<span class="attribute">display</span>:none;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.my_post_copyright</span> <span class="selector-class">.copy-path</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#808080</span>;</span><br><span class="line">  <span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(3)引用</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开引用文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_macro/post.swig</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在以下代码之间</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 在以下之后 --&gt;</span></span><br><span class="line">&#123;%- if theme.follow_me %&#125;</span><br><span class="line">        &#123;&#123; partial(&#x27;_partials/post/post-followme.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line">&#123;%- endif %&#125;</span><br><span class="line"><span class="comment">&lt;!-- 在以下之前 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">&quot;post-footer&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;添加以下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--添加版权信息--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">      &#123;% if not is_index %&#125;</span><br><span class="line">        &#123;% include &#x27;my-copyright.swig&#x27; %&#125;</span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引用</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开引用文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/source/css/_common/components/post/post.styl</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在结尾添加以下代码：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&quot;my-post-copyright&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置新建文章自动显示版权声明</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开相应文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/scaffolds/post.md</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改如下：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">copyright: true #新增copyright</span><br><span class="line">---  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最终效果如下</li>
+</ul>
+<img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/002Copyright.png" style="zoom:67%;" />
+
+<h2 id="2-14添加结束标记"><a href="#2-14添加结束标记" class="headerlink" title="2.14添加结束标记"></a><font size=3>2.14添加结束标记</font></h2><ul>
+<li>新建一个结束标记实现文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入目标文件夹</span></span><br><span class="line">cd ~/02MyBlog/hexofiles/themes/next/layout/_macro/</span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建实现文件</span></span><br><span class="line">vim passage-end-tag.swig</span><br><span class="line"><span class="meta">#</span><span class="bash"> 后续可以用以下命令直接修改该文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_macro/passage-end-tag.swig</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在文件中添加以下内容：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;text-align:center;color: #ccc;font-size:14px;&quot;</span>&gt;</span>--------------------------本文结束<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-heart&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>感谢您的阅读--------------------------<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引用</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开引用文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_macro/post.swig</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在以下代码之间</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 在以下之后 --&gt;</span></span><br><span class="line">&#123;%- if theme.follow_me %&#125;</span><br><span class="line">        &#123;&#123; partial(&#x27;_partials/post/post-followme.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line">&#123;%- endif %&#125;</span><br><span class="line"><span class="comment">&lt;!-- 在以下之前 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">&quot;post-footer&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;添加以下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--结束标记--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;% if not is_index %&#125;</span><br><span class="line">      &#123;% include &#x27;passage-end-tag.swig&#x27; %&#125;</span><br><span class="line">    &#123;% endif %&#125;</span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置主题配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开主题配置文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml </span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;添加以下代码：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文章末尾添加“本文结束”标记</span></span><br><span class="line"><span class="attr">passage_end_tag:</span></span><br><span class="line">	<span class="attr">enabled:</span> <span class="literal">true</span> </span><br></pre></td></tr></table></figure>
+
+<h2 id="2-15侧边栏显示阅读进度"><a href="#2-15侧边栏显示阅读进度" class="headerlink" title="2.15侧边栏显示阅读进度"></a><font size=3>2.15侧边栏显示阅读进度</font></h2><ul>
+<li>打开<code>scrollpercent</code>即可</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开主题配置文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改部分如下:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Scroll percent label in b2t button.</span></span><br><span class="line"><span class="attr">scrollpercent:</span> <span class="literal">true</span> </span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;我打开之后，好像没有效果，应该是没有显示<code>top</code>按钮，这里把这个按钮在侧边栏开关打开，修改如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Back to top in sidebar.</span></span><br><span class="line"><span class="attr">sidebar:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果如下图</li>
+</ul>
+<img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/003Scrollpercent.png" style="zoom:80%;" />
+
+<h2 id="2-16修改底部-标签"><a href="#2-16修改底部-标签" class="headerlink" title="2.16修改底部#标签    "></a><font size=3>2.16修改底部<code>#</code>标签    </font></h2><ul>
+<li>打开相应显示文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_macro/post.swig </span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;找到如下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">&quot;post-footer&quot;</span>&gt;</span></span><br><span class="line">  &#123;%- if post.tags and post.tags.length %&#125;</span><br><span class="line">    &#123;%- if theme.tag_icon %&#125;</span><br><span class="line">      &#123;%- set tag_indicate = &#x27;<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-tag&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span>&#x27; %&#125;</span><br><span class="line">    &#123;% else %&#125;</span><br><span class="line">      &#123;%- set tag_indicate = &#x27;#&#x27; %&#125;</span><br><span class="line">    &#123;%- endif %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;post-tags&quot;</span>&gt;</span></span><br><span class="line">      &#123;%- for tag in post.tags.toArray() %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(tag.path) &#125;&#125;&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;tag&quot;</span>&gt;</span>&#123;&#123; tag_indicate &#125;&#125; &#123;&#123; tag.name &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">      &#123;%- endfor %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">  &#123;&#123; partial(&#x27;_partials/post/post-footer.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line">                                                                                                                                        </span><br><span class="line">  &#123;&#123; post_nav(post) &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;发现在主题配置文件中打开<code>tag_icon</code>就可以了。</p>
+<ul>
+<li>配置主题配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开主题配置文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Use icon instead of the symbol # to indicate the tag at the bottom of the post</span></span><br><span class="line"><span class="attr">tag_icon:</span> <span class="literal">true</span> </span><br></pre></td></tr></table></figure>
+
+<h2 id="2-17去掉底部的由Hexo…强力驱动字样"><a href="#2-17去掉底部的由Hexo…强力驱动字样" class="headerlink" title="2.17去掉底部的由Hexo…强力驱动字样"></a><font size=3>2.17去掉底部的由Hexo…强力驱动字样</font></h2><ul>
+<li>按以下修改相应文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 打开相应的文件</span></span><br><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_partials/footer.swig </span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;找到以下代码，注释掉中间的部分即可。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- if theme.footer.powered %&#125;</span><br><span class="line"><span class="comment">&lt;!--&lt;div class=&quot;powered-by&quot;&gt;</span></span><br><span class="line"><span class="comment">    &#123;%- set next_site = &#x27;https://theme-next.org&#x27; %&#125;</span></span><br><span class="line"><span class="comment">    &#123;%- if theme.scheme !== &#x27;Gemini&#x27; %&#125;</span></span><br><span class="line"><span class="comment">      &#123;%- set next_site = &#x27;https://&#x27; + theme.scheme | lower + &#x27;.theme-next.org&#x27; %&#125;</span></span><br><span class="line"><span class="comment">    &#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment">    &#123;&#123;- __(&#x27;footer.powered&#x27;, next_url(&#x27;https://hexo.io&#x27;, &#x27;Hexo&#x27;, &#123;class: &#x27;theme-link&#x27;&#125;) + &#x27; &amp; &#x27; + next_url(next_site, &#x27;NexT.&#x27; + theme.scheme, &#123;class: &#x27;theme-link&#x27;&#125;)) &#125;&#125;</span></span><br><span class="line"><span class="comment">  &lt;/div&gt;</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实也可以在主题配置文件中将<code>footer</code>中的<code>powered</code>设置为<code>false</code></p>
+<h2 id="2-18更换网页顶栏默认图标"><a href="#2-18更换网页顶栏默认图标" class="headerlink" title="2.18更换网页顶栏默认图标"></a><font size=3>2.18更换网页顶栏默认图标</font></h2><ul>
+<li>制作图片</li>
+</ul>
+<p>&emsp;&emsp;我使用的是一个在线图标制作免费软件，这个就是<a href="http://www.bitbug.net/" target="_blank">比特虫</a>，网址如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.bitbug.net/</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;目标尺寸32x32就可以，然后填写附加码，再生成保存就可以了文件可以直接保存到以下位置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/02MyBlog/hexofiles/themes/next/source/images/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改该图标引用文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_partials/head/head.swig</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;找到如下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- if theme.favicon.medium %&#125;                          </span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/png&quot;</span> <span class="attr">sizes</span>=<span class="string">&quot;32x32&quot;</span> <span class="attr">href</span>=<span class="string">&quot;    &#123;&#123; url_for(theme.favicon.medium) &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">&#123;%- endif %&#125;</span><br><span class="line">&#123;%- if theme.favicon.small %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/png&quot;</span> <span class="attr">sizes</span>=<span class="string">&quot;16x16&quot;</span> <span class="attr">href</span>=<span class="string">&quot;    &#123;&#123; url_for(theme.favicon.small) &#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">&#123;%- endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;可以看到，这里有两种图标大小，由判断条件<code>theme.favicon.medium</code>可知，在主题配置文件中有相应的地方来设置该参数。</p>
+<ul>
+<li>配置主题配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改部分如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line">  <span class="comment"># small: /images/favicon-16x16-next.png</span></span><br><span class="line">  <span class="comment"># medium: /images/favicon-32x32-next.png</span></span><br><span class="line">  <span class="attr">small:</span> <span class="string">/images/favicon16.ico</span></span><br><span class="line">  <span class="attr">medium:</span> <span class="string">/images/favicon32.ico</span>                        </span><br><span class="line">  <span class="attr">apple_touch_icon:</span> <span class="string">/images/apple-touch-icon-next.png</span></span><br><span class="line">  <span class="attr">safari_pinned_tab:</span> <span class="string">/images/logo.svg</span></span><br><span class="line">  <span class="comment">#android_manifest: /images/manifest.json</span></span><br><span class="line">  <span class="comment">#ms_browserconfig: /images/browserconfig.xml</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>效果如下所示</li>
+</ul>
+<img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/004Favicon.png">
+
+<h2 id="2-19设置RSS订阅"><a href="#2-19设置RSS订阅" class="headerlink" title="2.19设置RSS订阅"></a><font size=3>2.19设置RSS订阅</font></h2><ul>
+<li>安装<code>hexo-generator-feed</code>插件</li>
+</ul>
+<p>&emsp;&emsp;在站点根目录下执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li> 配置站点配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改部分如下(添加<code>plugins: hexo-generate-feed</code>)：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/                      </span></span><br><span class="line"><span class="comment"># theme: landscape</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br><span class="line"><span class="attr">plugins:</span> <span class="string">hexo-generate-feed</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置主题配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改部分如下(去掉<code>RSS</code>的注释)：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Subscribe through Telegram Channel, Twitter, etc.</span></span><br><span class="line"><span class="comment"># Usage: `Key: permalink || icon` (Font Awesome)</span></span><br><span class="line"><span class="attr">follow_me:</span></span><br><span class="line">  <span class="comment">#Twitter: https://twitter.com/username || fab fa-twit     ter</span></span><br><span class="line">  <span class="comment">#Telegram: https://t.me/channel_name || fab fa-telegr     am</span></span><br><span class="line">  <span class="comment">#WeChat: /images/wechat_channel.jpg || fab fa-weixin</span></span><br><span class="line">  <span class="attr">RSS:</span> <span class="string">/atom.xml</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-rss</span>  </span><br></pre></td></tr></table></figure>
+
+<h2 id="2-20页脚增加网站运行时间统计"><a href="#2-20页脚增加网站运行时间统计" class="headerlink" title="2.20页脚增加网站运行时间统计"></a><font size=3>2.20页脚增加网站运行时间统计</font></h2><ul>
+<li>修改<code>footer.swig</code>文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_partials/footer.swig</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;在适当的位置添加以下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--添加运行时间--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;sitetime&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">javascript</span>&gt;</span></span><br><span class="line"><span class="javascript">	<span class="function"><span class="keyword">function</span> <span class="title">siteTime</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="built_in">window</span>.setTimeout(<span class="string">&quot;siteTime()&quot;</span>, <span class="number">1000</span>);</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> seconds = <span class="number">1000</span>;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> minutes = seconds * <span class="number">60</span>;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> hours = minutes * <span class="number">60</span>;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> days = hours * <span class="number">24</span>;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> years = days * <span class="number">365</span>;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> today = <span class="keyword">new</span> <span class="built_in">Date</span>();</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> todayYear = today.getFullYear();</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> todayMonth = today.getMonth()+<span class="number">1</span>;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> todayDate = today.getDate();</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> todayHour = today.getHours();</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> todayMinute = today.getMinutes();</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> todaySecond = today.getSeconds();</span></span><br><span class="line">		/* </span><br><span class="line"><span class="javascript">		<span class="built_in">Date</span>.UTC() -- 返回date对象距世界标准时间(UTC)<span class="number">1970</span>年<span class="number">1</span>月<span class="number">1</span>日午夜之间的毫秒数(时间戳)</span></span><br><span class="line">		year - 作为date对象的年份，为4位年份值</span><br><span class="line">		month - 0-11之间的整数，做为date对象的月份</span><br><span class="line">		day - 1-31之间的整数，做为date对象的天数</span><br><span class="line">		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数</span><br><span class="line">		minutes - 0-59之间的整数，做为date对象的分钟数</span><br><span class="line">		seconds - 0-59之间的整数，做为date对象的秒数</span><br><span class="line">		microseconds - 0-999之间的整数，做为date对象的毫秒数</span><br><span class="line">        */</span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> t1 = <span class="built_in">Date</span>.UTC(<span class="number">2020</span>,<span class="number">02</span>,<span class="number">13</span>,<span class="number">15</span>,<span class="number">00</span>,<span class="number">00</span>); <span class="comment">//北京时间2018-2-13 00:00:00</span></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> t2 = <span class="built_in">Date</span>.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> diff = t2-t1;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> diffYears = <span class="built_in">Math</span>.floor(diff/years);</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> diffDays = <span class="built_in">Math</span>.floor((diff/days)-diffYears*<span class="number">365</span>);</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> diffHours = <span class="built_in">Math</span>.floor((diff-(diffYears*<span class="number">365</span>+diffDays)*days)/hours);</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> diffMinutes = <span class="built_in">Math</span>.floor((diff-(diffYears*<span class="number">365</span>+diffDays)*days-diffHours*hours)/minutes);</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> diffSeconds = <span class="built_in">Math</span>.floor((diff-(diffYears*<span class="number">365</span>+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);</span></span><br><span class="line"><span class="javascript">		<span class="built_in">document</span>.getElementById(<span class="string">&quot;sitetime&quot;</span>).innerHTML=<span class="string">&quot; 已安全运行&quot;</span>+<span class="comment">/*diffYears+&quot; 年 &quot;+*/</span>diffDays+<span class="string">&quot; 天 &quot;</span>+diffHours+<span class="string">&quot; 小时 &quot;</span>+diffMinutes+<span class="string">&quot; 分钟 &quot;</span>+diffSeconds+<span class="string">&quot; 秒&quot;</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line">	siteTime();</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-21添加音乐播放器"><a href="#2-21添加音乐播放器" class="headerlink" title="2.21添加音乐播放器"></a><font size=3>2.21添加音乐播放器</font></h2><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th>点击链接访问相应网址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>APlayer</code></td>
+<td><a href="https://github.com/DIYgod/APlayer" target="_blank"><strong>Aplayer</strong></a></td>
+</tr>
+<tr>
+<td align="center"><code>APlayer</code>中文文档</td>
+<td><a href="https://aplayer.js.org/#/zh-Hans/" target="_blank"><strong>APlayer中文文档</strong></a></td>
+</tr>
+<tr>
+<td align="center"><code>hexo-tag-aplayer</code></td>
+<td><a href="https://github.com/MoePlayer/hexo-tag-aplayer" target="_blank"><strong>hexo-tag-aplayer</strong></a></td>
+</tr>
+<tr>
+<td align="center"><code>hexo-tag-aplayer</code>中文文档</td>
+<td><a href="https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md" target="_blank"><strong>hexo-tag-aplayer中文文档</strong></a></td>
+</tr>
+<tr>
+<td align="center"><code>theme-next-pjax</code></td>
+<td><a href="https://github.com/theme-next/theme-next-pjax" target="_blank"><strong>theme-next-pjax</strong></a></td>
+</tr>
+</tbody></table>
+<ul>
+<li>安装<code>hexo-tag-aplayer</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-tag-aplayer --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改<code>_layout.swig</code>文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/layout/_layout.swig</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;添加以下代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 引用依赖 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> </span></span><br><span class="line"><span class="tag"> <span class="attr">href</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/meting@1.2.0/dist/Meting.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- APlayer本体 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;aplayer&quot;</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">data-id</span>=<span class="string">&quot;7274703654&quot;</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">data-server</span>=<span class="string">&quot;tencent&quot;</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">data-type</span>=<span class="string">&quot;playlist&quot;</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">data-fixed</span>=<span class="string">&quot;true&quot;</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">data-autoplay</span>=<span class="string">&quot;true&quot;</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">data-order</span>=<span class="string">&quot;random&quot;</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">data-volume</span>=<span class="string">&quot;0.55&quot;</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">data-theme</span>=<span class="string">&quot;#cc543a&quot;</span> </span></span><br><span class="line"><span class="tag">  <span class="attr">data-preload</span>=<span class="string">&quot;auto&quot;</span> &gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--如果将本体放在body里面导致页面加载出现问题，请尝试放到body体后面--&gt;</span> </span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;这里支持不同的音乐平台，<code>id</code>就是自己歌单地址中的那一串数字。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td><strong>必须值</strong></td>
+<td>歌曲 id / 播放列表 id / 相册 id / 搜索关键字</td>
+</tr>
+<tr>
+<td>server</td>
+<td><strong>必须值</strong></td>
+<td>音乐平台: <code>netease</code>, <code>tencent</code>, <code>kugou</code>, <code>xiami</code>, <code>baidu</code></td>
+</tr>
+<tr>
+<td>type</td>
+<td><strong>必须值</strong></td>
+<td><code>song</code>, <code>playlist</code>, <code>album</code>, <code>search</code>, <code>artist</code></td>
+</tr>
+<tr>
+<td>fixed</td>
+<td><code>false</code></td>
+<td>开启固定模式</td>
+</tr>
+<tr>
+<td>mini</td>
+<td><code>false</code></td>
+<td>开启迷你模式</td>
+</tr>
+<tr>
+<td>loop</td>
+<td><code>all</code></td>
+<td>列表循环模式：<code>all</code>, <code>one</code>,<code>none</code></td>
+</tr>
+<tr>
+<td>order</td>
+<td><code>list</code></td>
+<td>列表播放模式： <code>list</code>, <code>random</code></td>
+</tr>
+<tr>
+<td>volume</td>
+<td>0.7</td>
+<td>播放器音量</td>
+</tr>
+<tr>
+<td>lrctype</td>
+<td>0</td>
+<td>歌词格式类型</td>
+</tr>
+<tr>
+<td>listfolded</td>
+<td><code>false</code></td>
+<td>指定音乐播放列表是否折叠</td>
+</tr>
+<tr>
+<td>storagename</td>
+<td><code>metingjs</code></td>
+<td>LocalStorage 中存储播放器设定的键名</td>
+</tr>
+<tr>
+<td>autoplay</td>
+<td><code>true</code></td>
+<td>自动播放，移动端浏览器暂时不支持此功能</td>
+</tr>
+<tr>
+<td>mutex</td>
+<td><code>true</code></td>
+<td>该选项开启时，如果同页面有其他 aplayer 播放，该播放器会暂停</td>
+</tr>
+<tr>
+<td>listmaxheight</td>
+<td><code>340px</code></td>
+<td>播放列表的最大长度</td>
+</tr>
+<tr>
+<td>preload</td>
+<td><code>auto</code></td>
+<td>音乐文件预载入模式，可选项： <code>none</code>, <code>metadata</code>, <code>auto</code></td>
+</tr>
+<tr>
+<td>theme</td>
+<td><code>#ad7a86</code></td>
+<td>播放器风格色彩设置</td>
+</tr>
+</tbody></table>
+<ul>
+<li>修改站点配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;添加以下代码：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">aplayer:</span></span><br><span class="line">  <span class="attr">meting:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>pjax</code>全局播放插件</li>
+</ul>
+<p>&emsp;&emsp;该插件可以使站点进行跳转的时候不继续播放(这里要注意,主题根目录中的<code>.gitignore</code>文件中忽略了所有的扩展包，如果不想重新下载，就可以修改文件，将其也添加到版本库中)。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入主题文件夹根目录</span></span><br><span class="line">cd ~/02MyBlog/hexofiles/themes/next</span><br><span class="line"><span class="meta">#</span><span class="bash"> 下载插件源码</span></span><br><span class="line">git clone https://github.com/theme-next/theme-next-pjax source/lib/pjax</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改主题配置文件，打开<code>pjax</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/themes/next/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Easily enable fast Ajax navigation on your website.</span></span><br><span class="line"><span class="comment"># Dependencies: https://github.com/theme-next/theme-next-pjax</span></span><br><span class="line"><span class="attr">pjax:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="3-站点设置"><a href="#3-站点设置" class="headerlink" title="3.站点设置"></a><font size=3>3.站点设置</font></h1><p>&emsp;&emsp;站点的一些配置参数如下</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>title</code></td>
+<td>网站标题</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>网站副标题</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>网站描述</td>
+</tr>
+<tr>
+<td><code>keywords</code></td>
+<td>网站的关键词。支援多个关键词。</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>名字</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>网站使用的语言。对于简体中文用户来说，使用不同的主题可能需要设置成不同的值，请参考你的主题的文档自行设置，常见的有 <code>zh-Hans</code>和 <code>zh-CN</code>。</td>
+</tr>
+<tr>
+<td><code>timezone</code></td>
+<td>网站时区。Hexo 默认使用电脑的时区。请参考 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">时区列表</a> 进行设置，如 <code>America/New_York</code>, <code>Japan</code>, 和 <code>UTC</code> 。一般的，对于中国大陆地区可以使用 <code>Asia/Shanghai</code>。</td>
+</tr>
+</tbody></table>
+<h2 id="3-1设置中文显示"><a href="#3-1设置中文显示" class="headerlink" title="3.1设置中文显示"></a><font size=3>3.1设置中文显示</font></h2><p>&emsp;&emsp;目前 NexT 支持的语言如以下表格所示：</p>
+<table>
+<thead>
+<tr>
+<th>语言</th>
+<th>代码</th>
+<th align="left">设定示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>English</td>
+<td><code>en</code></td>
+<td align="left"><code>language: en</code></td>
+</tr>
+<tr>
+<td>简体中文</td>
+<td><code>zh-Hans</code></td>
+<td align="left"><code>language: zh-CN</code></td>
+</tr>
+<tr>
+<td>Français</td>
+<td><code>fr-FR</code></td>
+<td align="left"><code>language: fr-FR</code></td>
+</tr>
+<tr>
+<td>Português</td>
+<td><code>pt</code></td>
+<td align="left"><code>language: pt</code> or <code>language: pt-BR</code></td>
+</tr>
+<tr>
+<td>繁體中文</td>
+<td><code>zh-hk</code> 或者 <code>zh-tw</code></td>
+<td align="left"><code>language: zh-hk</code></td>
+</tr>
+<tr>
+<td>Русский язык</td>
+<td><code>ru</code></td>
+<td align="left"><code>language: ru</code></td>
+</tr>
+<tr>
+<td>Deutsch</td>
+<td><code>de</code></td>
+<td align="left"><code>language: de</code></td>
+</tr>
+<tr>
+<td>日本語</td>
+<td><code>ja</code></td>
+<td align="left"><code>language: ja</code></td>
+</tr>
+<tr>
+<td>Indonesian</td>
+<td><code>id</code></td>
+<td align="left"><code>language: id</code></td>
+</tr>
+<tr>
+<td>Korean</td>
+<td><code>ko</code></td>
+<td align="left"><code>language: ko</code></td>
+</tr>
+</tbody></table>
+<p>&emsp;&emsp;编辑 站点配置文件，将 <code>language</code> 设置成你需要的语言。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改如下</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">一世繁华</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">记录点点滴滴</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">选择远方，便只顾风雨兼程</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">qidaink</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span>                                         </span><br><span class="line"><span class="attr">timezone:</span> <span class="string">Asia/Shanghai</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2持久化链接"><a href="#3-2持久化链接" class="headerlink" title="3.2持久化链接"></a><font size=3>3.2持久化链接</font></h2><p>&emsp;&emsp;使用Hexo后，默认的链接是<code>http://url/年/月/日/hello-world</code>这种类型的，这是由年/月/日/标题组成。如果调整过日期会变化，另外标题是中文或存在特殊符号的时候这样的链接可能就有问题。</p>
+<ul>
+<li>安装插件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改站点配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;添加修改如下内容</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as &#x27;ht    tp://example.com/child&#x27; and root as &#x27;/child/&#x27;</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">http://example.com</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span></span><br><span class="line">  <span class="comment">#permalink: :year/:month/:day/:title/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">post/:abbrlink.html</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">alg:</span> <span class="string">crc32</span> <span class="comment"># 算法：crc16(default) and crc32</span></span><br><span class="line">  <span class="attr">rep:</span> <span class="string">hex</span>    <span class="comment"># 进制：dec(default) and hex</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br><span class="line"><span class="attr">pretty_urls:</span>                                            </span><br><span class="line">  <span class="attr">trailing_index:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing</span></span><br><span class="line">  <span class="attr">trailing_html:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3开启代码高亮"><a href="#3-3开启代码高亮" class="headerlink" title="3.3开启代码高亮"></a><font size=3>3.3开启代码高亮</font></h2><p>&emsp;&emsp;编辑站点配置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;修改部分如下，文字自动检测默认不启动，所以改成<code>true</code>使其起作用。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hljs:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-4图片延迟加载"><a href="#3-4图片延迟加载" class="headerlink" title="3.4图片延迟加载"></a><font size=3>3.4图片延迟加载</font></h2><p>&emsp;&emsp;访问到图片的时候才会去请求图片资源，可以提高博客的访问速度。</p>
+<ul>
+<li>安装<code>hexo-lazyload-image</code>插件</li>
+</ul>
+<p>&emsp;&emsp;在站点根目录下执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-lazyload-image --save</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置站点配置文件</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/02MyBlog/hexofiles/_config.yml</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;增加内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 插件实现图片懒加载，提高博客访问速度</span></span><br><span class="line"><span class="attr">lazyload:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">onlypost:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">loadingImg:</span>  <span class="comment"># eg. ./images/loading.png</span></span><br></pre></td></tr></table></figure>
+
+<p><code>onlypost</code>：是否仅文章中的图片做懒加载, 如果为 false, 则主题中的其他图片, 也会做懒加载, 如头像, logo 等任何图片.</p>
+<p><code>loadingImg</code>：图片未加载时的代替图.</p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">来看看我的其他文章吧😄(ฅ>ω<*ฅ)</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/db25055a/" rel="bookmark">【NexT】NexT中的fancybox</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/b14a1b18/" rel="bookmark">【NexT】NexT自定义记录-2</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/e2e8c66d/" rel="bookmark">【NexT】icon-图标库的使用</a></div>
+    </li>
+  </ul>
+
+
+    <footer class="post-footer">
+
+
+
+
+  <div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>一言</h1>
+    <p id="hitokoto_text">挑选中...</p>
+    <p id="hitokoto_information" style="text-align: right;"></p>
+    <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/hitokoto.js"></script>
+  </div>
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'">
+  <script data-pjax defer src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script>
+  <div class="social-share"
+      style = "text-align: center; margin-bottom: 10px;"
+      data-sites = "qq,wechat,weibo,facebook,twitter,google"
+      data-description = "欢迎分享这篇文章呀(ฅ>ω<*ฅ)"
+      data-wechat-qrcode-title = "微信扫一扫：分享文章"
+      data-wechat-qrcode-helper = '' >
+  </div>
+
+
+
+
+
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+            --------------------本文结束
+            <i class="fas fa-fan fa-spin" style="color: #FF1493; font-size: 1rem"></i>
+            感谢您的阅读--------------------
+            </div>
+        
+    </div>
+
+
+
+
+
+
+  
+  <div class="my_post_copyright"> 
+
+    
+    <script data-pjax defer src="https://unpkg.com/sweetalert@2/dist/sweetalert.min.js"></script>
+    <script data-pjax defer src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+    
+    <script data-pjax async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/popup-box/cpoyright-popup.js"></script>
+
+    <p><span>文章标题:</span><a href="/posts/8e2d10a7/">【NexT】NexT自定义记录-1</a></p>
+    <p><span>文章作者:</span><a href="/" title="欢迎访问 《云与海》 的个人博客">qidaink</a></p>
+    <p><span>发布时间:</span>2021年02月23日 - 12:00</p>
+    <p><span>最后更新:</span>2021年05月12日 - 18:28</p>
+    <p><span>原始链接:</span><a href="/posts/8e2d10a7/" title="【NexT】NexT自定义记录-1">https://qidaink.github.io/posts/8e2d10a7/</a>
+       <span class="copy-path"  title="点击可以复制文章链接哦"><i class="far fa-copy" data-clipboard-text="https://qidaink.github.io/posts/8e2d10a7/"  aria-label="复制成功！"></i></span>
+    </p>
+    <p><span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href= "https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+  </div>
+  
+
+
+          <div class="reward-container">
+  <div>(ฅ>ω<*ฅ)既然看到这里，何不交个朋友😏？(ฅ>ω<*ฅ)</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/myqq.jpg" alt="qidaink My QQ">
+        <span>My QQ</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://blog.csdn.net/qq_38231279">
+          <span class="icon">
+            <i class="fab fa-cuttlefish"></i>
+          </span>
+
+          <span class="label">CSDN</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.gitee.io">
+          <span class="icon">
+            <i class="fab fa-gofore"></i>
+          </span>
+
+          <span class="label">Gitee</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.github.io">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">Github</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+              <a href="/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/" rel="tag"><i class="fa fa-tag"></i> 主题修改</a>
+              <a href="/tags/next/" rel="tag"><i class="fa fa-tag"></i> next</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/b14a1b18/" rel="prev" title="【NexT】NexT自定义记录-2">
+                  <i class="fa fa-chevron-left"></i> 【NexT】NexT自定义记录-2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/d7183b81/" rel="next" title="【Ubuntu】vmware中ubuntu使用问题解决">
+                  【Ubuntu】vmware中ubuntu使用问题解决 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-waline">waline</a></li>
+            <li class="tab"><a href="#comment-twikoo">twikoo</a></li>
+            <li class="tab"><a href="#comment-livere">livere</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane waline" id="comment-waline">
+              <div class="comments" id="waline-comments"></div>
+            </div>
+            <div class="tab-pane twikoo" id="comment-twikoo">
+              <div class="comments"><div id="twikoo-comments"></div></div>
+            </div>
+            <div class="tab-pane livere" id="comment-livere">
+              <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81MjgxMC8yOTI4OA=="></div>
+            </div>
+        </div>
+      </div><script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qidaink</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">160k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:52</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+    <span id="sitetime"></span>
+    <script defer language=javascript>
+        function siteTime()
+        {
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*==================================================
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year        - 作为date对象的年份，为4位年份值
+            month       - 0-11之间的整数，做为date对象的月份
+            day         - 1-31之间的整数，做为date对象的天数
+            hours       - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes     - 0-59之间的整数，做为date对象的分钟数
+            seconds     - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+            ==================================================*/
+            var t1 = Date.UTC(2017, 
+                              5, 
+                              19, 
+                              0, 
+                              0, 
+                              0); //北京时间
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="我在此处等了你 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+    </script>
+
+
+
+
+
+
+    <div class="languages">
+        <i class="fa fa-language"></i>
+        <span>繁体中文/简体中文：</span>
+        <a id="translateLink" href="javascript:translatePage();">繁体中文</a>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/tw_cn/tw_cn.js"></script>
+    <script type="text/javascript">
+        var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+        var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+        var cookieDomain = "https://qidaink.github.io/"; //Cookie地址, 一定要设定, 通常为自己的网址
+        var msgToTraditionalChinese = "繁体中文"; //此处可以更改为你想要显示的文字
+        var msgToSimplifiedChinese = "簡體中文"; //同上，但两处均不建议更改
+        var translateButtonId = "translateLink"; //默认互换id
+        translateInitilization();
+    </script>
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{&quot;enable&quot;:true,&quot;spinner&quot;:true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{&quot;lang&quot;:&quot;zh-CN&quot;,&quot;enable&quot;:true,&quot;serverURL&quot;:&quot;https:&#x2F;&#x2F;qidaink-blog-comment.vercel.app&#x2F;&quot;,&quot;placeholder&quot;:&quot;(ฅ&gt;ω&lt;*ฅ)欢迎大家评论呀！&quot;,&quot;avatar&quot;:&quot;identicon&quot;,&quot;meta&quot;:[&quot;nick&quot;,&quot;mail&quot;,&quot;link&quot;],&quot;pageSize&quot;:5,&quot;visitor&quot;:false,&quot;comment_count&quot;:true,&quot;requiredFields&quot;:[&quot;nick&quot;,&quot;mail&quot;],&quot;langMode&quot;:{&quot;admin&quot;:&quot;可爱的博主&quot;,&quot;nick&quot;:&quot;昵称（必填）&quot;,&quot;mail&quot;:&quot;邮箱（必填）&quot;,&quot;link&quot;:&quot;网址（选填）&quot;,&quot;sofa&quot;:&quot;这里冷冷清清的，快来留下脚印吧(ฅ&gt;ω&lt;*ฅ)！&quot;},&quot;el&quot;:&quot;#waline-comments&quot;,&quot;libUrl&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;@waline&#x2F;client&#x2F;dist&#x2F;Waline.min.js&quot;,&quot;path&quot;:&quot;&#x2F;posts&#x2F;8e2d10a7&#x2F;&quot;}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() => 
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => {
+    new Waline(CONFIG.waline);
+  });
+});
+</script><script>
+NexT.utils.loadComments('#twikoo-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js', () => {
+    twikoo.init(Object.assign({"enable":true,"visitor":false,"envId":"qidaink-twikoo-0g5tijvr7bf0f59e"}, {
+      el: '#twikoo-comments'
+    }));
+  }, window.twikoo);
+});
+</script>
+<script defer src= https://unpkg.com/hexo-qidaink-live2d@1.1.1/live2d-widget/autoload.js></script><script src="/js/third-party/comments/livere.js"></script>
+
+
+
+
+<link defer rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@1.2.0/dist/Meting.min.js"></script>
+<!-- APlayer本体 -->
+<div class="aplayer"
+    data-id="7274703654"
+    data-server="tencent"
+    data-type="playlist"
+    data-fixed="true"
+    data-autoplay="false"
+    data-order="random"
+    data-volume="0.55"
+    data-theme="#cc543a"
+    data-preload="auto" >
+</div>
+
+
+
+<script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/fancybox/fancybox_param.js"></script>
+
+
+
+
+    
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-move/fairyDustCursor.js"></script>
+
+
+
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-click/fireWorks.js"></script>
+
+
+
+
+
+
+    
+        <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/falling/sakura.js"></script>
+    
+
+
+
+
+    <script src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/type-input/activate-power-mode.min.js"></script>
+    <script>
+        POWERMODE.colorful = true;
+        POWERMODE.shake = false;
+        POWERMODE.mobile = true;
+        document.body.addEventListener('input', POWERMODE);
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" integrity="sha256-no0c5ccDODBwp+9hSmV5VvPpKwHCpbVzXHexIkupM6U=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js" integrity="sha256-a5YRB27CcBwBFcT5EF/f3E4vzIqyHrSR878nseNYw64=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;qidaink.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:true,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:false}}</script>
+<meta name="description" content="本文主要是介绍如何使用Font Awesome图标库，以及如何引入阿里矢量图标库(iconfont)来丰富自己的图标库。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【NexT】icon-图标库的使用">
+<meta property="og:url" content="https://qidaink.github.io/posts/e2e8c66d/index.html">
+<meta property="og:site_name" content="云与海">
+<meta property="og:description" content="本文主要是介绍如何使用Font Awesome图标库，以及如何引入阿里矢量图标库(iconfont)来丰富自己的图标库。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/007iconfont1.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/007iconfont2.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/007iconfont3.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/007iconfont4.png">
+<meta property="og:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/007iconfont5.png">
+<meta property="article:published_time" content="2021-04-13T23:39:42.000Z">
+<meta property="article:modified_time" content="2021-05-12T10:28:52.129Z">
+<meta property="article:author" content="qidaink">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="主题修改">
+<meta property="article:tag" content="next">
+<meta property="article:tag" content="Icon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/007iconfont1.png">
+
+
+<link rel="canonical" href="https://qidaink.github.io/posts/e2e8c66d/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;qidaink.github.io&#x2F;posts&#x2F;e2e8c66d&#x2F;&quot;,&quot;path&quot;:&quot;posts&#x2F;e2e8c66d&#x2F;&quot;,&quot;title&quot;:&quot;【NexT】icon-图标库的使用&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>【NexT】icon-图标库的使用 | 云与海</title><script src="/js/config.js"></script><link rel="dns-prefetch" href="https://qidaink-blog-comment.vercel.app/">
+
+
+
+
+
+    <script async type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/funnytitle/funnytitle.js"></script>
+
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">云与海</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录点点滴滴</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>云与海</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签页<span class="badge">27</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类页<span class="badge">7</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档页<span class="badge">24</span></a></li>
+        <li class="menu-item menu-item-guestbook"><a href="/guestbook" rel="section"><i class="fas fa-edit fa-fw"></i>留言板</a></li>
+        <li class="menu-item menu-item-friendslink"><a href="/friendslink/" rel="section"><i class="fa fa-link fa-fw"></i>友人帐</a></li>
+        <li class="menu-item menu-item-friendscircle"><a href="/friendscircle/" rel="section"><i class="fas fa-user-friends fa-fw"></i>朋友圈</a></li>
+        <li class="menu-item menu-item-comment"><a href="https://qidaink-blog-comment.vercel.app/ui/login" rel="noopener" target="_blank"><i class="fa fa-comment fa-fw"></i>评论管理</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Font-Awesome%E5%9B%BE%E6%A0%87%E5%BA%93"><span class="nav-text">1.Font Awesome图标库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1Font-Awesome%E5%9B%BE%E6%A0%87%E5%BA%93%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.1Font Awesome图标库的介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2Font-Awesome%E5%9B%BE%E6%A0%87%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">1.2Font Awesome图标库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8"><span class="nav-text">1.2.1基础应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1%E8%BF%9B%E9%98%B6%E5%BA%94%E7%94%A8"><span class="nav-text">1.2.1进阶应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-iconfont%E9%98%BF%E9%87%8C%E7%9F%A2%E9%87%8F%E5%9B%BE%E6%A0%87%E5%BA%93"><span class="nav-text">2.iconfont阿里矢量图标库</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="qidaink"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">qidaink</p>
+  <div class="site-description" itemprop="description">但愿人长久，千里共婵娟</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_38231279" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_38231279" rel="noopener" target="_blank"><i class="iconfont icon-csdn1 fa-fw"></i>CSDN</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/qidaink" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="iconfont icon-gitee-fill-round fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/qidaink" title="Github → https:&#x2F;&#x2F;github.com&#x2F;qidaink" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>Github</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://fontawesome.com/" title="Awesome → https:&#x2F;&#x2F;fontawesome.com&#x2F;" rel="noopener" target="_blank"><i class="fab fa-font-awesome-flag fa-fw"></i>Awesome</a>
+      </span>
+  </div>
+
+
+
+
+
+
+
+
+  <div style="">
+    <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+  </div>
+  <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/canvas/canvas-clock.js"></script>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://qidaink.github.io/posts/e2e8c66d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="qidaink">
+      <meta itemprop="description" content="但愿人长久，千里共婵娟">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云与海">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【NexT】icon-图标库的使用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-04-14 07:39:42" itemprop="dateCreated datePublished" datetime="2021-04-14T07:39:42+08:00">2021-04-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-12 18:28:52" itemprop="dateModified" datetime="2021-05-12T18:28:52+08:00">2021-05-12</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline：</span>
+  
+    <a title="waline" href="/posts/e2e8c66d/#waline-comments" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" id="/posts/e2e8c66d/" data-xid="/posts/e2e8c66d/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>18 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">本文主要是介绍如何使用Font Awesome图标库，以及如何引入阿里矢量图标库(iconfont)来丰富自己的图标库。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+
+
+
+    <div class="poem-wrap">
+        <div class="poem-border poem-left"></div>
+        <div class="poem-border poem-right"></div>
+        <h1>一句诗词</h1>
+        <p id="poem">挑选中...</p>
+        <p id="info" style="text-align: right;"></p>
+        <script data-pjax defer src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/todayPoem.js"></script>
+    </div>
+
+        <p>摘要：<br>&emsp;&emsp;在<code>NexT</code>主题中，默认是使用<code>Font Awesome</code>图标库的，它已经包含了大部分的图标，可以自定义显示的颜色，而且有些图标也支持动态效果，但是有一些需要用到的图标就不在可用之列了，这个时候就可以引入阿里矢量图标库(<code>iconfont</code>)来添加自己所需要的图标，本文将介绍如何使用<code>Font Awesome</code>图标库，以及如何引入和使用阿里矢量图标库(iconfont)。</p>
+<span id="more"></span>
+
+<h1 id="1-Font-Awesome图标库"><a href="#1-Font-Awesome图标库" class="headerlink" title="1.Font Awesome图标库"></a><font size=3>1.<code>Font Awesome</code>图标库</font></h1><h2 id="1-1Font-Awesome图标库的介绍"><a href="#1-1Font-Awesome图标库的介绍" class="headerlink" title="1.1Font Awesome图标库的介绍"></a><font size=3>1.1<code>Font Awesome</code>图标库的介绍</font></h2><p>&emsp;&emsp;<code>Font Awesome</code>其实是一种字体，它提供可缩放矢量图标，不需要<code>JavaScript</code>支持，可以被定制大小、颜色、阴影以及任何可以用CSS的样式。它有两种版本，一种是<code>Free</code>的免费版本，一种是<code>Pro</code>的收费版本，收费版本的图标图标自然是比免费版本的要多喽，不过免费版的大部分就够用了，实在不行，还可以使用另一种图标库。<br></p>
+<div class="note info"><table>
+  <tr>
+    <td align="center">名称</td>
+    <td align="center">网址</td>
+  </tr>
+    <tr>
+    <td align="center">开源项目仓库</td>
+    <td align="left" style="color:#0593d3">https://github.com/FortAwesome/Font-Awesome</td>
+  </tr>
+    <tr>
+    <td align="center">官网网址</td>
+    <td align="left" style="color:#0593d3">https://fontawesome.com/</td>
+  </tr>
+</table></div>
+
+<p>&emsp;&emsp;在<code>NexT</code>主题中已经自动安装并引用了相关的文件，这里便不再重复说明如何安装该图标库。</p>
+<details blue><summary> 若有需求，可点此查看主题中引用该图标库的相关部分 </summary>
+              <div class='content'>
+              <figure class="highlight yaml"><figcaption><span>yaml [blogRoot]/themes/next/_vendors.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">fontawesome:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">&#x27;@fortawesome/fontawesome-free&#x27;</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">5.15</span><span class="number">.3</span></span><br><span class="line">  <span class="attr">file:</span> <span class="string">css/all.min.css</span></span><br><span class="line">  <span class="attr">alias:</span> <span class="string">font-awesome</span></span><br><span class="line">  <span class="attr">integrity:</span> <span class="string">sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=</span></span><br></pre></td></tr></table></figure>
+              </div>
+            </details>
+
+<h2 id="1-2Font-Awesome图标库的使用"><a href="#1-2Font-Awesome图标库的使用" class="headerlink" title="1.2Font Awesome图标库的使用"></a><font size=3>1.2<code>Font Awesome</code>图标库的使用</font></h2><h3 id="1-2-1基础应用"><a href="#1-2-1基础应用" class="headerlink" title="1.2.1基础应用"></a><font size=3>1.2.1基础应用</font></h3><ul>
+<li>基础引用格式</li>
+</ul>
+<div class="tabs" id="first-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#first-unique-name-1">i 标签</a></li><li class="tab"><a href="#first-unique-name-2">span 标签</a></li></ul><div class="tab-content"><div class="tab-pane active" id="first-unique-name-1"><figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- this icon&#x27;s (1) style prefix == fas and (2) icon name == camera --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>示例：<i class="fas fa-camera"></i></p></div><div class="tab-pane" id="first-unique-name-2"><figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- using a &lt;span&gt; element to reference the icon --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+<p>示例：<i class="fas fa-camera"></i></p></div></div></div>
+
+<ul>
+<li>图标添加样式</li>
+</ul>
+<div class="tabs" id="second-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#second-unique-name-1">添加span标签修改样式</a></li><li class="tab"><a href="#second-unique-name-2">直接修改样式</a></li></ul><div class="tab-content"><div class="tab-pane active" id="second-unique-name-1"><figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;font-size: 1em; color: #DA70D6;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;font-size: 16px; color: #8A2BE2;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;font-size: 1rem;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;color:	#00BFFF;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div align="left">
+  示例：<span style="font-size: 1em; color: #DA70D6;"><i class="fas fa-camera"></i></span>
+  <span style="font-size: 16px; color: #8A2BE2;"><i class="fas fa-camera"></i></span>
+  <span style="font-size: 1rem;">
+    <span style="color:    #00BFFF;"><i class="fas fa-camera"></i></span>
+  </span>
+</div></div><div class="tab-pane" id="second-unique-name-2"><figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera&quot;</span> <span class="attr">style</span>=<span class="string">&quot;font-size: 1em; color: #DA70D6;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera&quot;</span> <span class="attr">style</span>=<span class="string">&quot;font-size: 16px; color: #8A2BE2;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera&quot;</span> <span class="attr">style</span>=<span class="string">&quot;font-size: 1rem; color:	#00BFFF;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div align="left">
+  示例：<i class="fas fa-camera" style="font-size: 1em; color: #DA70D6;"></i>
+  <i class="fas fa-camera" style="font-size: 16px; color: #8A2BE2;"></i>
+  <i class="fas fa-camera" style="font-size: 1rem; color:    #00BFFF;"></i>
+</div></div></div></div>
+
+<ul>
+<li>图标大小</li>
+</ul>
+<p>&emsp;&emsp;图标的大小除了可以直接添加样式来改变之外，还可以在引用的时候改变，这就方便了在不修改主题源码的情况下改变主题中显示的图标的大小，这中样式下，可以指定基准字体的大小，来确定图标的相对大小，当然也可以不指定，这样将采取默认的方式。</p>
+<details blue><summary> 点击查看图标大小对应关系 </summary>
+              <div class='content'>
+              <table>    <tr><td align="center">Class</td><td align="center">Size</td><tr>    <tr><td align="center">fa-xs</td><td align="center">.75em</td><tr>    <tr><td align="center">fa-sm</td><td align="center">.875em</td><tr>    <tr><td align="center">fa-lg</td><td align="center">1.33em</td><tr>    <tr><td align="center">fa-2x</td><td align="center">2em</td><tr>    <tr><td align="center">fa-3x</td><td align="center">3em</td><tr>    <tr><td align="center">fa-4x</td><td align="center">4em</td><tr>    <tr><td align="center">fa-5x</td><td align="center">5em</td><tr>    <tr><td align="center">fa-6x</td><td align="center">6em</td><tr>    <tr><td align="center">fa-7x</td><td align="center">7em</td><tr>    <tr><td align="center">fa-8x</td><td align="center">8em</td><tr>    <tr><td align="center">fa-9x</td><td align="center">9em</td><tr>    <tr><td align="center">fa-10x</td><td align="center">10em</td><tr></table>
+              </div>
+            </details>
+
+<div class="tabs" id="third-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#third-unique-name-1">不指定基准字体大小</a></li><li class="tab"><a href="#third-unique-name-2">rem为单位</a></li><li class="tab"><a href="#third-unique-name-3">px为单位</a></li></ul><div class="tab-content"><div class="tab-pane active" id="third-unique-name-1"><figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-xs&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-sm&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-lg&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-2x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-3x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-5x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-7x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-10x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div align="left">
+  示例：
+  <div>
+    <i class="fas fa-camera fa-xs"></i>
+    <i class="fas fa-camera fa-sm"></i>
+    <i class="fas fa-camera fa-lg"></i>
+    <i class="fas fa-camera fa-2x"></i>
+    <i class="fas fa-camera fa-3x"></i>
+    <i class="fas fa-camera fa-5x"></i>
+    <i class="fas fa-camera fa-7x"></i>
+    <i class="fas fa-camera fa-10x"></i>
+  </div>
+</div></div><div class="tab-pane" id="third-unique-name-2"><figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;font-size: 0.5rem;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-xs&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-sm&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-lg&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-2x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-3x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-5x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-7x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-10x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div align="left">
+  示例：
+  <div style="font-size: 0.5rem;">
+    <i class="fas fa-camera fa-xs"></i>
+    <i class="fas fa-camera fa-sm"></i>
+    <i class="fas fa-camera fa-lg"></i>
+    <i class="fas fa-camera fa-2x"></i>
+    <i class="fas fa-camera fa-3x"></i>
+    <i class="fas fa-camera fa-5x"></i>
+    <i class="fas fa-camera fa-7x"></i>
+    <i class="fas fa-camera fa-10x"></i>
+</div>
+</div></div><div class="tab-pane" id="third-unique-name-3"><figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;font-size: 20px;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-xs&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-sm&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-lg&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-2x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-3x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-5x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-7x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-camera fa-10x&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div align="left">
+  示例：
+  <div style="font-size: 20px;">
+    <i class="fas fa-camera fa-xs"></i>
+    <i class="fas fa-camera fa-sm"></i>
+    <i class="fas fa-camera fa-lg"></i>
+    <i class="fas fa-camera fa-2x"></i>
+    <i class="fas fa-camera fa-3x"></i>
+    <i class="fas fa-camera fa-5x"></i>
+    <i class="fas fa-camera fa-7x"></i>
+    <i class="fas fa-camera fa-10x"></i>
+  </div>
+</div></div></div></div>
+
+<h3 id="1-2-1进阶应用"><a href="#1-2-1进阶应用" class="headerlink" title="1.2.1进阶应用"></a><font size=3>1.2.1进阶应用</font></h3><p>&emsp;&emsp;这里的进阶应用中不写基础应用中可用样式，但是可以在基础应用的条件下增加进阶应用的这些样式，两者可以并存。</p>
+<div class="note info"><p><i class="fas fa-fan fa-spin" style="color: #FF1493;font-size: 1.3rem"></i>官方参考文档：<a href="https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons" target="_blank">fontawesome官方帮助文档<i class="fa fa-external-link-alt"></i></a></p>
+</div>
+
+<ul>
+<li>旋转图标</li>
+</ul>
+<details blue><summary> 点击查看旋转变量对应关系 </summary>
+              <div class='content'>
+              <table>    <tr><td align="center">Class</td><td align="left">Rotation Amount</td></tr>    <tr><td align="center">fa-rotate-90</td><td align="left">90°</td></tr>    <tr><td align="center">fa-rotate-180</td><td align="left">180°</td></tr>    <tr><td align="center">fa-rotate-270</td><td align="left">270°</td></tr>    <tr><td align="center">fa-flip-horizontal</td><td align="left">mirrors icon horizontally</td></tr>    <tr><td align="center">fa-flip-vertical</td><td align="left">mirrors icon vertically</td></tr>    <tr><td align="center">fa-flip-both</td><td align="left">mirrors icon vertically and horizontally (requires 5.7.0 or greater)</td></tr></table>
+              </div>
+            </details>
+
+<div class="tabs" id="fourth-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#fourth-unique-name-1">Rotating Icons</a></li><li class="tab"><a href="#fourth-unique-name-2">Rotating+Flipping</a></li></ul><div class="tab-content"><div class="tab-pane active" id="fourth-unique-name-1"><figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fa-3x&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-rotate-90&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-rotate-180&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-rotate-270&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-flip-horizontal&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-flip-vertical&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-flip-both&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div align="left">
+  示例：
+  <div class="fa-3x">
+    <i class="fas fa-snowboarding"></i>
+    <i class="fas fa-snowboarding fa-rotate-90"></i>
+    <i class="fas fa-snowboarding fa-rotate-180"></i>
+    <i class="fas fa-snowboarding fa-rotate-270"></i>
+    <i class="fas fa-snowboarding fa-flip-horizontal"></i>
+    <i class="fas fa-snowboarding fa-flip-vertical"></i>
+    <i class="fas fa-snowboarding fa-flip-both"></i>
+  </div>
+</div></div><div class="tab-pane" id="fourth-unique-name-2"><figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fa-3x&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- A icon that&#x27;s rotated 90 degress and flipped horizontally --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;fa-rotate-90&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: inline-block;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-flip-horizontal&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- A icon that&#x27;s flipped horizontally and rotated 90 degrees  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;fa-flip-horizontal&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: inline-block;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-rotate-90&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- A icon that&#x27;s flipped vertically and rotated 270 degress  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;fa-flip-vertical&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: inline-block;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-rotate-270&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- A icon that&#x27;s rotated 270 degress and flipped vertically --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;fa-rotate-270&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: inline-block;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-flip-vertical&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- A icon that&#x27;s flipped on both axes and arbitrarily rotated 45 degress  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;fa-flip-both&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: inline-block;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-rotate-by&quot;</span> <span class="attr">style</span>=<span class="string">&quot;--fa-rotate-angle: 45deg;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">&lt;!-- A icon that&#x27;s arbitrarily rotated 45 degres and flipped on both axes  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;fa-rotate-by&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: inline-block; --fa-rotate-angle: 45deg;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-snowboarding fa-flip-both&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<div align="left">
+  示例：
+  <div class="fa-3x">
+    <!-- A icon that's rotated 90 degress and flipped horizontally -->
+    <span class="fa-rotate-90" style="display: inline-block;">
+      <i class="fas fa-snowboarding fa-flip-horizontal"></i>
+    </span>
+    <!-- A icon that's flipped horizontally and rotated 90 degrees  -->
+    <span class="fa-flip-horizontal" style="display: inline-block;">
+      <i class="fas fa-snowboarding fa-rotate-90"></i>
+    </span>
+    <!-- A icon that's flipped vertically and rotated 270 degress  -->
+    <span class="fa-flip-vertical" style="display: inline-block;">
+      <i class="fas fa-snowboarding fa-rotate-270"></i>
+    </span>
+    <!-- A icon that's rotated 270 degress and flipped vertically -->
+    <span class="fa-rotate-270" style="display: inline-block;">
+      <i class="fas fa-snowboarding fa-flip-vertical"></i>
+    </span>
+    <!-- A icon that's flipped on both axes and arbitrarily rotated 45 degress  -->
+    <span class="fa-flip-both" style="display: inline-block;">
+      <i class="fas fa-snowboarding fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i>
+    </span>
+    <!-- A icon that's arbitrarily rotated 45 degres and flipped on both axes  -->
+    <span class="fa-rotate-by" style="display: inline-block; --fa-rotate-angle: 45deg;">
+      <i class="fas fa-snowboarding fa-flip-both"></i>
+    </span>
+  </div>
+</div></div></div></div>
+
+<ul>
+<li>动态图标</li>
+</ul>
+<figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-bullhorn fa-spin&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: #FF1493;font-size: 1.3rem&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fas fa-fan fa-spin&quot;</span> <span class="attr">style</span>=<span class="string">&quot;color: #FF1493;font-size: 1.3rem&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<div align="left">
+  示例：
+  <i class="fas fa-bullhorn fa-spin" style="color: #FF1493;font-size: 1.3rem"></i>
+  <i class="fas fa-fan fa-spin" style="color: #FF1493;font-size: 1.3rem"></i>
+</div>
+
+<h1 id="2-iconfont阿里矢量图标库"><a href="#2-iconfont阿里矢量图标库" class="headerlink" title="2.iconfont阿里矢量图标库"></a><font size=3>2.<code>iconfont</code>阿里矢量图标库</font></h1><p>&emsp;&emsp;阿里矢量图标库中的图标较为丰富，有许多<code>Font Awesome</code>没有的图标，也含有许多的多色图标，下边就介绍如何在<code>NexT</code>中使用该图标库。</p>
+<ul>
+<li>登录注册</li>
+</ul>
+<p>&emsp;&emsp;首先去官网进行注册：<a target="_blank" rel="noopener" href="https://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.2" traget="_blank">阿里巴巴矢量图标库<i class="fa fa-external-link-alt"></i></a>，也可以使用自己的<code>Github</code>账号直接登录。</p>
+<ul>
+<li>挑选图标</li>
+</ul>
+<p>&emsp;&emsp;进入首页之后选择菜单栏的【图标库】，然后按下图箭头所指进行自己想要图标的添加，这样会把自己的这些图标添加到购物车。</p>
+<div align="center">
+  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/007iconfont1.png">
+</div>
+
+<ul>
+<li>添加到项目</li>
+</ul>
+<p>&emsp;&emsp;挑选完图标后，点击界面右上角的购物车图标，此时会在右侧弹出如下界面，然后按箭头添加到项目即可，若还未创建项目，则可按照提示进行项目创建，或者自己提前创建好项目，此处不再提示如何创建项目。</p>
+<div align="center">
+  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/007iconfont2.png"/>
+</div>
+
+<ul>
+<li>生成代码</li>
+</ul>
+<p>&emsp;&emsp;添加自己选择的图标到项目之后，可以到【我的项目】界面，如下图所示，该图标库有三种引用方式，分别是<code>Unicode</code>、<code>Font class</code>和<code>Symbol</code>，选择自己想用的引用方式，点击下方的【<strong>点此生成</strong>】即可生成相应的引用方式，另外要注意的是，不管哪种引用方式，在新增或者删除图标的时候，引用代码都需要进行<strong>更新</strong>，相应的站点中的相应文件内容也需要更新。</p>
+<div align="center">
+  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/007iconfont3.png">
+</div>
+
+<ul>
+<li>图标引用</li>
+</ul>
+<div class="note info"><p><i class="fas fa-fan fa-spin" style="color: #FF1493;font-size: 1.3rem"></i>官方参考文档：<a href="https://www.iconfont.cn/help/detail?helptype=code" target="_blank">阿里巴巴矢量图标库使用帮助文档<i class="fa fa-external-link-alt"></i></a></p>
+</div>
+
+<div class="tabs" id="fifth-unique-name"><ul class="nav-tabs"><li class="tab active"><a href="#fifth-unique-name-1">Unicode</a></li><li class="tab"><a href="#fifth-unique-name-2">Font class</a></li><li class="tab"><a href="#fifth-unique-name-3">Symbol</a></li></ul><div class="tab-content"><div class="tab-pane active" id="fifth-unique-name-1"><p>&emsp;&emsp;<code>unicode</code>是字体在网页端最原始的应用方式，特点是：</p>
+<ul>
+<li>兼容性最好，支持<code>ie6+</code>，及所有现代浏览器。</li>
+<li>支持按字体的方式去动态调整图标大小，颜色等等。</li>
+<li>但是因为是字体，所以不支持多色。只能使用平台里单色的图标，就算项目里有多色图标也会自动去色。</li>
+</ul>
+<div class="note warning"><p>&emsp;&emsp;注意：新版<code>iconfont</code>支持多色图标，这些多色图标在<code>unicode</code>模式下将不能使用，如果有需求建议使用<code>symbol</code>的引用方式</p>
+</div>
+
+
+<details blue><summary> 点击查看使用步骤 </summary>
+              <div class='content'>
+              <p>&emsp;&emsp;<code>unicode</code>使用步骤如下：</p><ul><li>第一步：拷贝自己项目下面生成的<code>font-face</code>，并添加到样式文件</li></ul><p>&emsp;&emsp;我这里是自己新建了一个单独的<code>iconfont.styl</code>文件来存放阿里矢量图标库的样式代码，并在<code>[blogRoot]/source/_data/styles.styl</code>进行引用。</p><figure class="highlight stylus"><figcaption><span>stylus [blogRoot]/source/_data/iconfont.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;<span class="attribute">font-family</span>: <span class="string">&#x27;iconfont&#x27;</span>;</span><br><span class="line">    <span class="attribute">src</span>: url(<span class="string">&#x27;iconfont.eot&#x27;</span>);</span><br><span class="line">    <span class="attribute">src</span>: url(<span class="string">&#x27;iconfont.eot?#iefix&#x27;</span>) format(<span class="string">&#x27;embedded-opentype&#x27;</span>),</span><br><span class="line">    url(<span class="string">&#x27;iconfont.woff&#x27;</span>) format(<span class="string">&#x27;woff&#x27;</span>),</span><br><span class="line">    url(<span class="string">&#x27;iconfont.ttf&#x27;</span>) format(<span class="string">&#x27;truetype&#x27;</span>),</span><br><span class="line">    url(&#x27;iconfont.svg#iconfont&#x27;) format(&#x27;svg&#x27;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>第二步：在<code>iconfont.styl</code>文件中定义使用iconfont的样式</li></ul><figure class="highlight stylus"><figcaption><span>stylus [blogRoot]/source/_data/iconfont.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.iconfont&#123;</span><br><span class="line">    <span class="attribute">font-family</span>:<span class="string">&quot;iconfont&quot;</span> <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">16px</span>;<span class="attribute">font-style</span>:normal;</span><br><span class="line">    -webkit-<span class="attribute">font-smoothing</span>: antialiased;</span><br><span class="line">    -webkit-text-stroke-<span class="attribute">width</span>: <span class="number">0.2px</span>;</span><br><span class="line">    -moz-osx-<span class="attribute">font-smoothing</span>: grayscale;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>第三步：挑选相应图标并获取字体编码，应用于页面</li></ul><figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;iconfont&quot;</span>&gt;</span><span class="symbol">&amp;#x33;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure><p>&emsp;&emsp;效果如下图：</p><div align="center">  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/007iconfont4.png"></div>
+              </div>
+            </details></div><div class="tab-pane" id="fifth-unique-name-2"><p>&emsp;&emsp;<code>font-class</code>是<code>unicode</code>使用方式的一种变种，主要是解决<code>unicode</code>书写不直观，语意不明确的问题。</p>
+<p>&emsp;&emsp;与<code>unicode</code>使用方式相比，具有如下特点：</p>
+<ul>
+<li>兼容性良好，支持<code>ie8+</code>，及所有现代浏览器。</li>
+<li>相比于<code>unicode</code>语意明确，书写更直观。可以很容易分辨这个icon是什么。</li>
+<li>因为使用<code>class</code>来定义图标，所以当要替换图标时，只需要修改<code>class</code>里面的<code>unicode</code>引用。</li>
+<li>不过因为本质上还是使用的字体，所以多色图标还是不支持的。</li>
+</ul>
+<details blue><summary> 点击查看使用步骤 </summary>
+              <div class='content'>
+              <p>&emsp;&emsp;<code>font-class</code>使用步骤如下：</p><ul><li>第一步：拷贝自己项目下面生成的<code>font-face</code>，并添加到样式文件</li></ul><p>&emsp;&emsp;项目中的该种引用方式生成的代码是一个<code>css</code>链接格式，这样的话在<code>styl</code>文件中怎么引用都没有成功，所以就按下边的方法在模板渲染文件中直接加载这个样式文件啦。</p><figure class="highlight plain"><figcaption><span>nunjuck [blogRoot]/source/_data/head.njk</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href&#x3D;&quot;http:&#x2F;&#x2F;at.alicdn.com&#x2F;t&#x2F;font_8d5l8fzk5b87iudi.css&quot; rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure><p>&emsp;&emsp;不过呢，我这里是自己新建了一个单独的<code>iconfont.styl</code>文件来存放阿里矢量图标库的样式代码，所以我就将链接中的样式文件给复制下来，并在<code>[blogRoot]/source/_data/styles.styl</code>进行引用，具体代码可以查看自己项目中相应链接中的内容。</p><ul><li>第二步：挑选相应图标并获取类名，应用于页面<figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;iconfont icon-xxx&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ul><div align="left">  示例：<i class="iconfont icon-shoujizhuti_15bianqian"></i></div>
+              </div>
+            </details></div><div class="tab-pane" id="fifth-unique-name-3"><p>&emsp;&emsp;<code>Symbol</code>是一种全新的使用方式，应该说这才是未来的主流，也是平台目前推荐的用法。相关介绍可以参考这篇文章 这种用法其实是做了一个<code>svg</code>的集合，与前面两种相比具有如下特点：</p>
+<ul>
+<li>支持多色图标了，不再受单色限制。</li>
+<li>通过一些技巧，支持像字体那样，通过<code>font-size</code>,<code>color</code>来调整样式。</li>
+<li>兼容性较差，支持 <code>ie9+</code>,及现代浏览器。</li>
+<li>浏览器渲染<code>svg</code>的性能一般，还不如<code>png</code>。</li>
+</ul>
+<details blue><summary> 点击查看使用步骤 </summary>
+              <div class='content'>
+              <p>&emsp;&emsp;<code>Symbol</code>使用步骤如下：</p><ul><li>第一步：拷贝项目下面生成的<code>symbol</code>代码并在相应文件引用</li></ul><p>&emsp;&emsp;由于该种方式生成的是一种脚本文件，所以可以在布局模板文件的注入文件<code>custom-Scripts.njk</code>进行引用使用。</p><figure class="highlight plain"><figcaption><span>nunjuck [blogRoot]/source/_data/custom-Scripts.njk</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;&#x2F;&#x2F;at.alicdn.com&#x2F;t&#x2F;font_8d5l8fzk5b87iudi.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure><ul><li>第二步：加入通用css代码（引入一次就行）</li></ul><p>&emsp;&emsp;我这里是自己新建了一个单独的<code>iconfont.styl</code>文件来存放阿里矢量图标库的样式代码，并在<code>[blogRoot]/source/_data/styles.styl</code>进行引用。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.icon &#123;</span><br><span class="line">    width: 1em; height: 1em;</span><br><span class="line">    vertical-align: -0.15em;</span><br><span class="line">    fill: currentColor;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>第三步：挑选相应图标并获取类名，应用于页面</li></ul><figure class="highlight html"><figcaption><span>html</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">class</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">aria-hidden</span>=<span class="string">&quot;true&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">&quot;#icon-xxx&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure><p>效果如下图，可以发现该种引用方式可以直接显示多色图标：</p><div align="center">  <img src="https://gitee.com/qidaink/qidaink-images/raw/master/Hexo/NexT/007iconfont5.png"></div>
+              </div>
+            </details></div></div></div>
+
+<br>
+
+<p>&emsp;&emsp;对于我来说，还是选择了<code>font-class</code>这种方式，因为这种方式跟<code>Font Awesome</code>是兼容的，不想修改源码的话，这个应该是最方便替换<code>Font Awesome</code>图标的，但是有些地方替换后大小可能与之前不符，在样式里对相应的地方进行修改就可以啦，似乎黑白配色跟<code>NexT</code>才更加相符，我不是很追求图标的颜色多样，方便使用就可以啦，哈哈(ฅ&gt;ω&lt;*ฅ)。</p>
+
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">来看看我的其他文章吧😄(ฅ>ω<*ฅ)</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/db25055a/" rel="bookmark">【NexT】NexT中的fancybox</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/b14a1b18/" rel="bookmark">【NexT】NexT自定义记录-2</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/posts/8e2d10a7/" rel="bookmark">【NexT】NexT自定义记录-1</a></div>
+    </li>
+  </ul>
+
+
+    <footer class="post-footer">
+
+
+
+
+  <div class="poem-wrap">
+    <div class="poem-border poem-left"></div>
+    <div class="poem-border poem-right"></div>
+    <h1>一言</h1>
+    <p id="hitokoto_text">挑选中...</p>
+    <p id="hitokoto_information" style="text-align: right;"></p>
+    <script data-pjax defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/poem/hitokoto.js"></script>
+  </div>
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'">
+  <script data-pjax defer src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script>
+  <div class="social-share"
+      style = "text-align: center; margin-bottom: 10px;"
+      data-sites = "qq,wechat,weibo,facebook,twitter,google"
+      data-description = "欢迎分享这篇文章呀(ฅ>ω<*ฅ)"
+      data-wechat-qrcode-title = "微信扫一扫：分享文章"
+      data-wechat-qrcode-helper = '' >
+  </div>
+
+
+
+
+
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+            --------------------本文结束
+            <i class="fas fa-fan fa-spin" style="color: #FF1493; font-size: 1rem"></i>
+            感谢您的阅读--------------------
+            </div>
+        
+    </div>
+
+
+
+
+
+
+  
+  <div class="my_post_copyright"> 
+
+    
+    <script data-pjax defer src="https://unpkg.com/sweetalert@2/dist/sweetalert.min.js"></script>
+    <script data-pjax defer src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+    
+    <script data-pjax async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/popup-box/cpoyright-popup.js"></script>
+
+    <p><span>文章标题:</span><a href="/posts/e2e8c66d/">【NexT】icon-图标库的使用</a></p>
+    <p><span>文章作者:</span><a href="/" title="欢迎访问 《云与海》 的个人博客">qidaink</a></p>
+    <p><span>发布时间:</span>2021年04月14日 - 07:39</p>
+    <p><span>最后更新:</span>2021年05月12日 - 18:28</p>
+    <p><span>原始链接:</span><a href="/posts/e2e8c66d/" title="【NexT】icon-图标库的使用">https://qidaink.github.io/posts/e2e8c66d/</a>
+       <span class="copy-path"  title="点击可以复制文章链接哦"><i class="far fa-copy" data-clipboard-text="https://qidaink.github.io/posts/e2e8c66d/"  aria-label="复制成功！"></i></span>
+    </p>
+    <p><span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href= "https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+  </div>
+  
+
+
+          <div class="reward-container">
+  <div>(ฅ>ω<*ฅ)既然看到这里，何不交个朋友😏？(ฅ>ω<*ฅ)</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/myqq.jpg" alt="qidaink My QQ">
+        <span>My QQ</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://blog.csdn.net/qq_38231279">
+          <span class="icon">
+            <i class="fab fa-cuttlefish"></i>
+          </span>
+
+          <span class="label">CSDN</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.gitee.io">
+          <span class="icon">
+            <i class="fab fa-gofore"></i>
+          </span>
+
+          <span class="label">Gitee</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://qidaink.github.io">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+
+          <span class="label">Github</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"><i class="fa fa-tag"></i> hexo</a>
+              <a href="/tags/%E4%B8%BB%E9%A2%98%E4%BF%AE%E6%94%B9/" rel="tag"><i class="fa fa-tag"></i> 主题修改</a>
+              <a href="/tags/next/" rel="tag"><i class="fa fa-tag"></i> next</a>
+              <a href="/tags/Icon/" rel="tag"><i class="fa fa-tag"></i> Icon</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/94fa0725/" rel="prev" title="【AD】AD基础01-PCB设计中的概念">
+                  <i class="fa fa-chevron-left"></i> 【AD】AD基础01-PCB设计中的概念
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/a28891a0/" rel="next" title="【Python】Python基础3-文件读写">
+                  【Python】Python基础3-文件读写 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-waline">waline</a></li>
+            <li class="tab"><a href="#comment-twikoo">twikoo</a></li>
+            <li class="tab"><a href="#comment-livere">livere</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane waline" id="comment-waline">
+              <div class="comments" id="waline-comments"></div>
+            </div>
+            <div class="tab-pane twikoo" id="comment-twikoo">
+              <div class="comments"><div id="twikoo-comments"></div></div>
+            </div>
+            <div class="tab-pane livere" id="comment-livere">
+              <div class="comments" id="lv-container" data-id="city" data-uid="MTAyMC81MjgxMC8yOTI4OA=="></div>
+            </div>
+        </div>
+      </div><script src="/js/comments.js"></script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qidaink</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">160k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">4:52</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+    <span id="sitetime"></span>
+    <script defer language=javascript>
+        function siteTime()
+        {
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*==================================================
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year        - 作为date对象的年份，为4位年份值
+            month       - 0-11之间的整数，做为date对象的月份
+            day         - 1-31之间的整数，做为date对象的天数
+            hours       - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes     - 0-59之间的整数，做为date对象的分钟数
+            seconds     - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+            ==================================================*/
+            var t1 = Date.UTC(2017, 
+                              5, 
+                              19, 
+                              0, 
+                              0, 
+                              0); //北京时间
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="我在此处等了你 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+    </script>
+
+
+
+
+
+
+    <div class="languages">
+        <i class="fa fa-language"></i>
+        <span>繁体中文/简体中文：</span>
+        <a id="translateLink" href="javascript:translatePage();">繁体中文</a>
+    </div>
+    <script type="text/javascript" src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/tw_cn/tw_cn.js"></script>
+    <script type="text/javascript">
+        var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+        var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+        var cookieDomain = "https://qidaink.github.io/"; //Cookie地址, 一定要设定, 通常为自己的网址
+        var msgToTraditionalChinese = "繁体中文"; //此处可以更改为你想要显示的文字
+        var msgToSimplifiedChinese = "簡體中文"; //同上，但两处均不建议更改
+        var translateButtonId = "translateLink"; //默认互换id
+        translateInitilization();
+    </script>
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  <script class="next-config" data-name="nprogress" type="application/json">{&quot;enable&quot;:true,&quot;spinner&quot;:true}</script>
+  <script src="/js/third-party/nprogress.js"></script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;ams&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="waline" type="application/json">{&quot;lang&quot;:&quot;zh-CN&quot;,&quot;enable&quot;:true,&quot;serverURL&quot;:&quot;https:&#x2F;&#x2F;qidaink-blog-comment.vercel.app&#x2F;&quot;,&quot;placeholder&quot;:&quot;(ฅ&gt;ω&lt;*ฅ)欢迎大家评论呀！&quot;,&quot;avatar&quot;:&quot;identicon&quot;,&quot;meta&quot;:[&quot;nick&quot;,&quot;mail&quot;,&quot;link&quot;],&quot;pageSize&quot;:5,&quot;visitor&quot;:false,&quot;comment_count&quot;:true,&quot;requiredFields&quot;:[&quot;nick&quot;,&quot;mail&quot;],&quot;langMode&quot;:{&quot;admin&quot;:&quot;可爱的博主&quot;,&quot;nick&quot;:&quot;昵称（必填）&quot;,&quot;mail&quot;:&quot;邮箱（必填）&quot;,&quot;link&quot;:&quot;网址（选填）&quot;,&quot;sofa&quot;:&quot;这里冷冷清清的，快来留下脚印吧(ฅ&gt;ω&lt;*ฅ)！&quot;},&quot;el&quot;:&quot;#waline-comments&quot;,&quot;libUrl&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;@waline&#x2F;client&#x2F;dist&#x2F;Waline.min.js&quot;,&quot;path&quot;:&quot;&#x2F;posts&#x2F;e2e8c66d&#x2F;&quot;}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() => 
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => {
+    new Waline(CONFIG.waline);
+  });
+});
+</script><script>
+NexT.utils.loadComments('#twikoo-comments', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js', () => {
+    twikoo.init(Object.assign({"enable":true,"visitor":false,"envId":"qidaink-twikoo-0g5tijvr7bf0f59e"}, {
+      el: '#twikoo-comments'
+    }));
+  }, window.twikoo);
+});
+</script>
+<script defer src= https://unpkg.com/hexo-qidaink-live2d@1.1.1/live2d-widget/autoload.js></script><script src="/js/third-party/comments/livere.js"></script>
+
+
+
+
+<link defer rel="stylesheet" href="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.css">
+<script defer src="https://unpkg.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<script defer src="https://unpkg.com/meting@1.2.0/dist/Meting.min.js"></script>
+<!-- APlayer本体 -->
+<div class="aplayer"
+    data-id="7274703654"
+    data-server="tencent"
+    data-type="playlist"
+    data-fixed="true"
+    data-autoplay="false"
+    data-order="random"
+    data-volume="0.55"
+    data-theme="#cc543a"
+    data-preload="auto" >
+</div>
+
+
+
+<script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/fancybox/fancybox_param.js"></script>
+
+
+
+
+    
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-move/fairyDustCursor.js"></script>
+
+
+
+    <script async src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/cursor-click/fireWorks.js"></script>
+
+
+
+
+
+
+    
+        <script defer src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/falling/sakura.js"></script>
+    
+
+
+
+
+    <script src="https://unpkg.com/hexo-qidaink-blogfiles@latest/js/type-input/activate-power-mode.min.js"></script>
+    <script>
+        POWERMODE.colorful = true;
+        POWERMODE.shake = false;
+        POWERMODE.mobile = true;
+        document.body.addEventListener('input', POWERMODE);
+    </script>
+
+
+</body>
+</html>
