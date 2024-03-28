@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"sumumm.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":300},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文主要是体验正点原子I.MX6U-ALPHA开发板出厂系统——基本功能测试的相关笔记，若笔记中有错误或者不合适的地方，欢迎批评指正😃。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LV01-02-IMX6ULL-ALPHA开发板体验-04-基本功能测试">
+<meta property="og:url" content="https://sumumm.github.io/post/7a886af.html">
+<meta property="og:site_name" content="苏木">
+<meta property="og:description" content="本文主要是体验正点原子I.MX6U-ALPHA开发板出厂系统——基本功能测试的相关笔记，若笔记中有错误或者不合适的地方，欢迎批评指正😃。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715170423681.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715170717110.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715171345705.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715171456787.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715171847389.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715172233536.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715172258095.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715172339688.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715172447315.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715172534538.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715212420550.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715212639828.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715212738778.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715213053307.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715213205492.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715213638096.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715213822964.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715214352527.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715214506175.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715214655849.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715214830306.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715215440531.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715220046706.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715220543189.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715220845607.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715221110671.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715221231481.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715221452613.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717191343771.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717191516785.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717191550618.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717191627534.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717191927248.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192002165.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192059876.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192131313.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192333475.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192422314.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192522320.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192543245.png">
+<meta property="article:published_time" content="2023-09-08T11:25:30.000Z">
+<meta property="article:modified_time" content="2024-03-28T15:39:19.951Z">
+<meta property="article:author" content="苏木">
+<meta property="article:tag" content="(ALPHA)LV01-IMX6ULL平台">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715170423681.png">
+
+
+<link rel="canonical" href="https://sumumm.github.io/post/7a886af.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://sumumm.github.io/post/7a886af.html","path":"post/7a886af.html","title":"LV01-02-IMX6ULL-ALPHA开发板体验-04-基本功能测试"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LV01-02-IMX6ULL-ALPHA开发板体验-04-基本功能测试 | 苏木</title>
+  
+
+
+
+
+
+
+
+<script type="text/javascript">
+	//禁用右键（防止右键查看源代码） 
+    window.oncontextmenu=function(){return false;} 
+    //禁止任何键盘敲击事件（防止F12和shift+ctrl+i调起开发者工具） 
+    window.onkeydown = window.onkeyup = window.onkeypress = function () { 
+        window.event.returnValue = false; 
+        return false; 
+    } 
+    //如果用户在工具栏调起开发者工具，那么判断浏览器的可视高度和可视宽度是否有改变，如有改变则关闭本页面 
+    var h = window.innerHeight,w=window.innerWidth; 
+    window.onresize = function () { 
+        if (h!= window.innerHeight||w!=window.innerWidth){ 
+            window.close(); 
+            window.location = "about:blank"; 
+        } 
+    }
+</script>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://unpkg.com/hexo-next-tags-plus@latest/lib/tag_plus.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">苏木</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我的学习之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>苏木的家</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类页<span class="badge">32</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档页<span class="badge">485</span></a></li><li class="menu-item menu-item-flink"><a href="/flink/" rel="section"><i class="fa fa-link fa-fw"></i>友人帐</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81GPIO%E6%B5%8B%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">一、GPIO测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-LED%E7%81%AF"><span class="nav-number">1.1.</span> <span class="nav-text">1. LED灯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%9C%82%E9%B8%A3%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">2. 蜂鸣器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%8C%89%E9%94%AE%E6%B5%8B%E8%AF%95"><span class="nav-number">1.3.</span> <span class="nav-text">3. 按键测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">二、系统相关测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%B3%BB%E7%BB%9F%E4%B8%BB%E9%A2%91"><span class="nav-number">2.1.</span> <span class="nav-text">1. 系统主频</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%B8%BB%E9%A2%91"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 查看系统主频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E4%BF%AE%E6%94%B9%E7%B3%BB%E7%BB%9F%E4%B8%BB%E9%A2%91"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 修改系统主频</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.</span> <span class="nav-text">2. 查看系统信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%9F%A5%E7%9C%8B%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 查看内核版本号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%B8%BB%E6%9C%BA%E5%90%8D"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 查看系统主机名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E7%99%BB%E5%BD%95%E5%BC%80%E6%9C%BA%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 查看系统登录开机信息  </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%9F%A5%E7%9C%8B-CPU-%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.4 查看 CPU 相关信息  </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF"><span class="nav-number">2.2.5.</span> <span class="nav-text">2.5 查看内存相关信息  </span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81USB-WiFi%E6%B5%8B%E8%AF%95"><span class="nav-number">3.</span> <span class="nav-text">三、USB WiFi测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-USB-WiFi%E8%AF%B4%E6%98%8E"><span class="nav-number">3.1.</span> <span class="nav-text">1. USB WiFi说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E8%BF%9E%E6%8E%A5USB-WiFi%E6%A8%A1%E5%9D%97"><span class="nav-number">3.2.</span> <span class="nav-text">2. 连接USB WiFi模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Station%EF%BC%88%E4%B8%8A%E7%BD%91%EF%BC%89%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.3.</span> <span class="nav-text">3. Station（上网）模式  </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-WiFi%E6%89%AB%E6%8F%8F"><span class="nav-number">3.3.1.</span> <span class="nav-text">3.1 WiFi扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E8%BF%9E%E6%8E%A5WiFi"><span class="nav-number">3.3.2.</span> <span class="nav-text">3.2 连接WiFi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E4%B8%8A%E7%BD%91%EF%BC%9F"><span class="nav-number">3.3.3.</span> <span class="nav-text">3.3 是否可以上网？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-SoftAP%EF%BC%88%E7%83%AD%E7%82%B9%EF%BC%89%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.4.</span> <span class="nav-text">4. SoftAP（热点）模式  </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%BC%80%E5%90%AFAP%E7%83%AD%E7%82%B9"><span class="nav-number">3.4.1.</span> <span class="nav-text">4.1 开启AP热点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E6%89%8B%E6%9C%BA%E8%BF%9E%E6%8E%A5AP%E7%83%AD%E7%82%B9"><span class="nav-number">3.4.2.</span> <span class="nav-text">4.2 手机连接AP热点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E4%BF%AE%E6%94%B9AP%E7%83%AD%E7%82%B9%E4%BF%A1%E6%81%AF"><span class="nav-number">3.4.3.</span> <span class="nav-text">4.3 修改AP热点信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Bridge%EF%BC%88%E6%A1%A5%E6%8E%A5%EF%BC%89%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.5.</span> <span class="nav-text">5. Bridge（桥接）模式  </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%9C%89%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.5.1.</span> <span class="nav-text">5.1 有线网络连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E5%BC%80%E5%90%AF%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.5.2.</span> <span class="nav-text">5.2 开启桥接模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E8%BF%9E%E6%8E%A5%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E7%83%AD%E7%82%B9"><span class="nav-number">3.5.3.</span> <span class="nav-text">5.3 连接桥接模式下的热点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E4%BF%AE%E6%94%B9%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E7%83%AD%E7%82%B9%E4%BF%A1%E6%81%AF"><span class="nav-number">3.5.4.</span> <span class="nav-text">5.4 修改桥接模式下的热点信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E7%BD%91%E5%8F%A3%E6%B5%8B%E8%AF%95"><span class="nav-number">4.</span> <span class="nav-text">四、网口测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%BD%91%E5%8F%A3%E8%AF%B4%E6%98%8E"><span class="nav-number">4.1.</span> <span class="nav-text">1. 网口说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%BD%91%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.2.</span> <span class="nav-text">2. 网口的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF"><span class="nav-number">4.2.1.</span> <span class="nav-text">2.1 查看网络信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%8E%B7%E5%8F%96ip"><span class="nav-number">4.2.2.</span> <span class="nav-text">2.2 获取ip</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E7%BD%91%E5%8F%A3%E7%9A%84%E6%89%93%E5%BC%80%E4%B8%8E%E5%85%B3%E9%97%AD"><span class="nav-number">4.2.3.</span> <span class="nav-text">2.3 网口的打开与关闭</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%B5%8B%E8%AF%95%E8%81%94%E7%BD%91%E6%95%88%E6%9E%9C"><span class="nav-number">4.2.4.</span> <span class="nav-text">2.4 测试联网效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E9%80%9F%E5%BA%A6%E6%B5%8B%E8%AF%95"><span class="nav-number">4.3.</span> <span class="nav-text">3. 网络通信速度测试  </span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="苏木"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">苏木</p>
+  <div class="site-description" itemprop="description">莫道桑榆晚，为霞尚满天</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">485</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sumumm" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sumumm" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sumumm.github.io/post/7a886af.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="苏木">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏木">
+      <meta itemprop="description" content="莫道桑榆晚，为霞尚满天">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="LV01-02-IMX6ULL-ALPHA开发板体验-04-基本功能测试 | 苏木">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LV01-02-IMX6ULL-ALPHA开发板体验-04-基本功能测试
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-08 19:25:30" itemprop="dateCreated datePublished" datetime="2023-09-08T19:25:30+08:00">2023-09-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">嵌入式开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/" itemprop="url" rel="index"><span itemprop="name">02IMX6ULL平台</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/" itemprop="url" rel="index"><span itemprop="name">LV01-IMX6ULL平台</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>26 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本文主要是体验正点原子I.MX6U-ALPHA开发板出厂系统——基本功能测试的相关笔记，若笔记中有错误或者不合适的地方，欢迎批评指正😃。</p>
+<span id="more"></span>
+
+<!-- Photo: https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/ -->
+
+<details class="folding-tag" blue><summary> 点击查看使用工具及版本 </summary>
+              <div class='content'>
+              <table>    <tr>        <td align="center" width=150px>Windows版本</td>        <td align="left">windows11</td>    </tr>    <tr>        <td align="center">Ubuntu版本</td>        <td align="left">Ubuntu16.04的64位版本</td>      </tr>    <tr>        <td align="center">VMware® Workstation 16 Pro</td>        <td align="left">16.2.3 build-19376536</td>      </tr>    <tr>        <td align="center">终端软件</td>        <td align="left">MobaXterm(Professional Edition v23.0 Build 5042 (license))</td>      </tr>    <tr>        <td align="center">Linux开发板</td>        <td align="left">正点原子 i.MX6ULL Linux 阿尔法开发板</td>      </tr>    <tr>        <td align="center">uboot</td>        <td align="left">NXP官方提供的uboot，NXP提供的版本为uboot-imx-rel_imx_4.1.15_2.1.0_ga(使用的uboot版本为U-Boot 2016.03)</td>      </tr>    <tr>        <td align="center">linux内核</td>        <td align="left">linux-4.15(NXP官方提供)</td>      </tr>    <tr>        <td align="center">Win32DiskImager</td>        <td align="left">Win32DiskImager v1.0</td>      </tr></table>
+              </div>
+            </details>
+
+<details class="folding-tag" blue><summary> 点击查看本文参考资料 </summary>
+              <div class='content'>
+              <table>    <tr>        <td align="center">分类</td>        <td align="center">网址</td>        <td align="center">说明</td>    </tr>    <tr>        <td align="center" rowspan="5">官方网站</td>        <td align="left"><a href="https://www.arm.com/" target="_blank">https://www.arm.com/</a></td>        <td align="left">ARM官方网站，在这里我们可以找到Cotex-Mx以及ARMVx的一些文档</td>    </tr>    <tr>        <td align="left"><a href="https://www.nxp.com.cn/" target="_blank">https://www.nxp.com.cn/ </a></td>        <td align="left">NXP官方网站</td>    </tr>    <tr>        <td align="left"><a href="https://www.nxpic.org.cn/" target="_blank">https://www.nxpic.org.cn/</a></td><td align="left">NXP 官方社区</td>    </tr>    <tr>        <td align="left"><a href="https://u-boot.readthedocs.io/en/latest/" target="_blank">https://u-boot.readthedocs.io/en/latest/</a></td><td align="left">u-boot官网</td>    </tr>    <tr>        <td align="left"><a href="https://www.kernel.org/" target="_blank">https://www.kernel.org/</a></td><td align="left">linux内核官网</td>    </tr></table>
+              </div>
+            </details>
+
+<details class="folding-tag" blue><summary> 点击查看相关文件下载 </summary>
+              <div class='content'>
+              <table>    <tr>        <td align="center">分类</td>        <td align="center">网址</td>        <td align="center">说明</td>    </tr>    <tr>        <td align="center" rowspan="4">NXP</td>        <td align="left"><a href="https://github.com/nxp-imx" target="_blank">https://github.com/nxp-imx</a></td>        <td align="left">NXP imx开发资源GitHub组织，里边会有u-boot和linux内核的仓库</td>    </tr>    <tr>        <td align="left"><a href="https://elixir.bootlin.com/linux/latest/source" target="_blank">https://elixir.bootlin.com/linux/latest/source</a></td>        <td align="left">在线阅读linux kernel源码</td>    </tr>    <tr>        <td align="left"><a href="https://github.com/nxp-imx/linux-imx/releases/tag/rel_imx_4.1.15_2.1.0_ga" target="_blank">nxp-imx/linux-imx/releases/tag/rel_imx_4.1.15_2.1.0_ga</a></td>        <td align="left">NXP linux内核仓库tags中的rel_imx_4.1.15_2.1.0_ga</td>    </tr>    <tr>        <td align="left"><a href="https://github.com/nxp-imx/uboot-imx/releases/tag/rel_imx_4.1.15_2.1.0_ga" target="_blank">nxp-imx/uboot-imx/releases/tag/rel_imx_4.1.15_2.1.0_ga</a></td>        <td align="left">NXP u-boot仓库tags中的rel_imx_4.1.15_2.1.0_ga</td>    </tr>    <tr>        <td align="center" rowspan="2">I.MX6ULL</td>        <td align="left"><a href="https://www.nxp.com.cn/docs/en/data-sheet/IMX6ULLIEC.pdf" target="_blank">i.MX 6ULL Applications Processors for Industrial Products</a></td>        <td align="left">I.MX6ULL 芯片手册（datasheet，可以在线查看）</td>    </tr>    <tr>        <td align="left"><a href="https://www.nxp.com.cn/webapp/Download?colCode=IMX6ULLRM&lang_cd=zh" target="_blank">i.MX 6ULL Applications ProcessorReference Manual</a></td>        <td align="left">I.MX6ULL 参考手册（下载后才能查看，需要登录NXP官网）</td>    </tr></table>
+              </div>
+            </details>
+
+<h1 id="一、GPIO测试"><a href="#一、GPIO测试" class="headerlink" title="一、GPIO测试"></a><font size=3>一、GPIO测试</font></h1><h2 id="1-LED灯"><a href="#1-LED灯" class="headerlink" title="1. LED灯"></a><font size=3>1. LED灯</font></h2><p>开发板启动时， DS0 作为心跳灯，用于指示系统的运行，开发板与 LED 对应的管脚关系如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">开发板</th>
+<th align="center">GPIO03</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ALPHA</td>
+<td align="center">DS0</td>
+</tr>
+</tbody></table>
+<p>进入开发板系统，在串口终端执行指令控制对应的 IO 来控制对应的器件：开发板上启动后 DS0 默认是[heartbeat]模式，执行如下指令改变当前触发模式，改成[none]模式就可以通过指令来控制 LED 的亮灭了。  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo none &gt; /sys/class/leds/sys-led/trigger # 改变 LED 的触发模式</span><br><span class="line">echo 1 &gt; /sys/class/leds/sys-led/brightness # 点亮 LED</span><br><span class="line">echo 0 &gt; /sys/class/leds/sys-led/brightness # 熄灭 LED</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-蜂鸣器"><a href="#2-蜂鸣器" class="headerlink" title="2. 蜂鸣器"></a><font size=3>2. 蜂鸣器</font></h2><p>开发板底板上有一个蜂鸣器，它对应的管脚为：</p>
+<table>
+<thead>
+<tr>
+<th align="center">开发板</th>
+<th align="center">SNVS_TAMPER1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ALPHA</td>
+<td align="center">BEEP</td>
+</tr>
+</tbody></table>
+<p>板的蜂鸣器用配置成了 gpio-leds 模式， 同理蜂鸣器也可以用这样的指令来控制，默认 BEEP 的触发模式为[none]，相关的命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo 1 &gt; /sys/class/leds/beep/brightness # 鸣叫</span><br><span class="line">echo 0 &gt; /sys/class/leds/beep/brightness # 关闭</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-按键测试"><a href="#3-按键测试" class="headerlink" title="3. 按键测试"></a><font size=3>3. 按键测试</font></h2><p>底板上按键对应的管脚关系如下：  </p>
+<table>
+<thead>
+<tr>
+<th align="center">开发板</th>
+<th align="center">GPIO18</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">ALPHA</td>
+<td align="center">KEY0</td>
+</tr>
+</tbody></table>
+<p>进入开发板系统，在串口终端执行如下指令查看按键所对应的输入事件 ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsinput</span><br></pre></td></tr></table></figure>
+
+<p>然后便可以看到有以下信息输出：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715170423681.png" alt="image-20230715170423681" style="zoom:50%;" />
+
+<p>可以从上图看出按键事件号为 event2，触摸屏占用了 event1，所以当触摸屏没有插上时按键事件号为不一定为 event2！执行下面的指令，进行按键测试</p>
+<blockquote>
+<p>hexdump 或者 od -x 指令都是以十六进制的形式打印出输入事件信息。 由于文件系统没提供 hexpdump 指令，所以只测试 od 指令。  </p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">od -x /dev/input/event2</span><br></pre></td></tr></table></figure>
+
+<p>按下底板上的 KEY0，打印出按键输入事件的信息如下:</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715170717110.png" alt="image-20230715170717110" style="zoom:50%;" />
+
+<p>按“Ctrl + c”可以终止上边的指令。  </p>
+<h1 id="二、系统相关测试"><a href="#二、系统相关测试" class="headerlink" title="二、系统相关测试"></a><font size=3>二、系统相关测试</font></h1><h2 id="1-系统主频"><a href="#1-系统主频" class="headerlink" title="1. 系统主频"></a><font size=3>1. 系统主频</font></h2><h3 id="1-1-查看系统主频"><a href="#1-1-查看系统主频" class="headerlink" title="1.1 查看系统主频"></a><font size=3>1.1 查看系统主频</font></h3><p>查看可用主频，使用如下指令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies</span><br></pre></td></tr></table></figure>
+
+<p>可以看到有 198MHz、 396MHz、 528MHz 和 792MHz 的主频可用:</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715171345705.png" alt="image-20230715171345705" style="zoom:50%;" />
+
+<p>然后我们输入 cpufreq-info 查看 cpu 运行的频率：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cpufreq-info</span><br></pre></td></tr></table></figure>
+
+<p>可以看到有如下信息：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715171456787.png" alt="image-20230715171456787" style="zoom:47%;" />
+
+<p>由于出厂内核配置了 CPU 主频为“Performance”（此模式不考虑耗电，最高性能） ，直接运行在最高主频上。所以看到 792MHz 处是 100%。  </p>
+<h3 id="1-2-修改系统主频"><a href="#1-2-修改系统主频" class="headerlink" title="1.2 修改系统主频"></a><font size=3>1.2 修改系统主频</font></h3><p>是否可以无需重新编译 Linux 源码来修改 CPU 的主频呢，答案是可以的。输入下面的指令，申请用户空间控制 CPU 主频：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo userspace &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor</span><br></pre></td></tr></table></figure>
+
+<p>输入下面指令将 CPU 主频修改为 198MHz，注意不是任意主频都支持，必须是上面支持的那几种频率：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 198000 &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed</span><br></pre></td></tr></table></figure>
+
+<p>再查看当前的 CPU 主频，修改成了低主频，明显的是 Qt 桌面滑动变卡了，说明此主频生效，相关命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_cur_freq</span><br></pre></td></tr></table></figure>
+
+<p>可以看到有如下信息：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715171847389.png" alt="image-20230715171847389" style="zoom:50%;" />
+
+<h2 id="2-查看系统信息"><a href="#2-查看系统信息" class="headerlink" title="2. 查看系统信息"></a><font size=3>2. 查看系统信息</font></h2><h3 id="2-1-查看内核版本号"><a href="#2-1-查看内核版本号" class="headerlink" title="2.1 查看内核版本号"></a><font size=3>2.1 查看内核版本号</font></h3><p>我们可以使用下边的命令查看内核版本号：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715172233536.png" alt="image-20230715172233536" style="zoom:50%;" />
+
+<h3 id="2-2-查看系统主机名"><a href="#2-2-查看系统主机名" class="headerlink" title="2.2 查看系统主机名"></a><font size=3>2.2 查看系统主机名</font></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/hostname</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715172258095.png" alt="image-20230715172258095" style="zoom:50%;" />
+
+<h3 id="2-3-查看系统登录开机信息"><a href="#2-3-查看系统登录开机信息" class="headerlink" title="2.3 查看系统登录开机信息  "></a><font size=3>2.3 查看系统登录开机信息  </font></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715172339688.png" alt="image-20230715172339688" style="zoom:50%;" />
+
+<h3 id="2-4-查看-CPU-相关信息"><a href="#2-4-查看-CPU-相关信息" class="headerlink" title="2.4 查看 CPU 相关信息  "></a><font size=3>2.4 查看 CPU 相关信息  </font></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/cpuinfo</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715172447315.png" alt="image-20230715172447315" style="zoom:50%;" />
+
+<h3 id="2-5-查看内存相关信息"><a href="#2-5-查看内存相关信息" class="headerlink" title="2.5 查看内存相关信息  "></a><font size=3>2.5 查看内存相关信息  </font></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/meminfo</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715172534538.png" alt="image-20230715172534538" style="zoom:47%;" />
+
+<h1 id="三、USB-WiFi测试"><a href="#三、USB-WiFi测试" class="headerlink" title="三、USB WiFi测试"></a><font size=3>三、USB WiFi测试</font></h1><h2 id="1-USB-WiFi说明"><a href="#1-USB-WiFi说明" class="headerlink" title="1. USB WiFi说明"></a><font size=3>1. USB WiFi说明</font></h2><p>正点原子 ALPHA 开发板购买时赠送了一个 USB WIFI 模块，型号是USB WIFI RTL8188EUS&#x2F;RTL8188CUS，该模块可直接插到电脑上联网测试好坏。插到电脑上的话，是这样的：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715212420550.png" alt="image-20230715212420550" style="zoom:50%;" />
+
+
+
+<p>在开发板上使用的话是使用 USB 2.0 HOST 接口， ALPHA 底板 4 个 USB 接口都可以。正点原子提供了一个 USB WIFI 测试脚本 alientek_usb_wifi_setup.sh用于参考。它默认放在开发板根文件系统的 &#x2F;home&#x2F;root&#x2F;shell&#x2F;wifi   目录下：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715212639828.png" alt="image-20230715212639828" style="zoom:50%;" />
+
+<p>一般 USB 设备都是可带电插拔的，RTL8188EUS&#x2F;RTL8188CUS 模块也是支持热插拔的，可在系统起来后再插上USB WIFI 模块。 使用前可以插上12V电源，防止串口供电的电压不足。</p>
+<h2 id="2-连接USB-WiFi模块"><a href="#2-连接USB-WiFi模块" class="headerlink" title="2. 连接USB WiFi模块"></a><font size=3>2. 连接USB WiFi模块</font></h2><p>我们按下图，将USB WiFi模块接入开发板：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715212738778.png" alt="image-20230715212738778" style="zoom:50%;" />
+
+<p>插上模块后，串口会有如下打印信息：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715213053307.png" alt="image-20230715213053307" style="zoom:50%;" />
+
+<p>然后我们查看一下 USB WIFI 的网卡信息，使用 ifconfig 指令即可查看相关信息，如下图示：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifconfig wlan0 up # 若默认没打开 wlan0 则需要执行此项。</span><br><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<p>然后便会看到如下信息显示：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715213205492.png" alt="image-20230715213205492" style="zoom:50%;" />
+
+<p>其中wlan0 是 USB WIFI 的节点。  </p>
+<h2 id="3-Station（上网）模式"><a href="#3-Station（上网）模式" class="headerlink" title="3. Station（上网）模式  "></a><font size=3>3. Station（上网）模式  </font></h2><p>这一部分测试是使用 USB WIFI 连接无线网络并测试网络是否能上网。</p>
+<h3 id="3-1-WiFi扫描"><a href="#3-1-WiFi扫描" class="headerlink" title="3.1 WiFi扫描"></a><font size=3>3.1 WiFi扫描</font></h3><p>我们使用下边的命令扫描附近无线网络信息并打印相关信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wpa_cli -i wlan0 scan_result # 此指令需要启动进入后再插 WIFI 才生效，需要 wpa_supplicant 在运行。</span><br></pre></td></tr></table></figure>
+
+<p>然后可以看到如下信息打印：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715213638096.png" alt="image-20230715213638096" style="zoom:50%;" />
+
+<p>还可以用其他指令来扫描无线网络信息，例如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iwlist wlan0 scan</span><br></pre></td></tr></table></figure>
+
+<p>该命令会显示更为详细的信息：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715213822964.png" alt="image-20230715213822964" style="zoom:37%;" />
+
+<h3 id="3-2-连接WiFi"><a href="#3-2-连接WiFi" class="headerlink" title="3.2 连接WiFi"></a><font size=3>3.2 连接WiFi</font></h3><p>我们需要通过脚本来连接WiFi，可以执行如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ./alientek_usb_wifi_setup.sh -m station -i 15-1-601 -p ****** -d wlan0</span><br></pre></td></tr></table></figure>
+
+<p>（1）-m station ：设置成 station 模式</p>
+<p>（2）-i 15-1-601 ：无线网络名称(ssid)</p>
+<p>（3）-p ****** ：无线网络密码(psk)</p>
+<p>（4）-d wlan0 ： USB WIFI 节点  </p>
+<p>执行该脚本连接WiFi后会有如下打印提示：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715214352527.png" alt="image-20230715214352527" style="zoom:45%;" />
+
+<p>看到其中有这一行，就表示开发板已经成功获取到了ip地址：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715214506175.png" alt="image-20230715214506175" style="zoom:45%;" />
+
+<p>若未能正常获取 ip，等待 RTL871X: set group key camid:5 这句话出现后输入 <code>udhcpc -iwlan0</code> 指令重新获取 ip。若没有这句话，需要检查无线网络信息是否正确。我们可以看一下现在的ifconfig信息：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715214655849.png" alt="image-20230715214655849" style="zoom:50%;" />
+
+<h3 id="3-3-是否可以上网？"><a href="#3-3-是否可以上网？" class="headerlink" title="3.3 是否可以上网？"></a><font size=3>3.3 是否可以上网？</font></h3><p>我们来ping一下百度，测试一下是不是可以上网了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com -I wlan0</span><br></pre></td></tr></table></figure>
+
+<p>然后若是可以上网，则可以看到有以下信息打印：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715214830306.png" alt="image-20230715214830306" style="zoom:50%;" />
+
+<h2 id="4-SoftAP（热点）模式"><a href="#4-SoftAP（热点）模式" class="headerlink" title="4. SoftAP（热点）模式  "></a><font size=3>4. SoftAP（热点）模式  </font></h2><p>这一部分是测试 USB WIFI 开启热点，与手机连接 。</p>
+<h3 id="4-1-开启AP热点"><a href="#4-1-开启AP热点" class="headerlink" title="4.1 开启AP热点"></a><font size=3>4.1 开启AP热点</font></h3><p>我们执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ./alientek_usb_wifi_setup.sh -m softap -d wlan0</span><br></pre></td></tr></table></figure>
+
+<p>然后便会看到如下打印信息：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715215440531.png" alt="image-20230715215440531" style="zoom:47%;" />
+
+<h3 id="4-2-手机连接AP热点"><a href="#4-2-手机连接AP热点" class="headerlink" title="4.2 手机连接AP热点"></a><font size=3>4.2 手机连接AP热点</font></h3><p>打开手机设置，可以看到 USB WIFI 发出的热点，名称为“alientek_softap”，密码默认为12345678。输入密码后点击连接，即可连接到无线热点。  </p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715220046706.png" alt="image-20230715220046706" style="zoom:50%;" />
+
+<p>可以看到手机已经连接了热点，这样手机与开发板的 WIFI 构成了一个无线局域网。  我们也可以按照正点原子的文档配置一下静态ip：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715220543189.png" alt="image-20230715220543189" style="zoom:50%;" />
+
+<h3 id="4-3-修改AP热点信息"><a href="#4-3-修改AP热点信息" class="headerlink" title="4.3 修改AP热点信息"></a><font size=3>4.3 修改AP热点信息</font></h3><p>如需要修改热点名称与热点密码，用户可以编辑  alientek_usb_wifi_setup.sh 脚本内容设置个人的热点信息。 </p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715220845607.png" alt="image-20230715220845607" style="zoom:46%;" />
+
+<h2 id="5-Bridge（桥接）模式"><a href="#5-Bridge（桥接）模式" class="headerlink" title="5. Bridge（桥接）模式  "></a><font size=3>5. Bridge（桥接）模式  </font></h2><p>测试 USB WIFI 开启热点，并桥接到有线网络，让手机连接到热点并上网，这个我就没做了，离路由器太远了。</p>
+<h3 id="5-1-有线网络连接"><a href="#5-1-有线网络连接" class="headerlink" title="5.1 有线网络连接"></a><font size=3>5.1 有线网络连接</font></h3><p>将网线插上ALPHA 开发板的网口其中一个或者两个，并且确保有线网络能上网。用 ifconfig 查看有线网络 eth0 或者 eth1 能否获取 ip，并测试 eth0 是否能上网。下图是将网线插到开发板底板 ENET2 接口处，节点是 eth0，如果插到 ENET1 接口，节点是 eth1。 MINI 底板只有一个网口，节点是 eth0。  </p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715221110671.png" alt="image-20230715221110671" style="zoom: 67%;" />
+
+<h3 id="5-2-开启桥接模式"><a href="#5-2-开启桥接模式" class="headerlink" title="5.2 开启桥接模式"></a><font size=3>5.2 开启桥接模式</font></h3><p>我们执行以下命令开启USB WiFi的桥接模式：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ./alientek_usb_wifi_setup.sh -m bridge -d wlan0 -e eth0</span><br></pre></td></tr></table></figure>
+
+<p>其中 -e eth0 ：桥接的有线网络节点，根据实际情况桥接到对应的网络节点 eth0&#x2F;eth1。  执行完毕后我们可能会看到如下信息：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715221231481.png" alt="image-20230715221231481" style="zoom:63%;" />
+
+<h3 id="5-3-连接桥接模式下的热点"><a href="#5-3-连接桥接模式下的热点" class="headerlink" title="5.3 连接桥接模式下的热点"></a><font size=3>5.3 连接桥接模式下的热点</font></h3><p>打开手机设置，可以看到 USB WIFI 发出的热点，名称为“alientek_bridge”，密码默认为12345678。输入密码后点击连接，即可连接到无线热点。并测试能否上网，打开手机的浏览器测试即可。  </p>
+<h3 id="5-4-修改桥接模式下的热点信息"><a href="#5-4-修改桥接模式下的热点信息" class="headerlink" title="5.4 修改桥接模式下的热点信息"></a><font size=3>5.4 修改桥接模式下的热点信息</font></h3><p>如需要修改热点名称与热点密码 ，可以修改 alientek_usb_wifi_setup.sh 脚本：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230715221452613.png" alt="image-20230715221452613" style="zoom: 45%;" />
+
+<h1 id="四、网口测试"><a href="#四、网口测试" class="headerlink" title="四、网口测试"></a><font size=3>四、网口测试</font></h1><h2 id="1-网口说明"><a href="#1-网口说明" class="headerlink" title="1. 网口说明"></a><font size=3>1. 网口说明</font></h2><p>ALPHA 开发板有 eth0 和 eth1 两路百兆网卡。 eth0 对应底板上 ENET2， eth1 对应底板上的 ENET1如下图所示：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717191343771.png" alt="image-20230717191343771" style="zoom:50%;" />
+
+<h2 id="2-网口的使用"><a href="#2-网口的使用" class="headerlink" title="2. 网口的使用"></a><font size=3>2. 网口的使用</font></h2><p>下边的测试我自己没做，直接照搬正点原子教程的，应该是开发板直连路由器进行上网测试。</p>
+<h3 id="2-1-查看网络信息"><a href="#2-1-查看网络信息" class="headerlink" title="2.1 查看网络信息"></a><font size=3>2.1 查看网络信息</font></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717191516785.png" alt="image-20230717191516785" style="zoom:50%;" />
+
+<p>插上网线到 ENET2 （对应eth0）处可以看到如下信息，系统自动获取了 ip， eth1 同理。  </p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717191550618.png" alt="image-20230717191550618" style="zoom:50%;" />
+
+<h3 id="2-2-获取ip"><a href="#2-2-获取ip" class="headerlink" title="2.2 获取ip"></a><font size=3>2.2 获取ip</font></h3><p>如果对应网卡没有自动获取到 IP，请使用下面的指令获取。“-i”是指定网卡名称，如不指定，会使用默认会使用 eth0。  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">udhcpc -i eth0</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717191627534.png" alt="image-20230717191627534" style="zoom: 58%;" />
+
+<h3 id="2-3-网口的打开与关闭"><a href="#2-3-网口的打开与关闭" class="headerlink" title="2.3 网口的打开与关闭"></a><font size=3>2.3 网口的打开与关闭</font></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0 down # 关闭网口，网卡名字请根据实际情况修改， down 表示关闭</span><br><span class="line">ifconfig eth0 up   # 打开网口，网卡名字请根据实际情况修改， up 表示打开</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-测试联网效果"><a href="#2-4-测试联网效果" class="headerlink" title="2.4 测试联网效果"></a><font size=3>2.4 测试联网效果</font></h3><p>测试网口是否能上网，以访问 <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 为例，执行如下命令，“-I”（大写的 i ）代表指定网口。不加“-I”则使用默认网卡（默认网卡指的是有网络接入的一端，如果两个网口都有网络接入，则使用 eth0 作为默认网卡）。按“Ctrl+c”终止 ping 指令。百度的实际地址根据网络运营商不同，访问的地址会不同。</p>
+<ul>
+<li>eth0 联网测试</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com -I eth0</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717191927248.png" alt="image-20230717191927248" style="zoom:50%;" />
+
+<ul>
+<li>eth1 联网测试</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com -I eth1</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192002165.png" alt="image-20230717192002165" style="zoom:50%;" />
+
+<ul>
+<li>与网关的联通测试</li>
+</ul>
+<p>可以使用如下命令查看网关：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">route</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192059876.png" alt="image-20230717192059876" style="zoom:50%;" />
+
+<p>由上可知网关为 192.168.1.1，根据路由器不同，网关可能不同。 <strong>ping 网关可测试内网与开发板连接是否正常</strong>。下面指令不加“-I”参数，使用默认网卡。  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping 192.168.1.1</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192131313.png" alt="image-20230717192131313" style="zoom:50%;" />
+
+<h2 id="3-网络通信速度测试"><a href="#3-网络通信速度测试" class="headerlink" title="3. 网络通信速度测试  "></a><font size=3>3. 网络通信速度测试  </font></h2><p>iperf3 是一个网络性能测试工具。 iperf 可以测试最大 TCP 和 UDP 带宽性能，具有多种参数和 UDP 特性，可以根据需要调整，可以报告带宽、延迟抖动和数据包丢失。测试 Ubuntu 与开发板通信速度。如果ubuntu 未安装 iperf3，可以在 ubuntu 终端中执行以下命令安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install iperf3</span><br></pre></td></tr></table></figure>
+
+<p>查看 ubuntu 的 ip 地址，备用。 （这里要确保开发板的 ip 地址要与 ubuntu 的 ip 地址是同一局域网内）。本次测试 ubuntu 作服务端，开发板作客户端，执行下面指令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192333475.png" alt="image-20230717192333475" style="zoom:50%;" />
+
+<p>然后在ubuntu执行下边的命令启动iperf3：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iperf3 -s # ubuntu 作为服务端</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192422314.png" alt="image-20230717192422314" style="zoom:62%;" />
+
+<p>然后开发板作为客户端连接 ubuntu 服务端，在开发板中执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iperf3 -c 192.168.1.84 -i 1 # -i 1 指通信周期，单位秒。</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192522320.png" alt="image-20230717192522320" style="zoom:50%;" />
+
+<p>ubuntu 服务端将会打印如下信息：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-04-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/img/image-20230717192543245.png" alt="image-20230717192543245" style="zoom:50%;" />
+
+<p>反过来 ubuntu 作客户端，开发板作服务端是一样的步骤。  </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+            ----------本文结束
+            <i class="fas fa-fan fa-spin" style="color: #FF1493; font-size: 1rem"></i>
+            感谢您的阅读----------
+            </div>
+        
+    </div>
+
+
+
+
+
+  
+  <div class="my_post_copyright"> 
+    <p><span>文章标题:</span><a href="/post/7a886af.html">LV01-02-IMX6ULL-ALPHA开发板体验-04-基本功能测试</a></p>
+    <p><span>文章作者:</span><a href="/" title="欢迎访问 《苏木》 的学习笔记">苏木</a></p>
+    <p><span>发布时间:</span>2023年09月08日 - 19:25</p>
+    <p><span>最后更新:</span>2024年03月28日 - 23:39</p>
+    <p><span>原始链接:</span><a href="/post/7a886af.html" title="LV01-02-IMX6ULL-ALPHA开发板体验-04-基本功能测试">https://sumumm.github.io/post/7a886af.html</a></p>
+    <p><span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href= "https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+  </div>
+  
+
+
+          <div class="post-tags">
+              <a href="/tags/ALPHA-LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/" rel="tag"><i class="fa fa-tag"></i> (ALPHA)LV01-IMX6ULL平台</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/172a0248.html" rel="prev" title="LV01-02-IMX6ULL-ALPHA开发板体验-05-从tftp和nfs启动系统">
+                  <i class="fa fa-angle-left"></i> LV01-02-IMX6ULL-ALPHA开发板体验-05-从tftp和nfs启动系统
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/c60bf741.html" rel="next" title="LV01-02-IMX6ULL-ALPHA开发板体验-03-开发板系统烧写">
+                  LV01-02-IMX6ULL-ALPHA开发板体验-03-开发板系统烧写 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">苏木</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">2.6m</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">158:49</span>
+  </span>
+</div>
+
+
+
+
+    <span id="sitetime"></span>
+    <script defer language=javascript>
+        function siteTime()
+        {
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*==================================================
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year        - 作为date对象的年份，为4位年份值
+            month       - 0-11之间的整数，做为date对象的月份
+            day         - 1-31之间的整数，做为date对象的天数
+            hours       - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes     - 0-59之间的整数，做为date对象的分钟数
+            seconds     - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+            ==================================================*/
+            var t1 = Date.UTC(2017, 
+                              5, 
+                              19, 
+                              0, 
+                              0, 
+                              0); //北京时间
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="已在这里 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+    </script>
+
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+ 
+        <div id="click-show-text"
+            data-mobile = false
+            data-text = 富强,民主,文明,和谐,自由,平等,公正,法制,爱国,敬业,诚信,友善
+            data-fontsize = 15px
+            data-random= false>
+        </div>
+       
+
+      
+        <script async src=https://cdn.jsdelivr.net/npm/hexo-next-mouse-effect@latest/click/showText.js></script>
+      
+
+      
+    
+
+
+
+
+    <script async src="/js/fancybox_param.js"></script>
+
+
+
+
+
+<!-- APlayer本体 -->
+
+
+
+</body>
+</html>

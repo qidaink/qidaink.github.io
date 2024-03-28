@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"sumumm.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":300},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文主要是体验正点原子I.MX6U-ALPHA开发板出厂系统——开发板出厂系统烧写的相关笔记，若笔记中有错误或者不合适的地方，欢迎批评指正😃。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LV01-02-IMX6ULL-ALPHA开发板体验-03-开发板系统烧写">
+<meta property="og:url" content="https://sumumm.github.io/post/c60bf741.html">
+<meta property="og:site_name" content="苏木">
+<meta property="og:description" content="本文主要是体验正点原子I.MX6U-ALPHA开发板出厂系统——开发板出厂系统烧写的相关笔记，若笔记中有错误或者不合适的地方，欢迎批评指正😃。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715103111652.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715103525312.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715104000364.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715104233134.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715104422842.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715104548266.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715105252434.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715105458720.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715111326712.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715112450883.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715112729155.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715113037813.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715113606940.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715114548282.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715132327384.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715132943564.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715133500709.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715133925204.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715161559248.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715161837580.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715162450581.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715162650620.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715163114529.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715163349191.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715164046712.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715164340236.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715164749796.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715165016888.png">
+<meta property="article:published_time" content="2023-09-08T11:25:28.000Z">
+<meta property="article:modified_time" content="2024-03-28T15:39:19.951Z">
+<meta property="article:author" content="苏木">
+<meta property="article:tag" content="(ALPHA)LV01-IMX6ULL平台">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715103111652.png">
+
+
+<link rel="canonical" href="https://sumumm.github.io/post/c60bf741.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://sumumm.github.io/post/c60bf741.html","path":"post/c60bf741.html","title":"LV01-02-IMX6ULL-ALPHA开发板体验-03-开发板系统烧写"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LV01-02-IMX6ULL-ALPHA开发板体验-03-开发板系统烧写 | 苏木</title>
+  
+
+
+
+
+
+
+
+<script type="text/javascript">
+	//禁用右键（防止右键查看源代码） 
+    window.oncontextmenu=function(){return false;} 
+    //禁止任何键盘敲击事件（防止F12和shift+ctrl+i调起开发者工具） 
+    window.onkeydown = window.onkeyup = window.onkeypress = function () { 
+        window.event.returnValue = false; 
+        return false; 
+    } 
+    //如果用户在工具栏调起开发者工具，那么判断浏览器的可视高度和可视宽度是否有改变，如有改变则关闭本页面 
+    var h = window.innerHeight,w=window.innerWidth; 
+    window.onresize = function () { 
+        if (h!= window.innerHeight||w!=window.innerWidth){ 
+            window.close(); 
+            window.location = "about:blank"; 
+        } 
+    }
+</script>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://unpkg.com/hexo-next-tags-plus@latest/lib/tag_plus.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">苏木</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我的学习之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>苏木的家</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类页<span class="badge">32</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档页<span class="badge">485</span></a></li><li class="menu-item menu-item-flink"><a href="/flink/" rel="section"><i class="fa fa-link fa-fw"></i>友人帐</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81mfgtool-%E7%83%A7%E5%86%99%E7%B3%BB%E7%BB%9F%EF%BC%88OTG-%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">一、mfgtool 烧写系统（OTG 方式）  </span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">1. 准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%BC%80%E5%8F%91%E6%9D%BF%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 开发板配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E8%B5%84%E6%96%99%E5%87%86%E5%A4%87"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 资料准备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%83%A7%E5%86%99%E7%B3%BB%E7%BB%9F%E5%88%B0-TF%E5%8D%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2. 烧写系统到 TF卡  </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-vbs%E8%84%9A%E6%9C%AC%E9%80%89%E6%8B%A9"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 vbs脚本选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%BF%90%E8%A1%8C%E7%83%A7%E5%86%99%E5%B7%A5%E5%85%B7"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 运行烧写工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%90%AF%E5%8A%A8%E6%B5%8B%E8%AF%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 启动测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%83%A7%E5%86%99%E5%88%B0eMMC"><span class="nav-number">1.3.</span> <span class="nav-text">3. 烧写到eMMC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81shell%E8%84%9A%E6%9C%AC%E7%83%A7%E5%86%99%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">二、shell脚本烧写系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C-1"><span class="nav-number">2.1.</span> <span class="nav-text">1. 准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-ubuntu"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 ubuntu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%96%87%E4%BB%B6%E6%8B%B7%E8%B4%9D"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 文件拷贝</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%83%A7%E5%86%99%E7%B3%BB%E7%BB%9F%E5%88%B0TF%E5%8D%A1"><span class="nav-number">2.2.</span> <span class="nav-text">2. 烧写系统到TF卡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%8C%82%E8%BD%BDTF%E5%8D%A1%E5%88%B0ubuntu"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 挂载TF卡到ubuntu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-imx6mksdboot-sh%E8%84%9A%E6%9C%AC"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 imx6mksdboot.sh脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-TF%E5%8D%A1%E4%B8%AD%E9%83%BD%E7%83%A7%E5%86%99%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 TF卡中都烧写了什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E6%96%AD%E5%BC%80TF%E5%8D%A1"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.4 断开TF卡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E9%87%8D%E5%90%AF%E6%B5%8B%E8%AF%95"><span class="nav-number">2.2.5.</span> <span class="nav-text">2.5 重启测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%83%A7%E5%86%99%E5%88%B0eMMC-1"><span class="nav-number">2.3.</span> <span class="nav-text">3. 烧写到eMMC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%87%86%E5%A4%87TF%E5%90%AF%E5%8A%A8%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1 准备TF启动系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%8B%B7%E8%B4%9D%E6%89%80%E9%9C%80%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.2 拷贝所需文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E4%BB%8ETF%E5%8D%A1%E5%90%AF%E5%8A%A8%E5%BC%80%E5%8F%91%E6%9D%BF"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.3 从TF卡启动开发板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-imx6mkemmcboot-sh%E8%84%9A%E6%9C%AC"><span class="nav-number">2.3.4.</span> <span class="nav-text">3.4 imx6mkemmcboot.sh脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-%E8%84%9A%E6%9C%AC%E8%AF%B4%E6%98%8E"><span class="nav-number">2.3.4.1.</span> <span class="nav-text">3.4.1 脚本说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-2-%E6%9F%A5%E7%9C%8BeMMC%E6%8C%82%E8%BD%BD%E8%8A%82%E7%82%B9"><span class="nav-number">2.3.4.2.</span> <span class="nav-text">3.4.2 查看eMMC挂载节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-3-%E7%83%A7%E5%86%99%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.3.4.3.</span> <span class="nav-text">3.4.3 烧写系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-eMMC%E4%B8%AD%E9%83%BD%E7%83%A7%E5%86%99%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.3.5.</span> <span class="nav-text">3.5 eMMC中都烧写了什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-%E9%87%8D%E5%90%AF%E6%B5%8B%E8%AF%95"><span class="nav-number">2.3.6.</span> <span class="nav-text">3.6 重启测试</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="苏木"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">苏木</p>
+  <div class="site-description" itemprop="description">莫道桑榆晚，为霞尚满天</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">485</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sumumm" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sumumm" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sumumm.github.io/post/c60bf741.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="苏木">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏木">
+      <meta itemprop="description" content="莫道桑榆晚，为霞尚满天">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="LV01-02-IMX6ULL-ALPHA开发板体验-03-开发板系统烧写 | 苏木">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LV01-02-IMX6ULL-ALPHA开发板体验-03-开发板系统烧写
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-09-08 19:25:28" itemprop="dateCreated datePublished" datetime="2023-09-08T19:25:28+08:00">2023-09-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">嵌入式开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/" itemprop="url" rel="index"><span itemprop="name">02IMX6ULL平台</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/" itemprop="url" rel="index"><span itemprop="name">LV01-IMX6ULL平台</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>25 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本文主要是体验正点原子I.MX6U-ALPHA开发板出厂系统——开发板出厂系统烧写的相关笔记，若笔记中有错误或者不合适的地方，欢迎批评指正😃。</p>
+<span id="more"></span>
+
+<!-- Photo: https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/ -->
+
+<details class="folding-tag" blue><summary> 点击查看使用工具及版本 </summary>
+              <div class='content'>
+              <table>    <tr>        <td align="center" width=150px>Windows版本</td>        <td align="left">windows11</td>    </tr>    <tr>        <td align="center">Ubuntu版本</td>        <td align="left">Ubuntu16.04的64位版本</td>      </tr>    <tr>        <td align="center">VMware® Workstation 16 Pro</td>        <td align="left">16.2.3 build-19376536</td>      </tr>    <tr>        <td align="center">终端软件</td>        <td align="left">MobaXterm(Professional Edition v23.0 Build 5042 (license))</td>      </tr>    <tr>        <td align="center">Linux开发板</td>        <td align="left">正点原子 i.MX6ULL Linux 阿尔法开发板</td>      </tr>    <tr>        <td align="center">uboot</td>        <td align="left">NXP官方提供的uboot，NXP提供的版本为uboot-imx-rel_imx_4.1.15_2.1.0_ga(使用的uboot版本为U-Boot 2016.03)</td>      </tr>    <tr>        <td align="center">linux内核</td>        <td align="left">linux-4.15(NXP官方提供)</td>      </tr>    <tr>        <td align="center">Win32DiskImager</td>        <td align="left">Win32DiskImager v1.0</td>      </tr></table>
+              </div>
+            </details>
+
+<details class="folding-tag" blue><summary> 点击查看本文参考资料 </summary>
+              <div class='content'>
+              <table>    <tr>        <td align="center">分类</td>        <td align="center">网址</td>        <td align="center">说明</td>    </tr>    <tr>        <td align="center" rowspan="5">官方网站</td>        <td align="left"><a href="https://www.arm.com/" target="_blank">https://www.arm.com/</a></td>        <td align="left">ARM官方网站，在这里我们可以找到Cotex-Mx以及ARMVx的一些文档</td>    </tr>    <tr>        <td align="left"><a href="https://www.nxp.com.cn/" target="_blank">https://www.nxp.com.cn/ </a></td>        <td align="left">NXP官方网站</td>    </tr>    <tr>        <td align="left"><a href="https://www.nxpic.org.cn/" target="_blank">https://www.nxpic.org.cn/</a></td><td align="left">NXP 官方社区</td>    </tr>    <tr>        <td align="left"><a href="https://u-boot.readthedocs.io/en/latest/" target="_blank">https://u-boot.readthedocs.io/en/latest/</a></td><td align="left">u-boot官网</td>    </tr>    <tr>        <td align="left"><a href="https://www.kernel.org/" target="_blank">https://www.kernel.org/</a></td><td align="left">linux内核官网</td>    </tr></table>
+              </div>
+            </details>
+
+<details class="folding-tag" blue><summary> 点击查看相关文件下载 </summary>
+              <div class='content'>
+              <table>    <tr>        <td align="center">分类</td>        <td align="center">网址</td>        <td align="center">说明</td>    </tr>    <tr>        <td align="center" rowspan="4">NXP</td>        <td align="left"><a href="https://github.com/nxp-imx" target="_blank">https://github.com/nxp-imx</a></td>        <td align="left">NXP imx开发资源GitHub组织，里边会有u-boot和linux内核的仓库</td>    </tr>    <tr>        <td align="left"><a href="https://elixir.bootlin.com/linux/latest/source" target="_blank">https://elixir.bootlin.com/linux/latest/source</a></td>        <td align="left">在线阅读linux kernel源码</td>    </tr>    <tr>        <td align="left"><a href="https://github.com/nxp-imx/linux-imx/releases/tag/rel_imx_4.1.15_2.1.0_ga" target="_blank">nxp-imx/linux-imx/releases/tag/rel_imx_4.1.15_2.1.0_ga</a></td>        <td align="left">NXP linux内核仓库tags中的rel_imx_4.1.15_2.1.0_ga</td>    </tr>    <tr>        <td align="left"><a href="https://github.com/nxp-imx/uboot-imx/releases/tag/rel_imx_4.1.15_2.1.0_ga" target="_blank">nxp-imx/uboot-imx/releases/tag/rel_imx_4.1.15_2.1.0_ga</a></td>        <td align="left">NXP u-boot仓库tags中的rel_imx_4.1.15_2.1.0_ga</td>    </tr>    <tr>        <td align="center" rowspan="2">I.MX6ULL</td>        <td align="left"><a href="https://www.nxp.com.cn/docs/en/data-sheet/IMX6ULLIEC.pdf" target="_blank">i.MX 6ULL Applications Processors for Industrial Products</a></td>        <td align="left">I.MX6ULL 芯片手册（datasheet，可以在线查看）</td>    </tr>    <tr>        <td align="left"><a href="https://www.nxp.com.cn/webapp/Download?colCode=IMX6ULLRM&lang_cd=zh" target="_blank">i.MX 6ULL Applications ProcessorReference Manual</a></td>        <td align="left">I.MX6ULL 参考手册（下载后才能查看，需要登录NXP官网）</td>    </tr></table>
+              </div>
+            </details>
+
+<p>前边我们已经了解过如何改造自己的mfgtool，以及如何通过mfgtool烧写系统，接下来就是用正点原子的开发板出厂系统来做烧写测试，后边也方便了解开发板功能。</p>
+<h1 id="一、mfgtool-烧写系统（OTG-方式）"><a href="#一、mfgtool-烧写系统（OTG-方式）" class="headerlink" title="一、mfgtool 烧写系统（OTG 方式）  "></a><font size=3>一、mfgtool 烧写系统（OTG 方式）  </font></h1><h2 id="1-准备工作"><a href="#1-准备工作" class="headerlink" title="1. 准备工作"></a><font size=3>1. 准备工作</font></h2><h3 id="1-1-开发板配置"><a href="#1-1-开发板配置" class="headerlink" title="1.1 开发板配置"></a><font size=3>1.1 开发板配置</font></h3><p>确保前边的CH340驱动和串口终端都已经安装好了，然后ALPHA开发板按如下方式连接：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715103111652.png" alt="image-20230715103111652" style="zoom:50%;" />
+
+<p>底板拨码开关 BOOT_CFG 设置如上图，设置为 USB 连接方式，“1”代码 ON， “0”代表“OFF”。将拨码数字 2 处拨到 ON，其他的为 OFF。  </p>
+<h3 id="1-2-资料准备"><a href="#1-2-资料准备" class="headerlink" title="1.2 资料准备"></a><font size=3>1.2 资料准备</font></h3><p>我们要烧写正点原子出厂系统，所以用的都是正点原子资料中的工具，我们主要使用 【开发板光盘 A-基础资料&#x2F;05、开发工具&#x2F;04、正点原子MFG_TOOL 出厂固件烧录工具&#x2F;mfgtool 】  </p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715103525312.png" alt="image-20230715103525312" style="zoom:50%;" />
+
+<p>目前正点原子在售的核心板类型只有两种，一种是 eMMC（8GB）核心板类型， DDR 大小为 512MB。 另一种是 NandFlash（512MB）， DDR 大小为 256MB。 以 Mfgtool2-eMMC-ddr512-eMMC.vbs 为例，vbs 脚本命名解释如下：</p>
+<blockquote>
+<p>-eMMC：代表核心板上的存储介质为 eMMC</p>
+<p>-ddr512： 指核心板上的 DDR 大小为 512MB</p>
+<p>-eMMC： 选择此脚本是把固件烧写到 eMMC 上  </p>
+</blockquote>
+<h2 id="2-烧写系统到-TF卡"><a href="#2-烧写系统到-TF卡" class="headerlink" title="2. 烧写系统到 TF卡  "></a><font size=3>2. 烧写系统到 TF卡  </font></h2><h3 id="2-1-vbs脚本选择"><a href="#2-1-vbs脚本选择" class="headerlink" title="2.1 vbs脚本选择"></a><font size=3>2.1 vbs脚本选择</font></h3><p>首先需要准备一张 TF 卡， 按前面的 vbs 脚本命名解释， 比如要固化系统到 TF(SD Card)卡，那么需要确认我们手上的核心板类型是 eMMC 还是NandFlash。 比如现在我手上核心板类型为 eMMC 类型核心板。所以我就需要选择 Mfgtool2-eMMC-ddr512-SDCard.vbs 这个脚本来烧写 ，如果手上核心板类型 NandFlash 核心板，则选择 Mfgtool2-NAND-ddr256-SDCard.vbs。 </p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715104000364.png" alt="image-20230715104000364" style="zoom:50%;" />
+
+<h3 id="2-2-运行烧写工具"><a href="#2-2-运行烧写工具" class="headerlink" title="2.2 运行烧写工具"></a><font size=3>2.2 运行烧写工具</font></h3><p>开发板上电， 我们双击 Mfgtool2-eMMC-ddr512-SDCard.vbs。如果是第一次使用开发板 OTG 连接 PC机（电脑），需要等待 PC（电脑） 机自动安装驱动。 点击右下角正在安装驱动的小图标， 注意不要让 Winodws 去从 Windows update 里去找驱动，点击跳过， 驱动自然会装上。否则用了 Windows update 里的驱动，可能在烧写过程中会卡住。 等待安装驱动完成后， mfgtool 界面会提示【符合HID标准的供应商定义设备】， 注意不要打开虚拟机，如果虚拟机正在开启， OTG 会连接到虚拟机上去。</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715104233134.png" alt="image-20230715104233134" style="zoom:50%;" />
+
+<p>此时将 TF 卡插入卡槽（需开发板先上电后再将 TF 卡插进卡槽，否则上电时会检测 TF 卡，这样 mfgtool 会连接不到开发板设备）  </p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715104422842.png" alt="image-20230715104422842" style="zoom:60%;" />
+
+<p>然后点击【start】即可开始烧写系统，烧写过程中如下图：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715104548266.png" alt="image-20230715104548266" style="zoom:50%;" />
+
+<p>烧写是一个很漫长的过程，主要是后边根文件系统的拷贝过程。烧写完成后如下所示：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715105252434.png" alt="image-20230715105252434" style="zoom:50%;" />
+
+<p>最后点击【Stop】&rarr;【Exit】退出即可。</p>
+<h3 id="2-3-启动测试"><a href="#2-3-启动测试" class="headerlink" title="2.3 启动测试"></a><font size=3>2.3 启动测试</font></h3><p>测试从 SD 卡启动系统，拨码开关拨至 SD 卡启动方式 10000010，启动系统即可。启动成功我们可以看到正点原子的出厂系统，并且可以串口可以操作linux系统：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715105458720.png" alt="image-20230715105458720" style="zoom:50%;" />
+
+<h2 id="3-烧写到eMMC"><a href="#3-烧写到eMMC" class="headerlink" title="3. 烧写到eMMC"></a><font size=3>3. 烧写到eMMC</font></h2><p>这个需要我们的核心板类型带 eMMC 存储介质。我们双击 Mfgtool2-eMMC-ddr512-eMMC.vbs 这个 vbs 脚本文件进行烧写。和烧写到SD卡的步骤一模一样，当烧写完成后，将拨码开关拨至 eMMC 启动方式 10100110，启动系统即可。</p>
+<h1 id="二、shell脚本烧写系统"><a href="#二、shell脚本烧写系统" class="headerlink" title="二、shell脚本烧写系统"></a><font size=3>二、shell脚本烧写系统</font></h1><p>脚本烧写系统一般可用于批量固化与升级系统， 不像 mfgtool 上位机那样还需要 PC 机和USB T 字口数据线，且每次只能打开一个 mfgtool 上位机，我们可以自行修改好固化系统脚本，进行自动化固化测试，那么可以无需专业人员参与，即可批量固化系统。我们可以先对之前的SD卡进行格式化，然后我们通过脚本再将系统内核刷入SD卡。格式化的时候建议使用SDFormatter去格式化吧，反正我用电脑格式化的话，好像只是格式化了一掉部分，并没有完全格式化。</p>
+<h2 id="1-准备工作-1"><a href="#1-准备工作-1" class="headerlink" title="1. 准备工作"></a><font size=3>1. 准备工作</font></h2><h3 id="1-1-ubuntu"><a href="#1-1-ubuntu" class="headerlink" title="1.1 ubuntu"></a><font size=3>1.1 ubuntu</font></h3><p>通过脚本固化的话，就需要用到虚拟机啦，我这里用的是VMware下的ubuntu22.04版本。</p>
+<h3 id="1-2-文件拷贝"><a href="#1-2-文件拷贝" class="headerlink" title="1.2 文件拷贝"></a><font size=3>1.2 文件拷贝</font></h3><p>我们要烧写正点原子出厂系统，需要将 OS Firmware&#x2F;files 下的所有文件拷贝到ubuntu去，完整的路径如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">开发板光盘 A-基础资料/05、开发工具/04、正点原子MFG_TOOL 出厂固件烧录具/mfgtool/Profiles/Linux/OS Firmware/files</span><br></pre></td></tr></table></figure>
+
+<p> 拷贝完成后如下所示：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715111326712.png" alt="image-20230715111326712" style="zoom:50%;" />
+
+<h2 id="2-烧写系统到TF卡"><a href="#2-烧写系统到TF卡" class="headerlink" title="2. 烧写系统到TF卡"></a><font size=3>2. 烧写系统到TF卡</font></h2><h3 id="2-1-挂载TF卡到ubuntu"><a href="#2-1-挂载TF卡到ubuntu" class="headerlink" title="2.1 挂载TF卡到ubuntu"></a><font size=3>2.1 挂载TF卡到ubuntu</font></h3><p>我们插入TF卡，然后点击【虚拟机】&rarr;【可移动设备】&rarr;【设备名称】&rarr;【连接（断开与主机的连接）】</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715112450883.png" alt="image-20230715112450883" style="zoom:50%;" />
+
+<p>这里的设备名称一般我们可以拔掉TF卡，然后再插上，看一下多了哪一个，就就知道我们的TF卡对应哪一个名称啦。</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715112729155.png" alt="image-20230715112729155" style="zoom:50%;" />
+
+<p>若是加载成功，一般会有这个图标出来，然后我们输入如下指令查看 SD 卡挂载节点，如下图， 写笔记的时候用的 TF 卡容量是 32GB，但实际会比这小一些。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fdisk -l</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715113037813.png" alt="image-20230715113037813" style="zoom:50%;" />
+
+<p>可以看到实际的容量大概就是29.44GB，挂载节点为 &#x2F;dev&#x2F;sdc 。</p>
+<blockquote>
+<ul>
+<li>节点命名规则？</li>
+</ul>
+<p>节点的命名和Linux系统的磁盘命名有关系。Linux 使用一种更灵活的命名方案。它所传达的信息比其它操作系统采用的命名方案更多。该命名方案是基于文件的，文件名的格式为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/xxyn</span><br></pre></td></tr></table></figure>
+
+<p>（1）&#x2F;dev&#x2F;： 这是所有设备文件所在的目录名。因为分区在硬盘上，而硬盘是设备，所以这些文件代表了在&#x2F;dev&#x2F;上所有可能的分区。</p>
+<p>（2）xx：分区名的前两个字母标明分区所在设备的类型。通常是 hd （IDE 磁盘）或 sd（SCSI 磁盘）。</p>
+<p>（3）y：这个字母标明分区所在第几个设备。例如，&#x2F;dev&#x2F;hda（第一个 IDE 磁盘）或 &#x2F;dev&#x2F;sdb（第二个 SCSI 磁盘）</p>
+<p>（4）n：:最后的数字代表分区。前四个分区（主分区或扩展分区）是用数字从 1 排列到 4。逻辑分区从 5 开始。例如，&#x2F;dev&#x2F;hda3 是在第一个 IDE 硬盘上的第三个主分区或扩展分区；&#x2F;dev&#x2F;sdb6 是在第二个 SCSI 硬盘上的第二个逻辑分区。</p>
+<p>因此，上边的sdc指的是系统中的第3块SCSI磁盘，sdc1指的是第3块SCSI磁盘上的第1个主分区或者扩展分区。</p>
+</blockquote>
+<h3 id="2-2-imx6mksdboot-sh脚本"><a href="#2-2-imx6mksdboot-sh脚本" class="headerlink" title="2.2 imx6mksdboot.sh脚本"></a><font size=3>2.2 imx6mksdboot.sh脚本</font></h3><p>这个脚本是正点原子提供的，里边就是一些命令，这里就不详细分析脚本了，里边其实挺简单的，只是把需要敲的命令放到了脚本，方便使用。大概就是将TF卡进行格式化，然后进行分区，再把u-boot、linux内核、设备树和根文件系统等写入到TF卡中去。我们可以执行 .&#x2F;imx6mksdboot.sh –help 查看脚本的使用方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./imx6mksdboot.sh --help</span><br></pre></td></tr></table></figure>
+
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715113606940.png" alt="image-20230715113606940" style="zoom:50%;" />
+
+<p>可以看到，基本的使用命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imx6mksdboot.sh [选项] &lt;(必选)-device&gt; &lt;(可选)-flash&gt; &lt;(可选)-ddrsize&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（1） -device：指明设备节点（TF 卡挂载的节点如&#x2F;dev&#x2F;sdx）， 必需加这个参数</p>
+<p>（2） -flash：指明核心板上的媒体存储介质，可选为（emmc或者nand）</p>
+<p>（3） -ddrsize：指明核心板上的 ddr 容量大小，可选为（512或者256） MB</p>
+<p>比如现在我现在用的是核心板的 ddr 容量大小是 512MB，媒体存储介质是 eMMC。 SD 卡挂载节点为&#x2F;dev&#x2F;sdc。那么烧写到 SD 卡的指令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./imx6mksdboot.sh -device /dev/sdc -flash emmc -ddrsize 512</span><br></pre></td></tr></table></figure>
+
+<p>执行指令后脚本会有中文再次询问 SD 卡所挂载的节点是否对应，将会清空 SD 卡上的所有数据，这个时候需要注意备份重要的数据。然后按 Enter 键确认后继续，固化 SD 卡需要大约需要几分钟时间，这里根据个人电脑不同和所用 SD 卡不同，可能花费的时间差异比较大。  </p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715114548282.png" alt="image-20230715114548282" style="zoom:50%;" />
+
+<p>烧写完成后，会有如下提示信息：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715132327384.png" alt="image-20230715132327384" style="zoom:50%;" />
+
+<h3 id="2-3-TF卡中都烧写了什么？"><a href="#2-3-TF卡中都烧写了什么？" class="headerlink" title="2.3 TF卡中都烧写了什么？"></a><font size=3>2.3 TF卡中都烧写了什么？</font></h3><p>烧写完成后，TF卡中都有什么文件？可以看吗？当然可以啦，我们搜索一下&#x2F;dev&#x2F;目录下sdc的相关节点：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/sd*</span><br></pre></td></tr></table></figure>
+
+<p>可以看到有如下的节点：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715132943564.png" alt="image-20230715132943564" style="zoom:50%;" />
+
+<p>发现有sdc、sdc1和sdc2这三个节点，从前边烧写过程中脚本的打印信息可以看出，sdc1中主要是放的设备树和内核，在sdc2中主要是文件系统，我们来挂载一下这两个分区，看一下里边的内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/i.mx6ull/sdc1_temp</span><br><span class="line">mkdir -p ~/i.mx6ull/sdc2_temp</span><br><span class="line"></span><br><span class="line">sudo mount /dev/sdc1 ~/i.mx6ull/sdc1_temp</span><br><span class="line">sudo mount /dev/sdc2 ~/i.mx6ull/sdc2_temp</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以看到sdc1和sdc2分区中文件如下所示：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715133500709.png" alt="image-20230715133500709" style="zoom:50%;" />
+
+<h3 id="2-4-断开TF卡"><a href="#2-4-断开TF卡" class="headerlink" title="2.4 断开TF卡"></a><font size=3>2.4 断开TF卡</font></h3><p>若是前边将tf卡的分区挂载到了ubuntu，可以用下边的命令卸载：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo umount ~/i.mx6ull/sdc1_temp</span><br><span class="line">sudo umount ~/i.mx6ull/sdc2_temp</span><br></pre></td></tr></table></figure>
+
+<p>然后按连接 TF 卡到 Ubuntu 的方法，再点击断开即可退出 TF 卡。 </p>
+<h3 id="2-5-重启测试"><a href="#2-5-重启测试" class="headerlink" title="2.5 重启测试"></a><font size=3>2.5 重启测试</font></h3><p>烧写完成后，将拨码开关拨至 TF 启动方式 10000010，启动系统即可。若是成功则可以正常进入linux系统：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715133925204.png" alt="image-20230715133925204" style="zoom:50%;" />
+
+<h2 id="3-烧写到eMMC-1"><a href="#3-烧写到eMMC-1" class="headerlink" title="3. 烧写到eMMC"></a><font size=3>3. 烧写到eMMC</font></h2><p>脚本怎么烧写到eMMC？这个需要在开发板运行起来linux系统后才能用，这也就意味着我们需要有一个TF卡启动系统。来先在开发板上跑起来linux系统。</p>
+<h3 id="3-1-准备TF启动系统"><a href="#3-1-准备TF启动系统" class="headerlink" title="3.1 准备TF启动系统"></a><font size=3>3.1 准备TF启动系统</font></h3><p>按照前边的 《一、mfgtool 烧写系统（OTG 方式）——2. 烧写系统到TF卡》或者《二、脚本烧写系统——2. 烧写系统到TF卡》先制作一个TF启动系统。</p>
+<h3 id="3-2-拷贝所需文件"><a href="#3-2-拷贝所需文件" class="headerlink" title="3.2 拷贝所需文件"></a><font size=3>3.2 拷贝所需文件</font></h3><p>我们需要将下边目录中的文件拷贝到开发板的根文件系统：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">开发板光盘 A-基础资料/05、开发工具/04、正点原子MFG_TOOL 出厂固件烧录具/mfgtool/Profiles/Linux/OS Firmware/files</span><br></pre></td></tr></table></figure>
+
+<p>怎么拷贝？目前就只能用TF卡启动系统喽，前边我们知道TF卡的分区2中是放的linux的根文件系统，所以我们可以在ubuntu中挂载TF卡，然后将files目录拷贝到根文件系统中。</p>
+<ul>
+<li>挂载TF卡的根文件系统分区</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/i.mx6ull/temp</span><br><span class="line">sudo mount /dev/sdc2 ~/i.mx6ull/temp</span><br></pre></td></tr></table></figure>
+
+<p>挂载成功后，temp目录文件如下：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715161559248.png" alt="image-20230715161559248" style="zoom:50%;" />
+
+
+
+<ul>
+<li>拷贝files目录下所有的文件到根文件系统</li>
+</ul>
+<p>我们把files目录文件都拷贝到&#x2F;home目录下，在ubuntu中就在 ~&#x2F;i.mx6ull&#x2F;temp&#x2F;home 中了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp -prf files ~/i.mx6ull/temp/home/</span><br></pre></td></tr></table></figure>
+
+<p>拷贝完后， ~&#x2F;i.mx6ull&#x2F;temp&#x2F;home&#x2F;files 目录下文件如下：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715161837580.png" alt="image-20230715161837580" style="zoom:50%;" />
+
+<ul>
+<li>卸载tf卡</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount ~/i.mx6ull/temp</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-从TF卡启动开发板"><a href="#3-3-从TF卡启动开发板" class="headerlink" title="3.3 从TF卡启动开发板"></a><font size=3>3.3 从TF卡启动开发板</font></h3><p>接下来我们将拨码开关拨到 10000010 ，将刚才的TF卡插到开发板中，系统就会从TF卡启动了，启动完成后我们看一下files文件都在不在&#x2F;home中：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715162450581.png" alt="image-20230715162450581" style="zoom:50%;" />
+
+<h3 id="3-4-imx6mkemmcboot-sh脚本"><a href="#3-4-imx6mkemmcboot-sh脚本" class="headerlink" title="3.4 imx6mkemmcboot.sh脚本"></a><font size=3>3.4 imx6mkemmcboot.sh脚本</font></h3><h4 id="3-4-1-脚本说明"><a href="#3-4-1-脚本说明" class="headerlink" title="3.4.1 脚本说明"></a><font size=3>3.4.1 脚本说明</font></h4><p>我们在串口终端执行.&#x2F;imx6mkemmcboot.sh –help 查看脚本的使用说明 ：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./imx6mkemmcboot.sh --help</span><br></pre></td></tr></table></figure>
+
+<p>可以看到如下提示信息：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715162650620.png" alt="image-20230715162650620" style="zoom: 50%;" />
+
+<p>用法说明：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imx6mkemmcboot.sh [选项] &lt;(必选)-device&gt; &lt;(可选)-ddrsize&gt;</span><br></pre></td></tr></table></figure>
+
+<p>（1） -device：指明设备节点（eMMC 挂载的节点如&#x2F;dev&#x2F;mmcblk1）， 必需加这个参数</p>
+<p>（2） -ddrsize：指明核心板上的 ddr 容量大小，可选为（512或者256） MB</p>
+<p>比如现在我的核心板的 ddr 容量大小是 512MB ， eMMC 挂载节点为 &#x2F;dev&#x2F;mmcblk1 。那么烧写的指令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./imx6mkemmcboot.sh -device /dev/mmcblk1 -ddrsize 512</span><br></pre></td></tr></table></figure>
+
+<p>执行指令后脚本会有中文再次询问 eMMC 所挂载的节点是否对应，将会清空 eMMC 上的所有数据，这个时候要注意备份重要的数据。按 Enter 键确认后继续，烧写系统到 eMMC 需要大约需要几分钟时间。  </p>
+<h4 id="3-4-2-查看eMMC挂载节点"><a href="#3-4-2-查看eMMC挂载节点" class="headerlink" title="3.4.2 查看eMMC挂载节点"></a><font size=3>3.4.2 查看eMMC挂载节点</font></h4><p>我们需要查看一下eMMC的挂载节点，我们在串口终端执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdisk -l</span><br></pre></td></tr></table></figure>
+
+<p>可以看到有如下信息输出：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715163114529.png" alt="image-20230715163114529" style="zoom:50%;" />
+
+<p>可以看到挂载的节点为 &#x2F;dev&#x2F;mmcblk1，后边的p1和p2就是分区，跟前边的sdc1和sdc2一样。</p>
+<h4 id="3-4-3-烧写系统"><a href="#3-4-3-烧写系统" class="headerlink" title="3.4.3 烧写系统"></a><font size=3>3.4.3 烧写系统</font></h4><p>我们直接执行以下命令来烧写系统：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./imx6mkemmcboot.sh -device /dev/mmcblk1 -ddrsize 512</span><br></pre></td></tr></table></figure>
+
+<p>然后会有以下提示，需要我们按下Enter按键：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715163349191.png" alt="image-20230715163349191" style="zoom:50%;" />
+
+<p>之后便会开始将files中相关的文件写入到eMMC中去，写入完成后有如下提示：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715164046712.png" alt="image-20230715164046712" style="zoom:50%;" />
+
+<p>从这里大概可以知道，我们将内核和设备树都写入到了 &#x2F;dev&#x2F;mmcblk1p1 中，将根文件系统和模块都写入到了 &#x2F;dev&#x2F;mmcblk1p2 中。</p>
+<h3 id="3-5-eMMC中都烧写了什么？"><a href="#3-5-eMMC中都烧写了什么？" class="headerlink" title="3.5 eMMC中都烧写了什么？"></a><font size=3>3.5 eMMC中都烧写了什么？</font></h3><p>跟之前的方法一样，想要看eMMC分区中都有什么，我们需要挂载分区才行，我们先看一下eMMC的分区节点：，在串口终端执行以下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/mmc*</span><br></pre></td></tr></table></figure>
+
+<p>然后会看到有如下节点：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715164340236.png" alt="image-20230715164340236" style="zoom:50%;" />
+
+<p>从刚才烧写完成的提示信息中可以看到我们实际用到的是mmcblk1的p1和p2分区，我们挂载这两个分区，看一下都有什么内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /home/emmc_p1 /home/emmc_p2</span><br><span class="line">mount /dev/mmcblk1p1 /home/emmc_p1</span><br><span class="line">mount /dev/mmcblk1p2 /home/emmc_p2</span><br></pre></td></tr></table></figure>
+
+<p>一般应该没啥大问题，都可以挂载成功，我们看一下都有那些文件：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715164749796.png" alt="image-20230715164749796" style="zoom:50%;" />
+
+<p>可以看到与上边的打印信息是吻合的。</p>
+<h3 id="3-6-重启测试"><a href="#3-6-重启测试" class="headerlink" title="3.6 重启测试"></a><font size=3>3.6 重启测试</font></h3><p>烧写完成后，我们可以将拨码开关拨至 eMMC 启动方式 10100110，启动系统即可。 若是烧写成功，则可以正常进入linux系统：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/02IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/LV01-02-IMX6ULL-ALPHA%E5%BC%80%E5%8F%91%E6%9D%BF%E4%BD%93%E9%AA%8C-03-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%B3%BB%E7%BB%9F%E7%83%A7%E5%86%99/img/image-20230715165016888.png" alt="image-20230715165016888" style="zoom:50%;" />
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+            ----------本文结束
+            <i class="fas fa-fan fa-spin" style="color: #FF1493; font-size: 1rem"></i>
+            感谢您的阅读----------
+            </div>
+        
+    </div>
+
+
+
+
+
+  
+  <div class="my_post_copyright"> 
+    <p><span>文章标题:</span><a href="/post/c60bf741.html">LV01-02-IMX6ULL-ALPHA开发板体验-03-开发板系统烧写</a></p>
+    <p><span>文章作者:</span><a href="/" title="欢迎访问 《苏木》 的学习笔记">苏木</a></p>
+    <p><span>发布时间:</span>2023年09月08日 - 19:25</p>
+    <p><span>最后更新:</span>2024年03月28日 - 23:39</p>
+    <p><span>原始链接:</span><a href="/post/c60bf741.html" title="LV01-02-IMX6ULL-ALPHA开发板体验-03-开发板系统烧写">https://sumumm.github.io/post/c60bf741.html</a></p>
+    <p><span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href= "https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+  </div>
+  
+
+
+          <div class="post-tags">
+              <a href="/tags/ALPHA-LV01-IMX6ULL%E5%B9%B3%E5%8F%B0/" rel="tag"><i class="fa fa-tag"></i> (ALPHA)LV01-IMX6ULL平台</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/7a886af.html" rel="prev" title="LV01-02-IMX6ULL-ALPHA开发板体验-04-基本功能测试">
+                  <i class="fa fa-angle-left"></i> LV01-02-IMX6ULL-ALPHA开发板体验-04-基本功能测试
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/95616702.html" rel="next" title="LV01-02-IMX6ULL-ALPHA开发板体验-02-NXP-mfgtool简介">
+                  LV01-02-IMX6ULL-ALPHA开发板体验-02-NXP-mfgtool简介 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">苏木</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">2.6m</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">158:49</span>
+  </span>
+</div>
+
+
+
+
+    <span id="sitetime"></span>
+    <script defer language=javascript>
+        function siteTime()
+        {
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*==================================================
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year        - 作为date对象的年份，为4位年份值
+            month       - 0-11之间的整数，做为date对象的月份
+            day         - 1-31之间的整数，做为date对象的天数
+            hours       - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes     - 0-59之间的整数，做为date对象的分钟数
+            seconds     - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+            ==================================================*/
+            var t1 = Date.UTC(2017, 
+                              5, 
+                              19, 
+                              0, 
+                              0, 
+                              0); //北京时间
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="已在这里 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+    </script>
+
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+ 
+        <div id="click-show-text"
+            data-mobile = false
+            data-text = 富强,民主,文明,和谐,自由,平等,公正,法制,爱国,敬业,诚信,友善
+            data-fontsize = 15px
+            data-random= false>
+        </div>
+       
+
+      
+        <script async src=https://cdn.jsdelivr.net/npm/hexo-next-mouse-effect@latest/click/showText.js></script>
+      
+
+      
+    
+
+
+
+
+    <script async src="/js/fancybox_param.js"></script>
+
+
+
+
+
+<!-- APlayer本体 -->
+
+
+
+</body>
+</html>

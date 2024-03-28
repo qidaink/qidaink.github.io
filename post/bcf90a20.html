@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.css" integrity="sha256-6cQIC71/iBIYXFK+0RHAvwmjwWzkWd+r7v/BX3/vZDc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"sumumm.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":300},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文主要是源码与编译——源码编译工具Makefile的相关笔记，若笔记中有错误或者不合适的地方，欢迎批评指正😃。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LV01-01-AliOSThings-09-源码与编译-03-源码编译工具Makefile">
+<meta property="og:url" content="https://sumumm.github.io/post/bcf90a20.html">
+<meta property="og:site_name" content="苏木">
+<meta property="og:description" content="本文主要是源码与编译——源码编译工具Makefile的相关笔记，若笔记中有错误或者不合适的地方，欢迎批评指正😃。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20200716154757423-1700985027681-8.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20200701130749022.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20231126161943316.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20231126162026386.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20231126162145756.png">
+<meta property="og:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20231126163130922.png">
+<meta property="article:published_time" content="2023-11-26T13:33:10.000Z">
+<meta property="article:modified_time" content="2024-03-28T15:39:19.939Z">
+<meta property="article:author" content="苏木">
+<meta property="article:tag" content="LV21-天猫精灵IOT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20200716154757423-1700985027681-8.png">
+
+
+<link rel="canonical" href="https://sumumm.github.io/post/bcf90a20.html">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://sumumm.github.io/post/bcf90a20.html","path":"post/bcf90a20.html","title":"LV01-01-AliOSThings-09-源码与编译-03-源码编译工具Makefile"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LV01-01-AliOSThings-09-源码与编译-03-源码编译工具Makefile | 苏木</title>
+  
+
+
+
+
+
+
+
+<script type="text/javascript">
+	//禁用右键（防止右键查看源代码） 
+    window.oncontextmenu=function(){return false;} 
+    //禁止任何键盘敲击事件（防止F12和shift+ctrl+i调起开发者工具） 
+    window.onkeydown = window.onkeyup = window.onkeypress = function () { 
+        window.event.returnValue = false; 
+        return false; 
+    } 
+    //如果用户在工具栏调起开发者工具，那么判断浏览器的可视高度和可视宽度是否有改变，如有改变则关闭本页面 
+    var h = window.innerHeight,w=window.innerWidth; 
+    window.onresize = function () { 
+        if (h!= window.innerHeight||w!=window.innerWidth){ 
+            window.close(); 
+            window.location = "about:blank"; 
+        } 
+    }
+</script>
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://unpkg.com/hexo-next-tags-plus@latest/lib/tag_plus.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">苏木</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">我的学习之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>苏木的家</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类页<span class="badge">32</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档页<span class="badge">485</span></a></li><li class="menu-item menu-item-flink"><a href="/flink/" rel="section"><i class="fa fa-link fa-fw"></i>友人帐</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81Makefile%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">一、Makefile简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-make%E7%AE%80%E4%BB%8B"><span class="nav-number">1.1.</span> <span class="nav-text">1. make简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="nav-number">1.2.</span> <span class="nav-text">2. 学习资料</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Makefile%E8%BF%90%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">二、Makefile运行过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">三、基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Makefile%E8%A7%84%E5%88%99"><span class="nav-number">3.1.</span> <span class="nav-text">1. Makefile规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%B8%A4%E4%B8%AA%E9%87%8D%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="nav-number">3.2.</span> <span class="nav-text">2. 两个重要概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-makefile-%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC"><span class="nav-number">3.3.</span> <span class="nav-text">3. makefile 变量赋值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-makefile%E5%87%BD%E6%95%B0"><span class="nav-number">3.4.</span> <span class="nav-text">4. makefile函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-foreach"><span class="nav-number">3.4.1.</span> <span class="nav-text">4.1 foreach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-wildcard"><span class="nav-number">3.4.2.</span> <span class="nav-text">4.2 wildcard </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E8%87%AA%E5%8A%A8%E5%8F%98%E9%87%8F"><span class="nav-number">3.5.</span> <span class="nav-text">5. 自动变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E4%BC%AA%E7%9B%AE%E6%A0%87"><span class="nav-number">3.6.</span> <span class="nav-text">6. 伪目标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81make%E5%91%BD%E4%BB%A4"><span class="nav-number">4.</span> <span class="nav-text">四、make命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-f%E9%80%89%E9%A1%B9"><span class="nav-number">4.1.</span> <span class="nav-text">1. -f选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-C%E9%80%89%E9%A1%B9"><span class="nav-number">4.2.</span> <span class="nav-text">2. -C选项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%94%9F%E6%88%90%E6%89%A7%E8%A1%8C%E7%9B%AE%E6%A0%87"><span class="nav-number">4.3.</span> <span class="nav-text">3.生成执行目标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E4%BD%BF%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">五、使用实例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6%E6%BA%90%E7%A0%81"><span class="nav-number">5.1.</span> <span class="nav-text">1. 测试文件源码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-main-c"><span class="nav-number">5.1.1.</span> <span class="nav-text">1.1 main.c</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-sub-c"><span class="nav-number">5.1.2.</span> <span class="nav-text">1.2 sub.c</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-sub-h"><span class="nav-number">5.1.3.</span> <span class="nav-text">1.3 sub.h</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Makefile"><span class="nav-number">5.1.4.</span> <span class="nav-text">1.4 Makefile</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B5%8B%E8%AF%95%E7%8E%B0%E8%B1%A1"><span class="nav-number">5.2.</span> <span class="nav-text">2. 测试现象</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="苏木"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">苏木</p>
+  <div class="site-description" itemprop="description">莫道桑榆晚，为霞尚满天</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">485</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/sumumm" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;sumumm" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sumumm.github.io/post/bcf90a20.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="苏木">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏木">
+      <meta itemprop="description" content="莫道桑榆晚，为霞尚满天">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="LV01-01-AliOSThings-09-源码与编译-03-源码编译工具Makefile | 苏木">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LV01-01-AliOSThings-09-源码与编译-03-源码编译工具Makefile
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-11-26 21:33:10" itemprop="dateCreated datePublished" datetime="2023-11-26T21:33:10+08:00">2023-11-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">嵌入式开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/" itemprop="url" rel="index"><span itemprop="name">01HQ课程体系</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/" itemprop="url" rel="index"><span itemprop="name">LV21-天猫精灵IOT</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本文主要是源码与编译——源码编译工具Makefile的相关笔记，若笔记中有错误或者不合适的地方，欢迎批评指正😃。</p>
+<span id="more"></span>
+
+<!-- Photo: https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/ -->
+
+<details class="folding-tag" blue><summary> 点击查看使用工具及版本 </summary>
+              <div class='content'>
+              <table>    <tr>        <td align="center" width=150px>Windows版本</td>        <td align="left">windows11</td>    </tr>    <tr>        <td align="center">Ubuntu版本</td>        <td align="left">Ubuntu22.04的64位版本</td>      </tr>    <tr>        <td align="center">VMware® Workstation 16 Pro</td>        <td align="left">16.2.3 build-19376536</td>      </tr>    <tr>        <td align="center">终端软件</td>        <td align="left">MobaXterm(Professional Edition v23.0 Build 5042 (license))</td>      </tr></table>
+              </div>
+            </details>
+
+<details class="folding-tag" blue><summary> 点击查看本文参考资料 </summary>
+              <div class='content'>
+              <table>    <tr>        <td align="center">分类</td>        <td align="center">网址</td>        <td align="center">说明</td>    </tr>    <tr>        <td align="center" rowspan="6">官方网站</td>        <td align="left"><a href="https://cn.aliyun.com/" target="_blank">阿里云</a></td>        <td align="left">阿里云官网主页</td>    </tr>    <tr>        <td align="left"><a href="https://www.aliyun.com/product/iot/livinglink?spm=5176.28508143.J_4VYgf18xNlTAyFFbOuOQe.317.5421154acZniIL&scm=20140722.X_data-1da961ea118f5bb0e4b2._.V_1" target="_blank">阿里生活物联平台</a></td>        <td align="left">生活物联网平台(飞燕平台)主页</td>    </tr>    <tr>        <td align="left"><a href="https://iap.aligenie.com/?spm=0.7629140.0.0.2c611780Ty6tzg" target="_blank">AliGenie</a></td>        <td align="left">天猫精灵开放平台AliGenie主页</td>    </tr>    <tr>        <td align="left"><a href="https://www.aliyun.com/product/iot/iot_instc_public_cn?spm=5176.28508143.J_4VYgf18xNlTAyFFbOuOQe.81.5421154au3ocqp&scm=20140722.X_data-9349178ba84cf028806a._.V_1" target="_blank">阿里物联网平台</a></td>        <td align="left">阿里物联网平台主页</td>    </tr>    <tr>        <td align="left"><a href="https://www.bluetooth.com/zh-cn/" target="_blank">Bluetooth 技术网站</a></td>        <td align="left">蓝牙协议规范什么的可以来这里找</td>    </tr>    <tr>        <td align="left"><a href="https://www.telink-semi.com/" target="_blank">Telink</a></td>        <td align="left">Telink | Chips for a Smarter IoT (telink-semi.com)<br><a href="https://www.telink-semi.cn/" target="_blank">Telink中文官网</a></td>    </tr>    <tr>        <td align="center" rowspan="5">开发手册</td>        <td align="left"><a href="https://help.aliyun.com/zh/alios-things/" target="_blank">AliOS Things开发指南</a></td>        <td align="left">AliOS Things开发指南，这里是最新版本，可以直接从官网找到</td>    </tr>     <tr>        <td align="left"><a href="https://haas.iot.aliyun.com/aliosthings/index.html" target="_blank">AliOS Things开发指南</a></td>        <td align="left">AliOS Things应用开发指南，这里应该是3.3版本的完整开发文档</td>    </tr>    <tr>        <td align="left"><a href="https://gaic.alicdn.com/aic/h5_daily/test/aliosthings/3.0.13/index.html" target="_blank">AliOS Things开发指南(3.0)</a></td>        <td align="left">AliOS Things应用开发指南，这里应该是3.0版本的完整开发文档</td>    </tr>    <tr>        <td align="left"><a href="https://help.aliyun.com/product/123207.html?spm=a2c4g.11186623.6.540.114e60d84sF58G" target="_blank">生活物联网平台开发文档</a></td>        <td align="left">生活物联网平台（飞燕平台）开发文档<br><a href="https://help.aliyun.com/document_detail/180778.html?spm=a2c4g.123207.0.0.49556adcO5apvd" target="_blank">《设备端开发指南》</a></td>    </tr>    <tr>        <td align="left"><a href="https://doc-bot.tmall.com/docs/doc.htm?spm=0.7629140.0.0.7bf81780UN7WkQ&treeId=578&articleId=118057&docType=1" target="_blank">Wi-Fi IoT品类定义与功能开发</a></td>        <td align="left">天猫精灵IoT开放平台——Wi-Fi IoT品类定义与功能开发</td>    </tr>    <tr>        <td align="center" rowspan="3">硬件平台</td>        <td align="left"><a href="https://developer.aliyun.com/article/761644?spm=a2c6h.12873581.0.dArticle761644.1c1b589dRHgvcR&groupCode=genieaiot" target="_blank">mk3080 WiFi开发板</a></td>        <td align="left">WiFi开发板使用指南-阿里云开发者社区</td>    </tr>    <tr>        <td align="left"><a href="http://www.taichi-maker.com/homepage/esp8266-nodemcu-iot/esp8266-nodemcu-tutorial-index/" target="_blank">esp8266开发板</a></td>        <td align="left">一个教程：ESP8266-NodeMCU开发板详解-太极创客 (taichi-maker.com)</td>    </tr>    <tr>        <td align="left"><a href="https://wiki.telink-semi.cn/doc/ds/DS_TLSR8258-E_Datasheet%20for%20Telink%20BLE+IEEE802.15.4%20Multi-Standard%20Wireless%20SoC%20TLSR8258.pdf" target="_blank">TLSR8258 Datasheet</a></td>        <td align="left">Datasheet for Telink BLE + IEEE802.15.4 MultiStandard Wireless SoC TLSR8258</td>    </tr>    <tr>        <td align="center" rowspan="2">参考资料</td>        <td align="left"><a href="https://developer.aliyun.com/article/720516#" target="_blank">AliOS Things 3.0 应用开发指南</a></td>        <td align="left">这个只是一篇参考文章，里面是一些环境搭建相关的，可以参考</td>    </tr>    <tr>        <td align="left"><a href="https://info.support.huawei.com/info-finder/encyclopedia/zh/index.html" target="_blank">IP知识百科 - 华为 (huawei.com)</a></td>        <td align="left">IP的一些相关知识点</td>    </tr></table>
+              </div>
+            </details>
+
+<details class="folding-tag" blue><summary> 点击查看相关文件下载 </summary>
+              <div class='content'>
+              <table>    <tr>        <td align="center" width=150px>分类</td>        <td align="center">网址</td>        <td align="center">说明</td>    </tr>    <tr>        <td align="left" rowspan="6">蓝牙规范相关文档</td>        <td align="left"><a href="https://www.bluetooth.com/zh-cn/specifications/specs/core-specification-5-2/" target="_blank">Core Specification 5.2</a></td>        <td align="left">核心规格 5.2，该规范定义了创建可互操作的Bluetooth 设备所需的技术。                        <br><a href="./蓝牙参考资料/Core_v5.2.pdf" target="_blank">《Core_v5.2.pdf》</a></td>      </tr>    <tr>        <td align="left"><a href="https://www.bluetooth.com/zh-cn/specifications/specs/mesh-model-1-1/" target="_blank">Mesh Model(v1.1)</a></td>        <td align="left">本Bluetooth 规范定义了模型（以及它们所需的状态和消息），这些模型用于在mesh 网络中的节点上执行基本功能，超出了Bluetooth Mesh 配置文件 规范中定义的基础模型。                        <br>本规范包括定义跨设备类型标准功能的通用模型，以及支持关键mesh 场景的模型，如照明控制、传感器、时间和场景。                        <br><a href="./蓝牙参考资料/MshMDL_v1.1.pdf" target="_blank">《MshMDL_v1.1.pdf》</a></td>      </tr>    <tr>        <td align="left"><a href="https://www.bluetooth.com/zh-cn/specifications/specs/mesh-profile-1-0-1/" target="_blank">Mesh Profile(v1.0.1)</a></td>        <td align="left">该Bluetooth 规范定义了基本要求，以实现可互操作的mesh 网络解决方案，用于Bluetooth 低能量无线技术。                        <br><a href="./蓝牙参考资料/MshPRFv1.0.1.pdf" target="_blank">《MshPRFv1.0.1.pdf》</a></td>      </tr>    <tr>        <td align="left"><a href="https://www.bluetooth.com/zh-cn/specifications/device-properties/" target="_blank">Mesh Device Properties</a></td>        <td align="left">本规范包含Bluetooth Mesh 配置文件 和Bluetooth Mesh 模型规范所要求的设备属性的定义。                        <br>但是跟之前的有些区别，我主要看的之前的版本：<a href="./蓝牙参考资料/MeshDeviceProperties_v1.2.pdf" target="_blank">《MMeshDeviceProperties_v1.2.pdf》</a></td>      </tr>    <tr>        <td align="left"><a href="https://www.bluetooth.com/specifications/gss/" target="_blank">GATT Specification Supplement</a></td>        <td align="left">GATT Specification Supplement | Bluetooth® Technology Website。                        <br>好像可以在线看：<a href="https://btprodspecificationrefs.blob.core.windows.net/gatt-specification-supplement/GATT_Specification_Supplement.pdf" target="_blank">《GATT Specification Supplement》</a></td>      </tr>     <tr>        <td align="left"><a href="https://www.bluetooth.com/specifications/assigned-numbers/" target="_blank">Assigned Numbers</a></td>        <td align="left">GATT的一些类型定义可以在这里找。</td>      </tr>    <tr>        <td align="left" rowspan="2">AliOS Things</td>        <td align="left"><a href="https://gitee.com/alios-things-admin/AliOS-Things" target="_blank">alios-things/AliOS-Things</a></td>        <td align="left">Gitee上的AliOSThings SDK源码仓库</td>      </tr>    <tr>        <td align="left"><a href="https://github.com/alibaba/AliOS-Things" target="_blank">alibaba/AliOS-Things</a></td>        <td align="left">GitHub上的AliOSThings SDK源码仓库</td>      </tr>    <tr>        <td align="left" rowspan="2">天猫精灵蓝牙Mesh协议栈</td>        <td align="left"><a href="https://github.com/alibaba-archive/genie-bt-mesh-stack" target="_blank">alibaba-archive/genie-bt-mesh-stack</a></td>        <td align="left">GitHub上的天猫精灵蓝牙Mesh协议栈源码仓库。<br>之前是在<a href="https://github.com/alibaba/genie-bt-mesh-stack"target="_blank">alibaba/genie-bt-mesh-stack</a>这个仓库。<br>写笔记的时候最新提交为<a href="https://github.com/alibaba-archive/genie-bt-mesh-stack/tree/faf523618a6a2560090fc423222b9db80984bb7a" target="_blank">faf523618a6a2560090fc423222b9db80984bb7a</a></td>      </tr>    <tr>        <td align="left"><a href="https://help.aliyun.com/document_detail/171552.html?spm=a2c4g.173310.0.0.55d6e992e8xJip" target="_blank">蓝牙Mesh设备开发指南</a></td>        <td align="left">阿里云生活服务平台开发手册——蓝牙设备开发一节中的内容</td>      </tr></table>
+              </div>
+            </details>
+
+<p>前面有详细学习过makefile语法，这里简单复习一下吧。</p>
+<h1 id="一、Makefile简介"><a href="#一、Makefile简介" class="headerlink" title="一、Makefile简介"></a><font size=3>一、Makefile简介</font></h1><h2 id="1-make简介"><a href="#1-make简介" class="headerlink" title="1. make简介"></a><font size=3>1. make简介</font></h2><p>可以直接搜一下就行。</p>
+<h2 id="2-学习资料"><a href="#2-学习资料" class="headerlink" title="2. 学习资料"></a><font size=3>2. 学习资料</font></h2><p>官网在写这篇笔记的时候进不去，先不写吧，而且很容易搜到的。还有一个中文手册，在这里：<a target="_blank" rel="noopener" href="https://file.elecfans.com/web1/M00/7D/E7/o4YBAFwQthSADYCWAAT9Q1w_4U0711.pdf">GNU Make 使用手册（中译版） (elecfans.com)</a></p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20200716154757423-1700985027681-8.png" alt="image-20200716154757423" style="zoom: 15%;" />
+
+<h1 id="二、Makefile运行过程"><a href="#二、Makefile运行过程" class="headerlink" title="二、Makefile运行过程"></a><font size=3>二、Makefile运行过程</font></h1><p>我们有如下源码文件：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (argc &gt;= <span class="number">2</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Hello, %s!\n&quot;</span>, argv[<span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;Hello, world!\n&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们创建Makefile文件如下：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">hello: hello.c</span></span><br><span class="line">	gcc -o hello hello.c</span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm -f  hello</span><br></pre></td></tr></table></figure>
+
+<p>Makefile的执行过程如下：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20200701130749022.png" alt="image-20200701130749022" style="zoom:25%;" />
+
+<h1 id="三、基本语法"><a href="#三、基本语法" class="headerlink" title="三、基本语法"></a><font size=3>三、基本语法</font></h1><h2 id="1-Makefile规则"><a href="#1-Makefile规则" class="headerlink" title="1. Makefile规则"></a><font size=3>1. Makefile规则</font></h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">目标(target): 依赖(prerequiries)</span></span><br><span class="line">&lt;tab&gt;命令(command)</span><br></pre></td></tr></table></figure>
+
+<p>目标(target)通常是要生成的文件的名称，可以是可执行文件或OBJ文件，也可以是一个执行的动作名称，诸如<code>clean</code>。</p>
+<h2 id="2-两个重要概念"><a href="#2-两个重要概念" class="headerlink" title="2. 两个重要概念"></a><font size=3>2. 两个重要概念</font></h2><blockquote>
+<p>依赖关系：依赖关系定义了如果你要建立一个目标，有什么是必须做的。</p>
+<p>时间先后：根据文件的时间，make程序判断那些东西发生了变化，然后根据前面定义的依赖关系把依赖于这些文件的目标重新建立一遍</p>
+</blockquote>
+<h2 id="3-makefile-变量赋值"><a href="#3-makefile-变量赋值" class="headerlink" title="3. makefile 变量赋值"></a><font size=3>3. makefile 变量赋值</font></h2><p>变量的定义语法形式如下：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">immediate = deferred</span><br><span class="line">immediate ?= deferred</span><br><span class="line">immediate := immediate</span><br><span class="line">immediate += deferred or immediate</span><br><span class="line"><span class="keyword">define</span> immediate</span><br><span class="line">deferred</span><br><span class="line"><span class="keyword">endef</span></span><br></pre></td></tr></table></figure>
+
+<p>在GNU make中对变量的赋值有两种方式：延时变量、立即变量。区别在于它们的定义方式和扩展时的方式不同，前者在这个变量使用时才扩展开，意即当真正使用时这个变量的值才确定；后者在定义时它的值就已经确定了。使用<code>=</code>，<code>?=</code>定义或使用define指令定义的变量是延时变量；使用<code>:=</code>定义的变量是立即变量。需要注意的一点是，<code>?=</code>仅仅在变量还没有定义的情况下有效，即<code>?=</code>被用来定义第一次出现的延时变量。</p>
+<p>对于附加操作符<code>+=</code>，右边变量如果在前面使用（<code>:=</code>）定义为立即变量则它也是立即变量，否则均为延时变量。</p>
+<h2 id="4-makefile函数"><a href="#4-makefile函数" class="headerlink" title="4. makefile函数"></a><font size=3>4. makefile函数</font></h2><h3 id="4-1-foreach"><a href="#4-1-foreach" class="headerlink" title="4.1 foreach"></a><font size=3>4.1 foreach</font></h3><p><code>$(foreach var,list,text)</code>简单地说，就是 for each var in list, change it to text。对list中的每一个元素，取出来赋给var，然后把var改为text所描述的形式。例如：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objs := a.o b.o</span><br><span class="line">dep_files := <span class="variable">$(<span class="built_in">foreach</span>  f,  <span class="variable">$(objs)</span>,  .<span class="variable">$(f)</span>.d)</span>  <span class="comment">#最终 dep_files := .a.o.d .b.o.d</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-wildcard"><a href="#4-2-wildcard" class="headerlink" title="4.2 wildcard "></a><font size=3>4.2 wildcard </font></h3><p><code>$(wildcard pattern)</code>：pattern所列出的文件是否存在，把存在的文件都列出来。例如：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">src_files := $( wildcard  *.c) <span class="comment"># 最终 src_files中列出了当前目录下的所有.c文件</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-自动变量"><a href="#5-自动变量" class="headerlink" title="5. 自动变量"></a><font size=3>5. 自动变量</font></h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%.o : %.c</span><br><span class="line">	gcc -MD -c <span class="variable">$&lt;</span> -o <span class="variable">$@</span></span><br></pre></td></tr></table></figure>
+
+<p><code>$@</code>、<code>$^</code>、<code>$&lt;</code>称为自动变量。<code>$@</code>表示规则的目标文件名；<code>$^</code>表示所有依赖的名字，名字之间用空格隔开；<code>$&lt;</code>表示第一个依赖的文件名。<code>%</code>是通配符，它和一个字符串中任意个数的字符相匹配。</p>
+<h2 id="6-伪目标"><a href="#6-伪目标" class="headerlink" title="6. 伪目标"></a><font size=3>6. 伪目标</font></h2><p>我们的Makefile中有这样的目标：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm -f *.o</span><br></pre></td></tr></table></figure>
+
+<p>如果当前目录下恰好有名为“clean”的文件，那么执行“make clean”时它就不会执行那些删除命令。这时我们需要把“clean”这个目标，设置为“假想目标”，这样可以确保执行“make clean”时那些删除命令肯定可以得到执行。可以使用下面的语句把“clean”设置为假想目标：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : clean</span><br></pre></td></tr></table></figure>
+
+<h1 id="四、make命令"><a href="#四、make命令" class="headerlink" title="四、make命令"></a><font size=3>四、make命令</font></h1><p>执行make命令时，它会去当前目录下查找名为“Makefile”的文件，并根据它的指示去执行操作，生成第一个目标。</p>
+<h2 id="1-f选项"><a href="#1-f选项" class="headerlink" title="1. -f选项"></a><font size=3>1. -f选项</font></h2><p>我们可以使用“-f”选项指定文件，不再使用名为“Makefile”的文件，例如下面的命令将会使用 Makefile.build 文件来编译工程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -f Makefile.build </span><br></pre></td></tr></table></figure>
+
+<h2 id="2-C选项"><a href="#2-C选项" class="headerlink" title="2. -C选项"></a><font size=3>2. -C选项</font></h2><p>我们可以使用“-C”选项指定目录，切换到其他目录里去</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -C a/ -f Makefile.build </span><br></pre></td></tr></table></figure>
+
+<h2 id="3-生成执行目标"><a href="#3-生成执行目标" class="headerlink" title="3.生成执行目标"></a><font size=3>3.生成执行目标</font></h2><p>我们可以指定目标，不再默认生成第一个目标</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make -C a/ -f Makefile.build target_name</span><br></pre></td></tr></table></figure>
+
+<h1 id="五、使用实例"><a href="#五、使用实例" class="headerlink" title="五、使用实例"></a><font size=3>五、使用实例</font></h1><h2 id="1-测试文件源码"><a href="#1-测试文件源码" class="headerlink" title="1. 测试文件源码"></a><font size=3>1. 测试文件源码</font></h2><h3 id="1-1-main-c"><a href="#1-1-main-c" class="headerlink" title="1.1 main.c"></a><font size=3>1.1 main.c</font></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="type">void</span> <span class="title function_">sub_fun</span><span class="params">(<span class="type">void</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>* argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Main fun!\n&quot;</span>);</span><br><span class="line">    sub_fun();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-sub-c"><a href="#1-2-sub-c" class="headerlink" title="1.2 sub.c"></a><font size=3>1.2 sub.c</font></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;sub.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_fun</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Sub fun, A= %d!\n&quot;</span>, A);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-sub-h"><a href="#1-3-sub-h" class="headerlink" title="1.3 sub.h"></a><font size=3>1.3 sub.h</font></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> A  2</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">sub_fun</span><span class="params">(<span class="type">void</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-4-Makefile"><a href="#1-4-Makefile" class="headerlink" title="1.4 Makefile"></a><font size=3>1.4 Makefile</font></h3><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">objs := main.o sub.o</span><br><span class="line"></span><br><span class="line">test : <span class="variable">$(objs)</span></span><br><span class="line">	gcc -o test <span class="variable">$^</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">dep_files := <span class="variable">$(<span class="built_in">wildcard</span> *.d)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把依赖文件包含进来</span></span><br><span class="line"><span class="keyword">ifneq</span> (<span class="variable">$(dep_files)</span>,)</span><br><span class="line">  <span class="keyword">include</span> <span class="variable">$(dep_files)</span></span><br><span class="line"><span class="keyword">endif</span></span><br><span class="line"></span><br><span class="line">%.o : %.c</span><br><span class="line">	gcc -MD -c <span class="variable">$&lt;</span> -o <span class="variable">$@</span></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	rm  *.d *.o test -f</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-测试现象"><a href="#2-测试现象" class="headerlink" title="2. 测试现象"></a><font size=3>2. 测试现象</font></h2><p>我们直接用上面的makefile文件，执行make，会有以下打印信息：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20231126161943316.png" alt="image-20231126161943316" style="zoom:50%;" />
+
+<p>当我们没有文件更新的时候，再次执行会提示我们的可执行文件是最新的，我们执行可执行文件会有如下打印：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20231126162026386.png" alt="image-20231126162026386" style="zoom:50%;" />
+
+<p>然后我们修改sub.h中的宏为3，然后重新编译执行，会发现，打印结果为3，说明仅更新头文件时，最终目标也会更新：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20231126162145756.png" alt="image-20231126162145756" style="zoom:50%;" />
+
+<p>现在我们去掉Makefile中gcc命令后面的MD选项（注意，这里要先删掉之前的.d文件，因为之前生成过，不删除的话，会影响测试结果），之后重新执行一遍make生成一下可执行文件，然后修改宏为4，再编译执行：</p>
+<img data-src="https://fanhua-picture.oss-cn-hangzhou.aliyuncs.com/01%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%BC%80%E5%8F%91/01HQ%E8%AF%BE%E7%A8%8B%E4%BD%93%E7%B3%BB/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/LV01-01-AliOSThings-09-%E6%BA%90%E7%A0%81%E4%B8%8E%E7%BC%96%E8%AF%91-03-%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91%E5%B7%A5%E5%85%B7Makefile/img/image-20231126163130922.png" alt="image-20231126163130922" style="zoom: 50%;" />
+
+<p>会发现，只更新了头文件后，最终可执行文件并不会被更新，这就是-MD选项的意义啦。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+
+
+    <div>
+        
+            <div style="text-align:center;color: #ccc;font-size:14px;">
+            ----------本文结束
+            <i class="fas fa-fan fa-spin" style="color: #FF1493; font-size: 1rem"></i>
+            感谢您的阅读----------
+            </div>
+        
+    </div>
+
+
+
+
+
+  
+  <div class="my_post_copyright"> 
+    <p><span>文章标题:</span><a href="/post/bcf90a20.html">LV01-01-AliOSThings-09-源码与编译-03-源码编译工具Makefile</a></p>
+    <p><span>文章作者:</span><a href="/" title="欢迎访问 《苏木》 的学习笔记">苏木</a></p>
+    <p><span>发布时间:</span>2023年11月26日 - 21:33</p>
+    <p><span>最后更新:</span>2024年03月28日 - 23:39</p>
+    <p><span>原始链接:</span><a href="/post/bcf90a20.html" title="LV01-01-AliOSThings-09-源码与编译-03-源码编译工具Makefile">https://sumumm.github.io/post/bcf90a20.html</a></p>
+    <p><span>许可协议:</span><i class="fab fa-creative-commons"></i> <a rel="license" href= "https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+  </div>
+  
+
+
+          <div class="post-tags">
+              <a href="/tags/LV21-%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5IOT/" rel="tag"><i class="fa fa-tag"></i> LV21-天猫精灵IOT</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/c2e4063d.html" rel="prev" title="LV01-01-AliOSThings-09-源码与编译-04-AliosThings编译构建系统">
+                  <i class="fa fa-angle-left"></i> LV01-01-AliOSThings-09-源码与编译-04-AliosThings编译构建系统
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/375492f0.html" rel="next" title="LV01-01-AliOSThings-09-源码与编译-03-源码编译工具GCC">
+                  LV01-01-AliOSThings-09-源码与编译-03-源码编译工具GCC <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2017 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">苏木</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">2.6m</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">158:49</span>
+  </span>
+</div>
+
+
+
+
+    <span id="sitetime"></span>
+    <script defer language=javascript>
+        function siteTime()
+        {
+            window.setTimeout("siteTime()", 1000);
+            var seconds = 1000;
+            var minutes = seconds * 60;
+            var hours = minutes * 60;
+            var days = hours * 24;
+            var years = days * 365;
+            var today = new Date();
+            var todayYear = today.getFullYear();
+            var todayMonth = today.getMonth()+1;
+            var todayDate = today.getDate();
+            var todayHour = today.getHours();
+            var todayMinute = today.getMinutes();
+            var todaySecond = today.getSeconds();
+            /*==================================================
+            Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+            year        - 作为date对象的年份，为4位年份值
+            month       - 0-11之间的整数，做为date对象的月份
+            day         - 1-31之间的整数，做为date对象的天数
+            hours       - 0(午夜24点)-23之间的整数，做为date对象的小时数
+            minutes     - 0-59之间的整数，做为date对象的分钟数
+            seconds     - 0-59之间的整数，做为date对象的秒数
+            microseconds - 0-999之间的整数，做为date对象的毫秒数
+            ==================================================*/
+            var t1 = Date.UTC(2017, 
+                              5, 
+                              19, 
+                              0, 
+                              0, 
+                              0); //北京时间
+            var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+            var diff = t2-t1;
+            var diffYears = Math.floor(diff/years);
+            var diffDays = Math.floor((diff/days)-diffYears*365);
+            var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+            var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+            var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+            document.getElementById("sitetime").innerHTML="已在这里 "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+        }
+        siteTime();
+    </script>
+
+
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.28/fancybox/fancybox.umd.js" integrity="sha256-ytMJGN3toR+a84u7g7NuHm91VIR06Q41kMWDr2pq7Zo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+ 
+        <div id="click-show-text"
+            data-mobile = false
+            data-text = 富强,民主,文明,和谐,自由,平等,公正,法制,爱国,敬业,诚信,友善
+            data-fontsize = 15px
+            data-random= false>
+        </div>
+       
+
+      
+        <script async src=https://cdn.jsdelivr.net/npm/hexo-next-mouse-effect@latest/click/showText.js></script>
+      
+
+      
+    
+
+
+
+
+    <script async src="/js/fancybox_param.js"></script>
+
+
+
+
+
+<!-- APlayer本体 -->
+
+
+
+</body>
+</html>
